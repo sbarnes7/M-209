@@ -1,0 +1,991 @@
+<html>
+	<head>
+		<title>Pins | M-209 Cypher Emulator</title>
+		<link rel="stylesheet" href="https://stackpath.bootstrapcdn.com/bootstrap/4.3.1/css/bootstrap.min.css" integrity="sha384-ggOyR0iXCbMQv3Xipma34MD+dH/1fQ784/j6cY/iJTQUOhcWr7x9JvoRxT2MZw1T" crossorigin="anonymous">
+		<script src="https://code.jquery.com/jquery-3.3.1.slim.min.js" integrity="sha384-q8i/X+965DzO0rT7abK41JStQIAqVgRVzpbzo5smXKp4YfRvH+8abtTE1Pi6jizo" crossorigin="anonymous"></script>
+<script src="https://cdnjs.cloudflare.com/ajax/libs/popper.js/1.14.7/umd/popper.min.js" integrity="sha384-UO2eT0CpHqdSJQ6hJty5KVphtPhzWj9WO1clHTMGa3JDZwrnQq4sF86dIHNDz0W1" crossorigin="anonymous"></script>
+<script src="https://stackpath.bootstrapcdn.com/bootstrap/4.3.1/js/bootstrap.min.js" integrity="sha384-JjSmVgyd0p3pXB1rRibZUAYoIIy6OrQ6VrjIEaFf/nJGzIxFDsf4x0xIM+B07jRM" crossorigin="anonymous"></script>
+<script src="m209.js"></script>
+	</head>
+<style>
+td{
+	text-align: center;
+}
+.container2{
+	width: 100%;
+			font-size: 5;
+
+}
+</style>
+<body>
+		<nav class="navbar navbar-expand-lg navbar-dark bg-dark">
+  <a class="navbar-brand" href="index.html">M-209</a>
+  <button class="navbar-toggler" type="button" data-toggle="collapse" data-target="#navbarNavDropdown" aria-controls="navbarNavDropdown" aria-expanded="false" aria-label="Toggle navigation">
+    <span class="navbar-toggler-icon"></span>
+  </button>
+  <div class="collapse navbar-collapse" id="navbarNavDropdown">
+    <ul class="navbar-nav">
+      <li class="nav-item">
+        <a class="nav-link" href="index.html">Home <span class="sr-only">(current)</span></a>
+      </li>
+      <li class="nav-item active">
+        <a class="nav-link" href="lugs.html">Cypher</a>
+      </li>
+      <li class="nav-item">
+        <a class="nav-link" href="#">Documentation</a>
+      </li>
+         </ul>
+  </div>
+</nav>
+<table class="table table-striped table-bordered">
+  <thead>
+    <tr>
+      <th scope="col">Wheel 1</th>
+      <th scope="col">Wheel 2</th>
+      <th scope="col">Wheel 3</th>
+      <th scope="col">Wheel 4</th>
+      <th scope="col">Wheel 5</th>
+      <th scope="col">Wheel 6</th>
+
+    </tr>
+  </thead>
+  <tbody>
+    <tr>
+      <th scope="row">
+      <div class="form-check form-check-inline">
+  		<input class="form-check-input" type="checkbox" id="1a" value="option1">
+ 		 <label class="form-check-label" for="inlineCheckbox1">&ensp;A</label>
+	</div>
+      </th>
+            <th scope="row">
+      <div class="form-check form-check-inline">
+  		<input class="form-check-input" type="checkbox" id="2a" value="option1">
+ 		 <label class="form-check-label" for="inlineCheckbox1">&ensp;A</label>
+	</div>
+      </th>
+      <th scope="row">
+      <div class="form-check form-check-inline">
+  		<input class="form-check-input" type="checkbox" id="3a" value="option1">
+ 		 <label class="form-check-label" for="inlineCheckbox1">&ensp;A</label>
+	</div>
+      </th>
+      <th scope="row">
+      <div class="form-check form-check-inline">
+  		<input class="form-check-input" type="checkbox" id="4a" value="option1">
+ 		 <label class="form-check-label" for="inlineCheckbox1">&ensp;A</label>
+	</div>
+      </th>
+      <th scope="row">
+      <div class="form-check form-check-inline">
+  		<input class="form-check-input" type="checkbox" id="5a" value="option1">
+ 		 <label class="form-check-label" for="inlineCheckbox1">&ensp;A</label>
+	</div>
+      </th>
+      <th scope="row">
+      <div class="form-check form-check-inline">
+  		<input class="form-check-input" type="checkbox" id="6a" value="option1">
+ 		 <label class="form-check-label" for="inlineCheckbox1">&ensp;A</label>
+	</div>
+      </th>
+
+
+    </tr>
+    <tr>
+      <th scope="row">
+      <div class="form-check form-check-inline">
+  		<input class="form-check-input" type="checkbox" id="1b" value="option1">
+ 		 <label class="form-check-label" for="inlineCheckbox1">&ensp;B</label>
+	</div>
+      </th>
+            <th scope="row">
+      <div class="form-check form-check-inline">
+  		<input class="form-check-input" type="checkbox" id="2b" value="option1">
+ 		 <label class="form-check-label" for="inlineCheckbox1">&ensp;B</label>
+	</div>
+      </th>
+      <th scope="row">
+      <div class="form-check form-check-inline">
+  		<input class="form-check-input" type="checkbox" id="3b" value="option1">
+ 		 <label class="form-check-label" for="inlineCheckbox1">&ensp;B</label>
+	</div>
+      </th>
+      <th scope="row">
+      <div class="form-check form-check-inline">
+  		<input class="form-check-input" type="checkbox" id="4b" value="option1">
+ 		 <label class="form-check-label" for="inlineCheckbox1">&ensp;B</label>
+	</div>
+      </th>
+      <th scope="row">
+      <div class="form-check form-check-inline">
+  		<input class="form-check-input" type="checkbox" id="5b" value="option1">
+ 		 <label class="form-check-label" for="inlineCheckbox1">&ensp;B</label>
+	</div>
+      </th>
+      <th scope="row">
+      <div class="form-check form-check-inline">
+  		<input class="form-check-input" type="checkbox" id="6b" value="option1">
+ 		 <label class="form-check-label" for="inlineCheckbox1">&ensp;B</label>
+	</div>
+      </th>
+    </tr>
+    <tr>
+      <th scope="row">
+      <div class="form-check form-check-inline">
+  		<input class="form-check-input" type="checkbox" id="1c" value="option1">
+ 		 <label class="form-check-label" for="inlineCheckbox1">&ensp;C</label>
+	</div>
+      </th>
+            <th scope="row">
+      <div class="form-check form-check-inline">
+  		<input class="form-check-input" type="checkbox" id="2c" value="option1">
+ 		 <label class="form-check-label" for="inlineCheckbox1">&ensp;C</label>
+	</div>
+      </th>
+      <th scope="row">
+      <div class="form-check form-check-inline">
+  		<input class="form-check-input" type="checkbox" id="3c" value="option1">
+ 		 <label class="form-check-label" for="inlineCheckbox1">&ensp;C</label>
+	</div>
+      </th>
+      <th scope="row">
+      <div class="form-check form-check-inline">
+  		<input class="form-check-input" type="checkbox" id="4c" value="option1">
+ 		 <label class="form-check-label" for="inlineCheckbox1">&ensp;C</label>
+	</div>
+      </th>
+      <th scope="row">
+      <div class="form-check form-check-inline">
+  		<input class="form-check-input" type="checkbox" id="5c" value="option1">
+ 		 <label class="form-check-label" for="inlineCheckbox1">&ensp;C</label>
+	</div>
+      </th>
+      <th scope="row">
+      <div class="form-check form-check-inline">
+  		<input class="form-check-input" type="checkbox" id="6c" value="option1">
+ 		 <label class="form-check-label" for="inlineCheckbox1">&ensp;C</label>
+	</div>
+      </th>
+
+    </tr>
+        <tr>
+      <th scope="row">
+      <div class="form-check form-check-inline">
+  		<input class="form-check-input" type="checkbox" id="1d" value="option1">
+ 		 <label class="form-check-label" for="inlineCheckbox1">&ensp;D</label>
+	</div>
+      </th>
+            <th scope="row">
+      <div class="form-check form-check-inline">
+  		<input class="form-check-input" type="checkbox" id="2d" value="option1">
+ 		 <label class="form-check-label" for="inlineCheckbox1">&ensp;D</label>
+	</div>
+      </th>
+      <th scope="row">
+      <div class="form-check form-check-inline">
+  		<input class="form-check-input" type="checkbox" id="3d" value="option1">
+ 		 <label class="form-check-label" for="inlineCheckbox1">&ensp;D</label>
+	</div>
+      </th>
+      <th scope="row">
+      <div class="form-check form-check-inline">
+  		<input class="form-check-input" type="checkbox" id="4d" value="option1">
+ 		 <label class="form-check-label" for="inlineCheckbox1">&ensp;D</label>
+	</div>
+      </th>
+      <th scope="row">
+      <div class="form-check form-check-inline">
+  		<input class="form-check-input" type="checkbox" id="5d" value="option1">
+ 		 <label class="form-check-label" for="inlineCheckbox1">&ensp;D</label>
+	</div>
+      </th>
+      <th scope="row">
+      <div class="form-check form-check-inline">
+  		<input class="form-check-input" type="checkbox" id="6d" value="option1">
+ 		 <label class="form-check-label" for="inlineCheckbox1">&ensp;D</label>
+	</div>
+      </th>
+
+    </tr>
+    <tr>
+      <th scope="row">
+      <div class="form-check form-check-inline">
+  		<input class="form-check-input" type="checkbox" id="1e" value="option1">
+ 		 <label class="form-check-label" for="inlineCheckbox1">&ensp;E</label>
+	</div>
+      </th>
+            <th scope="row">
+      <div class="form-check form-check-inline">
+  		<input class="form-check-input" type="checkbox" id="2e" value="option1">
+ 		 <label class="form-check-label" for="inlineCheckbox1">&ensp;E</label>
+	</div>
+      </th>
+      <th scope="row">
+      <div class="form-check form-check-inline">
+  		<input class="form-check-input" type="checkbox" id="3e" value="option1">
+ 		 <label class="form-check-label" for="inlineCheckbox1">&ensp;E</label>
+	</div>
+      </th>
+      <th scope="row">
+      <div class="form-check form-check-inline">
+  		<input class="form-check-input" type="checkbox" id="4e" value="option1">
+ 		 <label class="form-check-label" for="inlineCheckbox1">&ensp;E</label>
+	</div>
+      </th>
+      <th scope="row">
+      <div class="form-check form-check-inline">
+  		<input class="form-check-input" type="checkbox" id="5e" value="option1">
+ 		 <label class="form-check-label" for="inlineCheckbox1">&ensp;E</label>
+	</div>
+      </th>
+      <th scope="row">
+      <div class="form-check form-check-inline">
+  		<input class="form-check-input" type="checkbox" id="6e" value="option1">
+ 		 <label class="form-check-label" for="inlineCheckbox1">&ensp;E</label>
+	</div>
+      </th>
+
+    </tr>
+    <tr>
+            <th scope="row">
+      <div class="form-check form-check-inline">
+  		<input class="form-check-input" type="checkbox" id="1f" value="option1">
+ 		 <label class="form-check-label" for="inlineCheckbox1">&ensp;F</label>
+	</div>
+      </th>
+            <th scope="row">
+      <div class="form-check form-check-inline">
+  		<input class="form-check-input" type="checkbox" id="2f" value="option1">
+ 		 <label class="form-check-label" for="inlineCheckbox1">&ensp;F</label>
+	</div>
+      </th>
+      <th scope="row">
+      <div class="form-check form-check-inline">
+  		<input class="form-check-input" type="checkbox" id="3f" value="option1">
+ 		 <label class="form-check-label" for="inlineCheckbox1">&ensp;F</label>
+	</div>
+      </th>
+      <th scope="row">
+      <div class="form-check form-check-inline">
+  		<input class="form-check-input" type="checkbox" id="4f" value="option1">
+ 		 <label class="form-check-label" for="inlineCheckbox1">&ensp;F</label>
+	</div>
+      </th>
+      <th scope="row">
+      <div class="form-check form-check-inline">
+  		<input class="form-check-input" type="checkbox" id="5f" value="option1">
+ 		 <label class="form-check-label" for="inlineCheckbox1">&ensp;F</label>
+	</div>
+      </th>
+      <th scope="row">
+      <div class="form-check form-check-inline">
+  		<input class="form-check-input" type="checkbox" id="6f" value="option1">
+ 		 <label class="form-check-label" for="inlineCheckbox1">&ensp;F</label>
+	</div>
+      </th>
+	
+    </tr>
+    <tr>
+      
+      <th scope="row">
+      <div class="form-check form-check-inline">
+  		<input class="form-check-input" type="checkbox" id="1g" value="option1">
+ 		 <label class="form-check-label" for="inlineCheckbox1">&ensp;G</label>
+	</div>
+      </th>
+            <th scope="row">
+      <div class="form-check form-check-inline">
+  		<input class="form-check-input" type="checkbox" id="2g" value="option1">
+ 		 <label class="form-check-label" for="inlineCheckbox1">&ensp;G</label>
+	</div>
+      </th>
+      <th scope="row">
+      <div class="form-check form-check-inline">
+  		<input class="form-check-input" type="checkbox" id="3g" value="option1">
+ 		 <label class="form-check-label" for="inlineCheckbox1">&ensp;G</label>
+	</div>
+      </th>
+      <th scope="row">
+      <div class="form-check form-check-inline">
+  		<input class="form-check-input" type="checkbox" id="4g" value="option1">
+ 		 <label class="form-check-label" for="inlineCheckbox1">&ensp;G</label>
+	</div>
+      </th>
+      <th scope="row">
+      <div class="form-check form-check-inline">
+  		<input class="form-check-input" type="checkbox" id="5g" value="option1">
+ 		 <label class="form-check-label" for="inlineCheckbox1">&ensp;G</label>
+	</div>
+      </th>
+      <th scope="row">
+      <div class="form-check form-check-inline">
+  		<input class="form-check-input" type="checkbox" id="6g" value="option1">
+ 		 <label class="form-check-label" for="inlineCheckbox1">&ensp;G</label>
+	</div>
+      </th>
+
+    </tr>
+    <tr>
+      <th scope="row">
+      <div class="form-check form-check-inline">
+  		<input class="form-check-input" type="checkbox" id="1h" value="option1">
+ 		 <label class="form-check-label" for="inlineCheckbox1">&ensp;H</label>
+	</div>
+      </th>
+            <th scope="row">
+      <div class="form-check form-check-inline">
+  		<input class="form-check-input" type="checkbox" id="2h" value="option1">
+ 		 <label class="form-check-label" for="inlineCheckbox1">&ensp;H</label>
+	</div>
+      </th>
+      <th scope="row">
+      <div class="form-check form-check-inline">
+  		<input class="form-check-input" type="checkbox" id="3h" value="option1">
+ 		 <label class="form-check-label" for="inlineCheckbox1">&ensp;H</label>
+	</div>
+      </th>
+      <th scope="row">
+      <div class="form-check form-check-inline">
+  		<input class="form-check-input" type="checkbox" id="4h" value="option1">
+ 		 <label class="form-check-label" for="inlineCheckbox1">&ensp;H</label>
+	</div>
+      </th>
+      <th scope="row">
+      <div class="form-check form-check-inline">
+  		<input class="form-check-input" type="checkbox" id="5h" value="option1">
+ 		 <label class="form-check-label" for="inlineCheckbox1">&ensp;H</label>
+	</div>
+      </th>
+      <th scope="row">
+      <div class="form-check form-check-inline">
+  		<input class="form-check-input" type="checkbox" id="6h" value="option1">
+ 		 <label class="form-check-label" for="inlineCheckbox1">&ensp;H</label>
+	</div>
+      </th>
+    </tr>
+    <tr>
+      <th scope="row">
+      <div class="form-check form-check-inline">
+  		<input class="form-check-input" type="checkbox" id="1i" value="option1">
+ 		 <label class="form-check-label" for="inlineCheckbox1">&ensp;I</label>
+	</div>
+      </th>
+            <th scope="row">
+      <div class="form-check form-check-inline">
+  		<input class="form-check-input" type="checkbox" id="2i" value="option1">
+ 		 <label class="form-check-label" for="inlineCheckbox1">&ensp;I</label>
+	</div>
+      </th>
+      <th scope="row">
+      <div class="form-check form-check-inline">
+  		<input class="form-check-input" type="checkbox" id="3i" value="option1">
+ 		 <label class="form-check-label" for="inlineCheckbox1">&ensp;I</label>
+	</div>
+      </th>
+      <th scope="row">
+      <div class="form-check form-check-inline">
+  		<input class="form-check-input" type="checkbox" id="4i" value="option1">
+ 		 <label class="form-check-label" for="inlineCheckbox1">&ensp;I</label>
+	</div>
+      </th>
+      <th scope="row">
+      <div class="form-check form-check-inline">
+  		<input class="form-check-input" type="checkbox" id="5i" value="option1">
+ 		 <label class="form-check-label" for="inlineCheckbox1">&ensp;I</label>
+	</div>
+      </th>
+      <th scope="row">
+      <div class="form-check form-check-inline">
+  		<input class="form-check-input" type="checkbox" id="6i" value="option1">
+ 		 <label class="form-check-label" for="inlineCheckbox1">&ensp;I</label>
+	</div>
+      </th>
+      
+    </tr>
+    <tr>
+      <th scope="row">
+      <div class="form-check form-check-inline">
+  		<input class="form-check-input" type="checkbox" id="1j" value="option1">
+ 		 <label class="form-check-label" for="inlineCheckbox1">&ensp;J</label>
+	</div>
+      </th>
+            <th scope="row">
+      <div class="form-check form-check-inline">
+  		<input class="form-check-input" type="checkbox" id="2j" value="option1">
+ 		 <label class="form-check-label" for="inlineCheckbox1">&ensp;J</label>
+	</div>
+      </th>
+      <th scope="row">
+      <div class="form-check form-check-inline">
+  		<input class="form-check-input" type="checkbox" id="3j" value="option1">
+ 		 <label class="form-check-label" for="inlineCheckbox1">&ensp;J</label>
+	</div>
+      </th>
+      <th scope="row">
+      <div class="form-check form-check-inline">
+  		<input class="form-check-input" type="checkbox" id="4j" value="option1">
+ 		 <label class="form-check-label" for="inlineCheckbox1">&ensp;J</label>
+	</div>
+      </th>
+      <th scope="row">
+      <div class="form-check form-check-inline">
+  		<input class="form-check-input" type="checkbox" id="5j" value="option1">
+ 		 <label class="form-check-label" for="inlineCheckbox1">&ensp;J</label>
+	</div>
+      </th>
+      <th scope="row">
+      <div class="form-check form-check-inline">
+  		<input class="form-check-input" type="checkbox" id="6j" value="option1">
+ 		 <label class="form-check-label" for="inlineCheckbox1">&ensp;J</label>
+	</div>
+      </th>
+
+    </tr>
+    <tr>
+      <th scope="row">
+      <div class="form-check form-check-inline">
+  		<input class="form-check-input" type="checkbox" id="1k" value="option1">
+ 		 <label class="form-check-label" for="inlineCheckbox1">&ensp;K</label>
+	</div>
+      </th>
+            <th scope="row">
+      <div class="form-check form-check-inline">
+  		<input class="form-check-input" type="checkbox" id="2k" value="option1">
+ 		 <label class="form-check-label" for="inlineCheckbox1">&ensp;K</label>
+	</div>
+      </th>
+      <th scope="row">
+      <div class="form-check form-check-inline">
+  		<input class="form-check-input" type="checkbox" id="3k" value="option1">
+ 		 <label class="form-check-label" for="inlineCheckbox1">&ensp;K</label>
+	</div>
+      </th>
+      <th scope="row">
+      <div class="form-check form-check-inline">
+  		<input class="form-check-input" type="checkbox" id="4k" value="option1">
+ 		 <label class="form-check-label" for="inlineCheckbox1">&ensp;K</label>
+	</div>
+      </th>
+      <th scope="row">
+      <div class="form-check form-check-inline">
+  		<input class="form-check-input" type="checkbox" id="5k" value="option1">
+ 		 <label class="form-check-label" for="inlineCheckbox1">&ensp;K</label>
+	</div>
+      </th>
+      <th scope="row">
+      <div class="form-check form-check-inline">
+  		<input class="form-check-input" type="checkbox" id="6k" value="option1">
+ 		 <label class="form-check-label" for="inlineCheckbox1">&ensp;K</label>
+	</div>
+      </th>
+    </tr>
+    <tr>
+      <th scope="row">
+      <div class="form-check form-check-inline">
+  		<input class="form-check-input" type="checkbox" id="1l" value="option1">
+ 		 <label class="form-check-label" for="inlineCheckbox1">&ensp;L</label>
+	</div>
+      </th>
+            <th scope="row">
+      <div class="form-check form-check-inline">
+  		<input class="form-check-input" type="checkbox" id="2l" value="option1">
+ 		 <label class="form-check-label" for="inlineCheckbox1">&ensp;L</label>
+	</div>
+      </th>
+      <th scope="row">
+      <div class="form-check form-check-inline">
+  		<input class="form-check-input" type="checkbox" id="3l" value="option1">
+ 		 <label class="form-check-label" for="inlineCheckbox1">&ensp;L</label>
+	</div>
+      </th>
+      <th scope="row">
+      <div class="form-check form-check-inline">
+  		<input class="form-check-input" type="checkbox" id="4l" value="option1">
+ 		 <label class="form-check-label" for="inlineCheckbox1">&ensp;L</label>
+	</div>
+      </th>
+      <th scope="row">
+      <div class="form-check form-check-inline">
+  		<input class="form-check-input" type="checkbox" id="5l" value="option1">
+ 		 <label class="form-check-label" for="inlineCheckbox1">&ensp;L</label>
+	</div>
+      </th>
+      <th scope="row">
+      <div class="form-check form-check-inline">
+  		<input class="form-check-input" type="checkbox" id="6l" value="option1">
+ 		 <label class="form-check-label" for="inlineCheckbox1">&ensp;L</label>
+	</div>
+      </th>
+      
+    </tr>
+    <tr>
+      <th scope="row">
+      <div class="form-check form-check-inline">
+  		<input class="form-check-input" type="checkbox" id="1m" value="option1">
+ 		 <label class="form-check-label" for="inlineCheckbox1">&ensp;M</label>
+	</div>
+      </th>
+            <th scope="row">
+      <div class="form-check form-check-inline">
+  		<input class="form-check-input" type="checkbox" id="2m" value="option1">
+ 		 <label class="form-check-label" for="inlineCheckbox1">&ensp;M</label>
+	</div>
+      </th>
+      <th scope="row">
+      <div class="form-check form-check-inline">
+  		<input class="form-check-input" type="checkbox" id="3m" value="option1">
+ 		 <label class="form-check-label" for="inlineCheckbox1">&ensp;M</label>
+	</div>
+      </th>
+      <th scope="row">
+      <div class="form-check form-check-inline">
+  		<input class="form-check-input" type="checkbox" id="4m" value="option1">
+ 		 <label class="form-check-label" for="inlineCheckbox1">&ensp;M</label>
+	</div>
+      </th>
+      <th scope="row">
+      <div class="form-check form-check-inline">
+  		<input class="form-check-input" type="checkbox" id="5m" value="option1">
+ 		 <label class="form-check-label" for="inlineCheckbox1">&ensp;M</label>
+	</div>
+      </th>
+      <th scope="row">
+      <div class="form-check form-check-inline">
+  		<input class="form-check-input" type="checkbox" id="6m" value="option1">
+ 		 <label class="form-check-label" for="inlineCheckbox1">&ensp;M</label>
+	</div>
+      </th>
+    </tr>
+    <tr>
+      <th scope="row">
+      <div class="form-check form-check-inline">
+  		<input class="form-check-input" type="checkbox" id="1n" value="option1">
+ 		 <label class="form-check-label" for="inlineCheckbox1">&ensp;N</label>
+	</div>
+      </th>
+            <th scope="row">
+      <div class="form-check form-check-inline">
+  		<input class="form-check-input" type="checkbox" id="2n" value="option1">
+ 		 <label class="form-check-label" for="inlineCheckbox1">&ensp;N</label>
+	</div>
+      </th>
+      <th scope="row">
+      <div class="form-check form-check-inline">
+  		<input class="form-check-input" type="checkbox" id="3n" value="option1">
+ 		 <label class="form-check-label" for="inlineCheckbox1">&ensp;N</label>
+	</div>
+      </th>
+      <th scope="row">
+      <div class="form-check form-check-inline">
+  		<input class="form-check-input" type="checkbox" id="4n" value="option1">
+ 		 <label class="form-check-label" for="inlineCheckbox1">&ensp;N</label>
+	</div>
+      </th>
+      <th scope="row">
+      <div class="form-check form-check-inline">
+  		<input class="form-check-input" type="checkbox" id="5n" value="option1">
+ 		 <label class="form-check-label" for="inlineCheckbox1">&ensp;N</label>
+	</div>
+      </th>
+      <th scope="row">
+      <div class="form-check form-check-inline">
+  		<input class="form-check-input" type="checkbox" id="6n" value="option1">
+ 		 <label class="form-check-label" for="inlineCheckbox1">&ensp;N</label>
+	</div>
+      </th>
+  
+    </tr>
+    <tr>
+      <th scope="row">
+      <div class="form-check form-check-inline">
+  		<input class="form-check-input" type="checkbox" id="1o" value="option1">
+ 		 <label class="form-check-label" for="inlineCheckbox1">&ensp;O</label>
+	</div>
+      </th>
+            <th scope="row">
+      <div class="form-check form-check-inline">
+  		<input class="form-check-input" type="checkbox" id="2o" value="option1">
+ 		 <label class="form-check-label" for="inlineCheckbox1">&ensp;O</label>
+	</div>
+      </th>
+      <th scope="row">
+      <div class="form-check form-check-inline">
+  		<input class="form-check-input" type="checkbox" id="3o" value="option1">
+ 		 <label class="form-check-label" for="inlineCheckbox1">&ensp;O</label>
+	</div>
+      </th>
+      <th scope="row">
+      <div class="form-check form-check-inline">
+  		<input class="form-check-input" type="checkbox" id="4o" value="option1">
+ 		 <label class="form-check-label" for="inlineCheckbox1">&ensp;O</label>
+	</div>
+      </th>
+      <th scope="row">
+      <div class="form-check form-check-inline">
+  		<input class="form-check-input" type="checkbox" id="5o" value="option1">
+ 		 <label class="form-check-label" for="inlineCheckbox1">&ensp;O</label>
+	</div>
+      </th>
+      <th scope="row">
+      <div class="form-check form-check-inline">
+  		<input class="form-check-input" type="checkbox" id="6o" value="option1">
+ 		 <label class="form-check-label" for="inlineCheckbox1">&ensp;O</label>
+	</div>
+      </th>
+      
+    </tr>
+    <tr>
+      <th scope="row">
+      <div class="form-check form-check-inline">
+  		<input class="form-check-input" type="checkbox" id="1p" value="option1">
+ 		 <label class="form-check-label" for="inlineCheckbox1">&ensp;P</label>
+	</div>
+      </th>
+            <th scope="row">
+      <div class="form-check form-check-inline">
+  		<input class="form-check-input" type="checkbox" id="2p" value="option1">
+ 		 <label class="form-check-label" for="inlineCheckbox1">&ensp;P</label>
+	</div>
+      </th>
+      <th scope="row">
+      <div class="form-check form-check-inline">
+  		<input class="form-check-input" type="checkbox" id="3p" value="option1">
+ 		 <label class="form-check-label" for="inlineCheckbox1">&ensp;P</label>
+	</div>
+      </th>
+      <th scope="row">
+      <div class="form-check form-check-inline">
+  		<input class="form-check-input" type="checkbox" id="4p" value="option1">
+ 		 <label class="form-check-label" for="inlineCheckbox1">&ensp;P</label>
+	</div>
+      </th>
+      <th scope="row">
+      <div class="form-check form-check-inline">
+  		<input class="form-check-input" type="checkbox" id="5p" value="option1">
+ 		 <label class="form-check-label" for="inlineCheckbox1">&ensp;P</label>
+	</div>
+      </th>
+      <th scope="row">
+      <div class="form-check form-check-inline">
+  		<input class="form-check-input" type="checkbox" id="6p" value="option1">
+ 		 <label class="form-check-label" for="inlineCheckbox1">&ensp;P</label>
+	</div>
+      </th>
+    </tr>
+    <tr>
+      <th scope="row">
+      <div class="form-check form-check-inline">
+  		<input class="form-check-input" type="checkbox" id="1q" value="option1">
+ 		 <label class="form-check-label" for="inlineCheckbox1">&ensp;Q</label>
+	</div>
+      </th>
+            <th scope="row">
+      <div class="form-check form-check-inline">
+  		<input class="form-check-input" type="checkbox" id="2q" value="option1">
+ 		 <label class="form-check-label" for="inlineCheckbox1">&ensp;Q</label>
+	</div>
+      </th>
+      <th scope="row">
+      <div class="form-check form-check-inline">
+  		<input class="form-check-input" type="checkbox" id="3q" value="option1">
+ 		 <label class="form-check-label" for="inlineCheckbox1">&ensp;Q</label>
+	</div>
+      </th>
+      <th scope="row">
+      <div class="form-check form-check-inline">
+  		<input class="form-check-input" type="checkbox" id="4q" value="option1">
+ 		 <label class="form-check-label" for="inlineCheckbox1">&ensp;Q</label>
+	</div>
+      </th>
+      <th scope="row">
+      <div class="form-check form-check-inline">
+  		<input class="form-check-input" type="checkbox" id="5q" value="option1">
+ 		 <label class="form-check-label" for="inlineCheckbox1">&ensp;Q</label>
+	</div>
+      </th>
+      <th scope="row">
+      <div class="form-check form-check-inline">
+  		<input class="form-check-input" type="checkbox" id="6q" value="option1">
+ 		 <label class="form-check-label" for="inlineCheckbox1">&ensp;Q</label>
+	</div>
+      </th>
+      
+    </tr>
+    <tr>
+      <th scope="row">
+      <div class="form-check form-check-inline">
+  		<input class="form-check-input" type="checkbox" id="1r" value="option1">
+ 		 <label class="form-check-label" for="inlineCheckbox1">&ensp;R</label>
+	</div>
+      </th>
+            <th scope="row">
+      <div class="form-check form-check-inline">
+  		<input class="form-check-input" type="checkbox" id="2r" value="option1">
+ 		 <label class="form-check-label" for="inlineCheckbox1">&ensp;R</label>
+	</div>
+      </th>
+      <th scope="row">
+      <div class="form-check form-check-inline">
+  		<input class="form-check-input" type="checkbox" id="3r" value="option1">
+ 		 <label class="form-check-label" for="inlineCheckbox1">&ensp;R</label>
+	</div>
+      </th>
+      <th scope="row">
+      <div class="form-check form-check-inline">
+  		<input class="form-check-input" type="checkbox" id="4r" value="option1">
+ 		 <label class="form-check-label" for="inlineCheckbox1">&ensp;R</label>
+	</div>
+      </th>
+      <th scope="row">
+      <div class="form-check form-check-inline">
+  		<input class="form-check-input" type="checkbox" id="5r" value="option1">
+ 		 <label class="form-check-label" for="inlineCheckbox1">&ensp;R</label>
+	</div>
+      </th>
+      <th scope="row">
+      </th>
+      
+    </tr>
+    <tr>
+      <th scope="row">
+      <div class="form-check form-check-inline">
+  		<input class="form-check-input" type="checkbox" id="1s" value="option1">
+ 		 <label class="form-check-label" for="inlineCheckbox1">&ensp;S</label>
+	</div>
+      </th>
+            <th scope="row">
+      <div class="form-check form-check-inline">
+  		<input class="form-check-input" type="checkbox" id="2s" value="option1">
+ 		 <label class="form-check-label" for="inlineCheckbox1">&ensp;S</label>
+	</div>
+      </th>
+      <th scope="row">
+      <div class="form-check form-check-inline">
+  		<input class="form-check-input" type="checkbox" id="3s" value="option1">
+ 		 <label class="form-check-label" for="inlineCheckbox1">&ensp;S</label>
+	</div>
+      </th>
+      <th scope="row">
+      <div class="form-check form-check-inline">
+  		<input class="form-check-input" type="checkbox" id="4s" value="option1">
+ 		 <label class="form-check-label" for="inlineCheckbox1">&ensp;S</label>
+	</div>
+      </th>
+      <th scope="row">
+      <div class="form-check form-check-inline">
+  		<input class="form-check-input" type="checkbox" id="5s" value="option1">
+ 		 <label class="form-check-label" for="inlineCheckbox1">&ensp;S</label>
+	</div>
+      </th>
+      <th scope="row">
+      </th>
+
+    </tr>
+    <tr>
+      <th scope="row">
+      <div class="form-check form-check-inline">
+  		<input class="form-check-input" type="checkbox" id="1t" value="option1">
+ 		 <label class="form-check-label" for="inlineCheckbox1">&ensp;T</label>
+	</div>
+      </th>
+            <th scope="row">
+      <div class="form-check form-check-inline">
+  		<input class="form-check-input" type="checkbox" id="2t" value="option1">
+ 		 <label class="form-check-label" for="inlineCheckbox1">&ensp;T</label>
+	</div>
+      </th>
+      <th scope="row">
+      <div class="form-check form-check-inline">
+  		<input class="form-check-input" type="checkbox" id="3t" value="option1">
+ 		 <label class="form-check-label" for="inlineCheckbox1">&ensp;T</label>
+	</div>
+      </th>
+      <th scope="row">
+      <div class="form-check form-check-inline">
+  		<input class="form-check-input" type="checkbox" id="4t" value="option1">
+ 		 <label class="form-check-label" for="inlineCheckbox1">&ensp;T</label>
+	</div>
+      </th>
+      <th scope="row">
+      </th>
+      <th scope="row">
+      </th>
+      
+    </tr>
+    <tr>
+      <th scope="row">
+      <div class="form-check form-check-inline">
+  		<input class="form-check-input" type="checkbox" id="1u" value="option1">
+ 		 <label class="form-check-label" for="inlineCheckbox1">&ensp;U</label>
+	</div>
+      </th>
+            <th scope="row">
+      <div class="form-check form-check-inline">
+  		<input class="form-check-input" type="checkbox" id="2u" value="option1">
+ 		 <label class="form-check-label" for="inlineCheckbox1">&ensp;U</label>
+	</div>
+      </th>
+      <th scope="row">
+      <div class="form-check form-check-inline">
+  		<input class="form-check-input" type="checkbox" id="3u" value="option1">
+ 		 <label class="form-check-label" for="inlineCheckbox1">&ensp;U</label>
+	</div>
+      </th>
+      <th scope="row">
+      <div class="form-check form-check-inline">
+  		<input class="form-check-input" type="checkbox" id="4u" value="option1">
+ 		 <label class="form-check-label" for="inlineCheckbox1">&ensp;U</label>
+	</div>
+      </th>
+      <th scope="row">
+      </th>
+      <th scope="row">
+      </th>
+      
+    </tr>
+    <tr>
+      <th scope="row">
+      <div class="form-check form-check-inline">
+  		<input class="form-check-input" type="checkbox" id="1v" value="option1">
+ 		 <label class="form-check-label" for="inlineCheckbox1">&ensp;V</label>
+	</div>
+      </th>
+            <th scope="row">
+      <div class="form-check form-check-inline">
+  		<input class="form-check-input" type="checkbox" id="2v" value="option1">
+ 		 <label class="form-check-label" for="inlineCheckbox1">&ensp;V</label>
+	</div>
+      </th>
+      <th scope="row">
+      <div class="form-check form-check-inline">
+  		<input class="form-check-input" type="checkbox" id="3v" value="option1">
+ 		 <label class="form-check-label" for="inlineCheckbox1">&ensp;V</label>
+	</div>
+      </th>
+      <th scope="row">
+      </th>
+      <th scope="row">
+      </th>
+      <th scope="row">
+      </th>
+    </tr>
+    <tr>
+      <th scope="row">
+      <div class="form-check form-check-inline">
+  		<input class="form-check-input" type="checkbox" id="1w" value="option1">
+ 		 <label class="form-check-label" for="inlineCheckbox1">&ensp;W</label>
+	</div>
+      </th>
+            <th scope="row">
+      </th>
+      <th scope="row">
+       </th>
+      <th scope="row">
+      </th>
+      <th scope="row">
+      </th>
+      <th scope="row">
+       </th>
+    </tr>
+    <tr>
+      <th scope="row">
+      <div class="form-check form-check-inline">
+  		<input class="form-check-input" type="checkbox" id="1x" value="option1">
+ 		 <label class="form-check-label" for="inlineCheckbox1">&ensp;X</label>
+	</div>
+      </th>
+            <th scope="row">
+      <div class="form-check form-check-inline">
+  		<input class="form-check-input" type="checkbox" id="2x" value="option1">
+ 		 <label class="form-check-label" for="inlineCheckbox1">&ensp;X</label>
+	</div>
+      </th>
+      <th scope="row">
+      <div class="form-check form-check-inline">
+  		<input class="form-check-input" type="checkbox" id="3x" value="option1">
+ 		 <label class="form-check-label" for="inlineCheckbox1">&ensp;X</label>
+	</div>
+      </th>
+      <th scope="row">
+      </th>
+      <th scope="row">
+      </th>
+      <th scope="row">
+      </th>
+      
+     </tr>
+        <tr>
+      <th scope="row">
+      <div class="form-check form-check-inline">
+  		<input class="form-check-input" type="checkbox" id="1y" value="option1">
+ 		 <label class="form-check-label" for="inlineCheckbox1">&ensp;Y</label>
+	</div>
+      </th>
+            <th scope="row">
+      <div class="form-check form-check-inline">
+  		<input class="form-check-input" type="checkbox" id="2y" value="option1">
+ 		 <label class="form-check-label" for="inlineCheckbox1">&ensp;Y</label>
+	</div>
+      </th>
+      <th scope="row">
+      </th>
+      <th scope="row">
+      </th>
+      <th scope="row">
+      </th>
+      <th scope="row">
+      </th>
+    </tr>
+    <tr>
+      <th scope="row">
+      <div class="form-check form-check-inline">
+  		<input class="form-check-input" type="checkbox" id="1z" value="option1">
+ 		 <label class="form-check-label" for="inlineCheckbox1">&ensp;Z</label>
+	</div>
+      </th>
+            <th scope="row">
+      <div class="form-check form-check-inline">
+  		<input class="form-check-input" type="checkbox" id="2z" value="option1">
+ 		 <label class="form-check-label" for="inlineCheckbox1">&ensp;Z</label>
+	</div>
+      </th>
+      <th scope="row">
+      </th>
+      <th scope="row">
+      </th>
+      <th scope="row">
+      </th>
+      <th scope="row">
+      </th>
+    </tr>
+   
+
+  </tbody>
+</table>
+<div class="row">
+  <div class="col-sm-11">
+
+  </div>
+  <div class="col-sm-1">
+    	<button class="btn btn-outline-primary" onClick="getWheels()">Save</button><br><br>
+
+  </div>
+</div>
+<div class="row">
+	<div class="col-sm-1">
+	<a href="lugs.html"><h3>&larr;Lugs</h3></a>
+	</div>
+	<div class="col-sm-10"></div>
+	<div class="col-sm-1">
+		<div class="text text-align-right">
+		<a href="machine.html"><h3>M209&rarr;</h3></a>
+		</div>
+	</div>
+</div>
+<script>
+//TODO: add ischecked in array to see if checkboxes are checked if so do according 1 or 0
+value = localStorage["key"];
+console.log(value);
+</script>
+</body>
+
+</html>

@@ -1,0 +1,78 @@
+<html>
+	<head>
+		<title>M-209 Cypher Emulator</title>
+		<link rel="stylesheet" href="https://stackpath.bootstrapcdn.com/bootstrap/4.3.1/css/bootstrap.min.css" integrity="sha384-ggOyR0iXCbMQv3Xipma34MD+dH/1fQ784/j6cY/iJTQUOhcWr7x9JvoRxT2MZw1T" crossorigin="anonymous">
+		<script src="https://code.jquery.com/jquery-3.3.1.slim.min.js" integrity="sha384-q8i/X+965DzO0rT7abK41JStQIAqVgRVzpbzo5smXKp4YfRvH+8abtTE1Pi6jizo" crossorigin="anonymous"></script>
+<script src="https://cdnjs.cloudflare.com/ajax/libs/popper.js/1.14.7/umd/popper.min.js" integrity="sha384-UO2eT0CpHqdSJQ6hJty5KVphtPhzWj9WO1clHTMGa3JDZwrnQq4sF86dIHNDz0W1" crossorigin="anonymous"></script>
+<script src="https://stackpath.bootstrapcdn.com/bootstrap/4.3.1/js/bootstrap.min.js" integrity="sha384-JjSmVgyd0p3pXB1rRibZUAYoIIy6OrQ6VrjIEaFf/nJGzIxFDsf4x0xIM+B07jRM" crossorigin="anonymous"></script>
+	</head>
+<style>
+#html, body{
+	background-color: whitesmoke;
+}
+</style>
+<body>
+	<nav class="navbar navbar-expand-lg navbar-dark bg-dark">
+  <a class="navbar-brand" href="#">M-209</a>
+  <button class="navbar-toggler" type="button" data-toggle="collapse" data-target="#navbarNavDropdown" aria-controls="navbarNavDropdown" aria-expanded="false" aria-label="Toggle navigation">
+    <span class="navbar-toggler-icon"></span>
+  </button>
+  <div class="collapse navbar-collapse" id="navbarNavDropdown">
+    <ul class="navbar-nav">
+      <li class="nav-item active">
+        <a class="nav-link" href="#">Home <span class="sr-only">(current)</span></a>
+      </li>
+      <li class="nav-item">
+        <a class="nav-link" href="lugs.html">Cypher</a>
+      </li>
+      <li class="nav-item">
+        <a class="nav-link" href="#">Documentation</a>
+      </li>
+         </ul>
+  </div>
+</nav>
+<div class="jumbotron jumbotron-fluid">
+  <div class="container">
+	  
+    <h1 class="display-4">M-209 Cypher Emulator&emsp;&emsp;&emsp;&emsp;&emsp;&emsp;
+<a class="btn btn-outline-primary" href="lugs.html" role="button">Start Encyphering</a>
+
+	    
+    </h1>
+    <p class="lead">An emulator for the World War II Cypher Machine used by the United States military.</p>
+  </div>
+</div>
+<div class="container">
+
+<div class="row">
+	<div class="col-sm-6">
+		<h3>Basic Operation</h3>
+		<hr>
+		Basic operation of the M-209 is relatively straightforward. Six adjustable key wheels on top of the box each display a letter of the alphabet. These six wheels comprise the external key for the machine, providing an initial state, similar to an initialization vector, for the enciphering process.
+		<br><br>
+		To encipher a message, the operator sets the key wheels to a random sequence of letters. An enciphering-deciphering knob on the left side of the machine is set to "encipher". A dial known as the indicator disk, also on the left side, is turned to the first letter in the message. This letter is encoded by turning a hand crank or power handle on the right side of the machine; at the end of the cycle, the ciphertext letter is printed onto a paper tape, the key wheels each advance one letter, and the machine is ready for entry of the next character in the message. To indicate spaces between words in the message, the letter "Z" is enciphered. Repeating the process for the remainder of the message gives a complete ciphertext, which can then be transmitted using Morse code or another method. Since the initial key wheel setting is random, it is also necessary to send those settings to the receiving party; these may also be encrypted using a daily key or transmitted in the clear.
+		<br><br>
+		Printed ciphertext is automatically spaced into groups of five by the M-209 for ease of readability. A letter counter on top of the machine indicated the total number of encoded letters, and could be used as a point of reference if a mistake was made in enciphering or deciphering.
+		<br><br>
+		The deciphering procedure is nearly the same as for enciphering; the operator sets the enciphering-deciphering knob to "decipher", and aligns the key wheels to the same sequence as was used in enciphering. The first letter of the ciphertext is entered via the indicator disk, and the power handle is operated, advancing the key wheels and printing the decoded letter on the paper tape. When the letter "Z" is encountered, a cam causes a blank space to appear in the message, thus reconstituting the original message with spaces. Absent "Z"s can typically be interpreted by the operator, based on context.
+		<br>
+		
+	</div>
+	<div class="col-sm-6">
+	<img src="outside.jpg" style="height: 50%;">
+		<br><br>
+	<img src="inside.jpg" style="height: 50%;">
+		
+	</div>
+</div>
+</div>
+<br><br>
+<nav class="navbar navbar-dark bg-dark">
+  <span class="navbar-text">
+    Salisbury University Software Engineering Project
+  </span>
+</nav>
+</body>
+</html>
+
+

@@ -1,0 +1,162 @@
+<html>
+	<head>
+		<title>M-209 Cypher Emulator</title>
+		<link rel="stylesheet" href="https://stackpath.bootstrapcdn.com/bootstrap/4.3.1/css/bootstrap.min.css" integrity="sha384-ggOyR0iXCbMQv3Xipma34MD+dH/1fQ784/j6cY/iJTQUOhcWr7x9JvoRxT2MZw1T" crossorigin="anonymous">
+		<link rel="stylesheet" type="text/css" href="styles.css">
+    <script type="text/javascript" src="index.js"></script>
+    <script src = "m209.js"></script>
+		<script src="https://code.jquery.com/jquery-3.3.1.slim.min.js" integrity="sha384-q8i/X+965DzO0rT7abK41JStQIAqVgRVzpbzo5smXKp4YfRvH+8abtTE1Pi6jizo" crossorigin="anonymous"></script>
+<script src="https://cdnjs.cloudflare.com/ajax/libs/popper.js/1.14.7/umd/popper.min.js" integrity="sha384-UO2eT0CpHqdSJQ6hJty5KVphtPhzWj9WO1clHTMGa3JDZwrnQq4sF86dIHNDz0W1" crossorigin="anonymous"></script>
+<script src="https://stackpath.bootstrapcdn.com/bootstrap/4.3.1/js/bootstrap.min.js" integrity="sha384-JjSmVgyd0p3pXB1rRibZUAYoIIy6OrQ6VrjIEaFf/nJGzIxFDsf4x0xIM+B07jRM" crossorigin="anonymous"></script>
+	</head>
+<style>
+#html, body{
+	background-color: whitesmoke;
+}
+</style>
+
+<body >
+	<nav class="navbar navbar-expand-lg navbar-dark bg-dark">
+  <a class="navbar-brand" href="#">M-209</a>
+  <button class="navbar-toggler" type="button" data-toggle="collapse" data-target="#navbarNavDropdown" aria-controls="navbarNavDropdown" aria-expanded="false" aria-label="Toggle navigation">
+    <span class="navbar-toggler-icon"></span>
+  </button>
+  <div class="collapse navbar-collapse" id="navbarNavDropdown">
+    <ul class="navbar-nav">
+      <li class="nav-item active">
+        <a class="nav-link" href="#">Home <span class="sr-only">(current)</span></a>
+      </li>
+      <li class="nav-item">
+        <a class="nav-link" href="lugs.html">Cypher</a>
+      </li>
+      <li class="nav-item">
+        <a class="nav-link" href="#">Documentation</a>
+      </li>
+         </ul>
+  </div>
+</nav>
+<div class="jumbotron jumbotron-fluid">
+  <div class="container">
+	  
+    <h1 class="display-4">M-209 Cypher Emulator&emsp;&emsp;&emsp;&emsp;&emsp;&emsp;
+<a class="btn btn-outline-primary" href="presets.html" role="button">Start Encyphering</a>
+
+	    
+    </h1>
+    <p class="lead">An emulator for the World War II Cypher Machine used by the United States military.</p>
+  </div>
+</div>
+<div class="container">
+
+<div class="row">
+	<div class="col-sm-6">
+	<div class="tab">
+		<button class="selected" id="aboutTab"onclick="makeVisible('about')"><h3>About</h3></button>
+		<button class="unselected" id="useTab" onclick="makeVisible('use')"><h3>How To Use</h3></button>
+		<button class="unselected" id="worksTab" onclick="makeVisible('works')"><h3>How It Works</h3></button>
+	</div>
+	
+		<br />
+        <div id="about" class="selected_cont">
+            &nbsp; The M-209 was a mechanical Hagelin cipher machine developed and used by the United States to both encipher and decipher tactical messages during WW2 [1]. Weighing approximately six pounds, the M-209 was portable and made easy to operate by hand in the field [2]. Additionally, training for the machine was relatively simple and inexpensive. The lifetime of this cipher was approximately the late 1930s to the early 1960s [3]. 
+            <br><br />
+            &nbsp; The hardware of the machine primarily consists of six key wheels and twenty-seven rotating drum bars each with two lugs. A detailed diagram of the hardware in the M209 cipher can be seen below.
+            <br><br>
+             &nbsp; When the machine is in use, the user rotates the driveknob to encrypt or decrypt a letter. As this happens, each of the twenty-seven drum bars passes over internal guide arms. Depending on how the position of each drum bar’s left and right lugs compares to the active pins on the six key wheels, the bar may be shifted forward and to the left to rotate the typewheel forward one letter. After each of the drum bars have been cycled through and the drive knob stops moving, a letter is printed from the typewheel, all six key wheels are rotated to increment one letter forward in their alphabet, and the letter counter is incremented [3].
+            <br><br>
+            
+        </div>
+	
+        <div id="use" class="unselected_cont">
+            To encipher a message:
+            <br />
+            1. Set the encipher/decipher knob to zero and reset the letter counter
+            <br />
+            2. Randomly arrange the six key wheels to obtain an EMI
+            <br />
+            3. Select any letter on the indicating disk and encipher it 12 times and remove the tape
+            <br />
+            4. Reset the letter counter and use the 12 letters on the tape to obtain an IMI
+            <br />
+            5. Encipher your desired message keeping in mind that all spaces must be encoded as Z
+            <br />
+            6. Remove the tape and add any necessary finishing touches
+            <br />
+            7. Mix up the letters shown on your six key wheels so the IMI is lost
+            <br /> <br />
+           
+            To decipher a message:
+            <br />
+            1. Set the letter counter to zero and set encipher/decipher to C
+            <br />
+            2. Locate the EMI in your message and set the key wheels to this letter combination.
+            <br />
+            3. Encipher the indicated repeated letter 12 times to be able to determine IMI then reset the letter counter to zero. Turn the six key wheels to the appropriate position per your IMI.
+            <br />
+            4. Change the encipher/decipher knob to the D position and begin deciphering your message one letter at a time. Ignore any spaces.
+            <br />
+            5. When you are done, remove the tape and mix up the letters shown on your six key wheels so the IMI is lost.
+            <br /><br />
+            For more detailed instructions and information on how to set the pins and lugs, click <a href="howtouse.html">here</a>.
+            <br />
+
+
+        </div>
+		
+        <div id="works" class="unselected_cont">
+            &nbsp; As discussed in the About section, much of the enciphering/deciphering process depends on the rotation of the drum bars and key wheels. Knowing this, we replicated the process of rotating bars in our code. The following steps were coded to occur for the encryption of every letter:
+            <br /> <br />
+            1. Assign the letter to encode to an indexin the forward alphabet (A=0, B=1, ... , Z=25)
+            <br />
+            2. Identify the six letters at the bottom of each key wheel
+            <br />
+            3. Track which of the wheels are active by looking at the active/inactive indicator on the letter identified in step one.
+            <br />
+            4. For each of the 27 drum bars, check the left and right lug positions to see if they correspond to active wheels. If a lug corresponds to an active wheel, increment an active bar counter by one.
+            <br />
+            5. Subtract any overlap that is counted when both lugs on one wheel are in an active position from the active bar counter.
+            <br />
+            6. Decrement the letter to encode's index by one for every number of the active bar counter. If the index gets to 0, the next decrement should make the index 25.
+            <br />
+            7. Obtain the final encoded letter by matching the resulting index from step six to a letter in the reversed alphabet (Z=0, Y=1, ... , A=25)
+            <br />
+            8. Print the encoded letter and shift all of the six key wheels forward one letter.
+            <br /> <br />
+            &nbsp; 
+            Similarly, the following steps are taken each time a letter is decoded:
+            <br/>
+            1. Assign the letter to decode to an index in the reversed alphabet (Z=0, Y=1, ... , A=25)
+            <br/>
+            2. Repeat steps 2-5 from the encoding process
+            <br/>
+            3. Increment the letter to encode’s index by one for every digit of the active bar counter. If the index gets to 25, the next increment should make the index 0.
+            <br/>
+            4. Obtain the final encoded letter by matching the resulting index from step six to a letter in the forward alphabet (A=0, B=1, … , Z=25)
+            <br/>
+            5. Print the decoded letter and shift all of the six key wheels forward one letter.
+
+
+        </div>
+	</div>
+    <div class="col-sm-6">
+        <img src="outside.jpg" id="ab1" class="selectedIMG" style="height: 33%;">
+        <br><br>
+        <img src="inside.jpg" id="ab2" class="selectedIMG" style="height: 33%;">
+        <br><br>
+        <img src="pin.png" id="ab3" class="selectedIMG" style="height:33%;">
+        <img src="config.png" id="ab4" class="unselectedimg" style="height:33%;">
+    </div>
+</div>
+</div>
+<br><br>
+<nav class="navbar navbar-dark bg-dark">
+  <span class="navbar-text">
+   <!---- Salisbury University Software Engineering Project -->
+      
+      <a style="color:rgb(154,157,160)" href="references.html"> References </a>
+  </span>
+</nav>
+</body>
+</html>
+
+
