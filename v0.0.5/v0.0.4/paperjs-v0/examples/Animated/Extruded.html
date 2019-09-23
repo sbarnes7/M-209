@@ -1,0 +1,156 @@
+<!DOCTYPE html>
+<html>
+<head>
+    <meta charset="UTF-8">
+    <title>Extruded</title>
+    <link rel="stylesheet" href="../css/style.css">
+    <script type="text/javascript" src="../../dist/paper-full.js"></script>
+    <script type="text/paperscript" canvas="canvas">
+        var shape = new Shape.Circle(new Point(1300, 50), 30);
+shape.strokeColor = 'black';
+shape.fillColor = "darkgrey";
+
+
+var rectangle = new Rectangle(new Point(1400, 20), new Size(70, 350));
+var shape = new Shape.Rectangle(rectangle);
+shape.strokeColor = 'black';
+shape.fillColor = "black";
+
+var point = new Point(1400, 450);
+var size = new Size(60, 60);
+var shape = new Shape.Rectangle(point, size);
+shape.strokeColor = 'black';
+shape.fillColor = "darkgrey";
+
+
+
+
+var point = new Point(0, 450);
+var size = new Size(70, 190);
+var shape = new Shape.Rectangle(point, size);
+shape.strokeColor = 'black';
+shape.fillColor = "grey";
+
+
+
+
+var point = new Point(70, 400);
+var size = new Size(20, 275);
+var shape = new Shape.Rectangle(point, size);
+shape.strokeColor = 'black';
+shape.fillColor = "grey";
+
+
+
+var point = new Point(0, 350);
+var size = new Size(40, 40);
+var shape = new Shape.Rectangle(point, size);
+shape.strokeColor = 'black';
+shape.fillColor = "grey";
+
+
+
+
+var point = new Point(400, 450);
+var size = new Size(80, 40);
+var shape = new Shape.Rectangle(point, size);
+shape.strokeColor = 'black';
+shape.fillColor = "grey";
+
+
+var point = new Point(100, 0);
+var size = new Size(50, 400);
+var shape = new Shape.Rectangle(point, size);
+shape.strokeColor = 'black';
+shape.fillColor = "tan";
+
+var rectangle1 = new Rectangle(new Point(1200, 500), new Size(70, 200));
+var wheel1 = new Shape.Rectangle(rectangle1);
+wheel1.strokeColor = 'black';
+var rectangle2 = new Rectangle(new Point(1100, 500), new Size(70, 200));
+var wheel2 = new Shape.Rectangle(rectangle2);
+wheel2.strokeColor = 'black';
+var rectangle3 = new Rectangle(new Point(1000, 500), new Size(70, 200));
+var wheel3 = new Shape.Rectangle(rectangle3);
+wheel3.strokeColor = 'black';
+var rectangle4 = new Rectangle(new Point(900, 500), new Size(70, 200));
+var wheel4 = new Shape.Rectangle(rectangle4);
+wheel4.strokeColor = 'black';
+var rectangle5 = new Rectangle(new Point(800,500), new Size(70, 200));
+var wheel5 = new Shape.Rectangle(rectangle5);
+wheel5.strokeColor = 'black';
+var rectangle6 = new Rectangle(new Point(700, 500), new Size(70, 200));
+var wheel6 = new Shape.Rectangle(rectangle6);
+wheel6.fillColor = "black";
+wheel6.strokeColor = 'black';
+        var lineGroup = new Group();
+        var lineCount = 100;
+        for (var i = 0; i < lineCount; i++) {
+            var linePath = new Path.Line([0, 0], [0, 0]);
+            lineGroup.addChild(linePath);
+        }
+        lineGroup.strokeColor = 'red';
+
+        var path1 = new Path('M63.39307,265.71387c10.8667,6.96631 26.4707,12.26025 43.18896,12.26025c24.79932,0 39.28857,-13.09619 39.28857,-32.04346c0,-17.27588 -10.03125,-27.58545 -35.38721,-37.05908c-30.65088,-11.146 -49.59814,-27.30713 -49.59814,-53.49902c0,-29.25732 24.2417,-50.9917 60.74365,-50.9917c18.94727,0 33.1582,4.4585 41.23877,9.19531L156.18018,133.35986c-5.85156,-3.62256 -18.39014,-8.9165 -35.38721,-8.9165c-25.63525,0 -35.3877,15.3252 -35.3877,28.14258c0,17.5542 11.42432,26.19238 37.33789,36.22314c31.76514,12.26025 47.64795,27.58545 47.64795,55.1709c0,28.979 -21.17676,54.33496 -65.48096,54.33496c-18.11133,0 -37.89502,-5.57275 -47.92578,-12.26025z');
+        path1.position = view.center;
+
+        var path2 = path1.clone();
+        path1.scale(1.5);
+        path2.scale(2);
+
+        var length1 = path1.length;
+        var length2 = path2.length;
+        function onFrame(event) {
+            var vector = new Point({
+                angle: -event.count % 360,
+                length: 100
+            });
+            path1.rotate(-0.5);
+            path1.position = view.center - vector;
+
+            path2.rotate(-0.5);
+            path2.position = view.center + vector.normalize(50);
+
+            for (var i = 0; i < lineCount; i++) {
+                var path = lineGroup.children[i];
+                var l1 = (length1 / lineCount * (i + event.count / 10)) % length1;
+                var l2 = (length2 / lineCount * (i + event.count / 10)) % length2;
+                path.firstSegment.point = path1.getPointAt(l1),
+                path.lastSegment.point = path2.getPointAt(l2);
+            }
+        }
+
+        var text = new PointText(new Point(30, 30));
+        text.fillColor = 'black';
+        
+        // Set the content of the text item:
+        text.content = 'Hello world';
+        var raster = new Raster('config.png');
+
+        // Move the raster to the center of the view
+        raster.position = view.center;
+
+        raster.onMouseDrag = function(event){
+            this.position += event.delta;
+        }
+
+
+        wheel6.onMouseDown = function(event){
+            this.fillColor = 'blue';
+        }
+        function onMouseDown(event){
+            this.fillColor = "green";
+
+        }
+        function onMouseUp(){
+
+        }
+        function onMouseDrag(){
+
+        }
+    </script>
+</head>
+<body>
+    <canvas id="canvas" resize style="background-color: #4b5320;"></canvas>
+</body>
+</html>
