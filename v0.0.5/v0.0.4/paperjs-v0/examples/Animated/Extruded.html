@@ -16,6 +16,9 @@
 	    width: 50%;
 	    height: 400px; 
 	  }
+      canvas[resize2]{
+          height: 700px;
+      }
       #html, body{
           background-color: #4b5320;
       }
@@ -181,13 +184,7 @@
             group.position += event.delta;
     
         }
-        group.onMouseUp = function(event){
-            for(var i = 0; i < 26; i++){
-                if(group.children[i].position = rectangle.position){
-                    console.log(group.children[i]);
-                }
-            }
-        }
+      
 
  
     </script>
@@ -1041,7 +1038,7 @@
 
         </div>
         <div class="col-sm-1">
-                <canvas id="canvasLever" ></canvas>
+                <canvas id="canvasLever" resize2></canvas>
 
         </div>
     </div>
