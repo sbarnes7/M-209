@@ -1,156 +1,1013 @@
 <!DOCTYPE html>
 <html>
 <head>
+        <link rel="stylesheet" href="https://stackpath.bootstrapcdn.com/bootstrap/4.3.1/css/bootstrap.min.css" integrity="sha384-ggOyR0iXCbMQv3Xipma34MD+dH/1fQ784/j6cY/iJTQUOhcWr7x9JvoRxT2MZw1T" crossorigin="anonymous">
+        <script src="https://code.jquery.com/jquery-3.3.1.slim.min.js" integrity="sha384-q8i/X+965DzO0rT7abK41JStQIAqVgRVzpbzo5smXKp4YfRvH+8abtTE1Pi6jizo" crossorigin="anonymous"></script>
+<script src="https://cdnjs.cloudflare.com/ajax/libs/popper.js/1.14.7/umd/popper.min.js" integrity="sha384-UO2eT0CpHqdSJQ6hJty5KVphtPhzWj9WO1clHTMGa3JDZwrnQq4sF86dIHNDz0W1" crossorigin="anonymous"></script>
+<script src="https://stackpath.bootstrapcdn.com/bootstrap/4.3.1/js/bootstrap.min.js" integrity="sha384-JjSmVgyd0p3pXB1rRibZUAYoIIy6OrQ6VrjIEaFf/nJGzIxFDsf4x0xIM+B07jRM" crossorigin="anonymous"></script>
+
     <meta charset="UTF-8">
     <title>Extruded</title>
     <link rel="stylesheet" href="../css/style.css">
+    <style>
+  canvas[resize] {
+	    border-style: solid;
+	    width: 100%;
+	    height: 400px; 
+	  }
+    </style>
     <script type="text/javascript" src="../../dist/paper-full.js"></script>
     <script type="text/paperscript" canvas="canvas">
-        var shape = new Shape.Circle(new Point(1300, 50), 30);
-shape.strokeColor = 'black';
-shape.fillColor = "darkgrey";
-
-
-var rectangle = new Rectangle(new Point(1400, 20), new Size(70, 350));
-var shape = new Shape.Rectangle(rectangle);
-shape.strokeColor = 'black';
-shape.fillColor = "black";
-
-var point = new Point(1400, 450);
-var size = new Size(60, 60);
-var shape = new Shape.Rectangle(point, size);
-shape.strokeColor = 'black';
-shape.fillColor = "darkgrey";
-
-
-
-
-var point = new Point(0, 450);
-var size = new Size(70, 190);
-var shape = new Shape.Rectangle(point, size);
-shape.strokeColor = 'black';
-shape.fillColor = "grey";
-
-
-
-
-var point = new Point(70, 400);
-var size = new Size(20, 275);
-var shape = new Shape.Rectangle(point, size);
-shape.strokeColor = 'black';
-shape.fillColor = "grey";
-
-
-
-var point = new Point(0, 350);
-var size = new Size(40, 40);
-var shape = new Shape.Rectangle(point, size);
-shape.strokeColor = 'black';
-shape.fillColor = "grey";
-
-
-
-
-var point = new Point(400, 450);
-var size = new Size(80, 40);
-var shape = new Shape.Rectangle(point, size);
-shape.strokeColor = 'black';
-shape.fillColor = "grey";
-
-
-var point = new Point(100, 0);
-var size = new Size(50, 400);
-var shape = new Shape.Rectangle(point, size);
-shape.strokeColor = 'black';
-shape.fillColor = "tan";
-
-var rectangle1 = new Rectangle(new Point(1200, 500), new Size(70, 200));
-var wheel1 = new Shape.Rectangle(rectangle1);
-wheel1.strokeColor = 'black';
-var rectangle2 = new Rectangle(new Point(1100, 500), new Size(70, 200));
-var wheel2 = new Shape.Rectangle(rectangle2);
-wheel2.strokeColor = 'black';
-var rectangle3 = new Rectangle(new Point(1000, 500), new Size(70, 200));
-var wheel3 = new Shape.Rectangle(rectangle3);
-wheel3.strokeColor = 'black';
-var rectangle4 = new Rectangle(new Point(900, 500), new Size(70, 200));
-var wheel4 = new Shape.Rectangle(rectangle4);
-wheel4.strokeColor = 'black';
-var rectangle5 = new Rectangle(new Point(800,500), new Size(70, 200));
-var wheel5 = new Shape.Rectangle(rectangle5);
-wheel5.strokeColor = 'black';
-var rectangle6 = new Rectangle(new Point(700, 500), new Size(70, 200));
-var wheel6 = new Shape.Rectangle(rectangle6);
-wheel6.fillColor = "black";
-wheel6.strokeColor = 'black';
-        var lineGroup = new Group();
-        var lineCount = 100;
-        for (var i = 0; i < lineCount; i++) {
-            var linePath = new Path.Line([0, 0], [0, 0]);
-            lineGroup.addChild(linePath);
-        }
-        lineGroup.strokeColor = 'red';
-
-        var path1 = new Path('M63.39307,265.71387c10.8667,6.96631 26.4707,12.26025 43.18896,12.26025c24.79932,0 39.28857,-13.09619 39.28857,-32.04346c0,-17.27588 -10.03125,-27.58545 -35.38721,-37.05908c-30.65088,-11.146 -49.59814,-27.30713 -49.59814,-53.49902c0,-29.25732 24.2417,-50.9917 60.74365,-50.9917c18.94727,0 33.1582,4.4585 41.23877,9.19531L156.18018,133.35986c-5.85156,-3.62256 -18.39014,-8.9165 -35.38721,-8.9165c-25.63525,0 -35.3877,15.3252 -35.3877,28.14258c0,17.5542 11.42432,26.19238 37.33789,36.22314c31.76514,12.26025 47.64795,27.58545 47.64795,55.1709c0,28.979 -21.17676,54.33496 -65.48096,54.33496c-18.11133,0 -37.89502,-5.57275 -47.92578,-12.26025z');
-        path1.position = view.center;
-
-        var path2 = path1.clone();
-        path1.scale(1.5);
-        path2.scale(2);
-
-        var length1 = path1.length;
-        var length2 = path2.length;
-        function onFrame(event) {
-            var vector = new Point({
-                angle: -event.count % 360,
-                length: 100
-            });
-            path1.rotate(-0.5);
-            path1.position = view.center - vector;
-
-            path2.rotate(-0.5);
-            path2.position = view.center + vector.normalize(50);
-
-            for (var i = 0; i < lineCount; i++) {
-                var path = lineGroup.children[i];
-                var l1 = (length1 / lineCount * (i + event.count / 10)) % length1;
-                var l2 = (length2 / lineCount * (i + event.count / 10)) % length2;
-                path.firstSegment.point = path1.getPointAt(l1),
-                path.lastSegment.point = path2.getPointAt(l2);
-            }
-        }
-
-        var text = new PointText(new Point(30, 30));
-        text.fillColor = 'black';
+        var textA = new PointText(new Point(50, 30));
+        textA.fillColor = 'black';
         
         // Set the content of the text item:
-        text.content = 'Hello world';
-        var raster = new Raster('config.png');
+        textA.content = 'A';
+        var textB = new PointText(new Point(50, 50));
+        textB.fillColor = 'black';
+        
+        // Set the content of the text item:
+        textB.content = 'B';
 
-        // Move the raster to the center of the view
-        raster.position = view.center;
+        var textC = new PointText(new Point(50, 70));
+        textC.fillColor = 'black';
+        
+        // Set the content of the text item:
+        textC.content = 'C';
+        var textD = new PointText(new Point(50, 90));
+        textD.fillColor = 'black';
+        
+        // Set the content of the text item:
+        textD.content = 'D';
+ 
+        var textE = new PointText(new Point(50, 110));
+        textE.fillColor = 'black';
+        
+        // Set the content of the text item:
+        textE.content = 'E';
+        var textF = new PointText(new Point(50, 130));
+        textF.fillColor = 'black';
+        
+        // Set the content of the text item:
+        textF.content = 'F';
 
-        raster.onMouseDrag = function(event){
-            this.position += event.delta;
+        var textG = new PointText(new Point(50, 150));
+        textG.fillColor = 'black';
+        
+        // Set the content of the text item:
+        textG.content = 'G';
+        var textH = new PointText(new Point(50, 170));
+        textH.fillColor = 'black';
+        
+        // Set the content of the text item:
+        textH.content = 'H';
+
+
+        var textI = new PointText(new Point(50, 190));
+        textI.fillColor = 'black';
+        
+        // Set the content of the text item:
+        textI.content = 'I';
+        var textJ = new PointText(new Point(50, 210));
+        textJ.fillColor = 'black';
+        
+        // Set the content of the text item:
+        textJ.content = 'J';
+
+        var textK = new PointText(new Point(50, 230));
+        textK.fillColor = 'black';
+        
+        // Set the content of the text item:
+        textK.content = 'K';
+        var textL = new PointText(new Point(50, 250));
+        textL.fillColor = 'black';
+        
+        // Set the content of the text item:
+        textL.content = 'L';
+ 
+        var textM = new PointText(new Point(50, 270));
+        textM.fillColor = 'black';
+        
+        // Set the content of the text item:
+        textM.content = 'M';
+        var textN = new PointText(new Point(50, 290));
+        textN.fillColor = 'black';
+        
+        // Set the content of the text item:
+        textN.content = 'N';
+
+        var textO = new PointText(new Point(50, 310));
+        textO.fillColor = 'black';
+        
+        // Set the content of the text item:
+        textO.content = 'O';
+        var textP = new PointText(new Point(50, 330));
+        textP.fillColor = 'black';
+        
+        // Set the content of the text item:
+        textP.content = 'P';
+ 
+
+
+        var textQ = new PointText(new Point(50, 350));
+        textQ.fillColor = 'black';
+        
+        // Set the content of the text item:
+        textQ.content = 'Q';
+        var textR = new PointText(new Point(50, 370));
+        textR.fillColor = 'black';
+        
+        // Set the content of the text item:
+        textR.content = 'R';
+
+
+        var textS = new PointText(new Point(50, 390));
+        textS.fillColor = 'black';
+        
+        // Set the content of the text item:
+        textS.content = 'S';
+        var textT = new PointText(new Point(50, 410));
+        textT.fillColor = 'black';
+        
+        // Set the content of the text item:
+        textT.content = 'T';
+
+        var textU = new PointText(new Point(50, 430));
+        textU.fillColor = 'black';
+        
+        // Set the content of the text item:
+        textU.content = 'U';
+        var textV = new PointText(new Point(50, 450));
+        textV.fillColor = 'black';
+        
+        // Set the content of the text item:
+        textV.content = 'V';
+ 
+        var textW = new PointText(new Point(50, 470));
+        textW.fillColor = 'black';
+        
+        // Set the content of the text item:
+        textW.content = 'W';
+        var textX = new PointText(new Point(50, 490));
+        textX.fillColor = 'black';
+        
+        // Set the content of the text item:
+        textX.content = 'X';
+
+        var textY = new PointText(new Point(50, 510));
+        textY.fillColor = 'black';
+        
+        // Set the content of the text item:
+        textY.content = 'Y';
+        var textZ = new PointText(new Point(50, 530));
+        textZ.fillColor = 'black';
+        
+        // Set the content of the text item:
+        textZ.content = 'Z';
+ 
+    
+        var group = new Group([textA, textB, textC, textD, textE, textF, textG, textH, textI, textJ, textK, textL, textM, textN, textO, textP, textQ, textR, textS, textT, textU, textV, textW, textX, textY, textZ]);
+
+        group.onMouseDrag = function(event){
+            group.position += event.delta;
+    
         }
 
-
-        wheel6.onMouseDown = function(event){
-            this.fillColor = 'blue';
-        }
-        function onMouseDown(event){
-            this.fillColor = "green";
-
-        }
-        function onMouseUp(){
-
-        }
-        function onMouseDrag(){
-
-        }
+ 
     </script>
+    <script type="text/paperscript" canvas="canvas2">
+        var textA = new PointText(new Point(50, 30));
+        textA.fillColor = 'black';
+        
+        // Set the content of the text item:
+        textA.content = 'A';
+        var textB = new PointText(new Point(50, 50));
+        textB.fillColor = 'black';
+        
+        // Set the content of the text item:
+        textB.content = 'B';
+
+        var textC = new PointText(new Point(50, 70));
+        textC.fillColor = 'black';
+        
+        // Set the content of the text item:
+        textC.content = 'C';
+        var textD = new PointText(new Point(50, 90));
+        textD.fillColor = 'black';
+        
+        // Set the content of the text item:
+        textD.content = 'D';
+ 
+        var textE = new PointText(new Point(50, 110));
+        textE.fillColor = 'black';
+        
+        // Set the content of the text item:
+        textE.content = 'E';
+        var textF = new PointText(new Point(50, 130));
+        textF.fillColor = 'black';
+        
+        // Set the content of the text item:
+        textF.content = 'F';
+
+        var textG = new PointText(new Point(50, 150));
+        textG.fillColor = 'black';
+        
+        // Set the content of the text item:
+        textG.content = 'G';
+        var textH = new PointText(new Point(50, 170));
+        textH.fillColor = 'black';
+        
+        // Set the content of the text item:
+        textH.content = 'H';
+
+
+        var textI = new PointText(new Point(50, 190));
+        textI.fillColor = 'black';
+        
+        // Set the content of the text item:
+        textI.content = 'I';
+        var textJ = new PointText(new Point(50, 210));
+        textJ.fillColor = 'black';
+        
+        // Set the content of the text item:
+        textJ.content = 'J';
+
+        var textK = new PointText(new Point(50, 230));
+        textK.fillColor = 'black';
+        
+        // Set the content of the text item:
+        textK.content = 'K';
+        var textL = new PointText(new Point(50, 250));
+        textL.fillColor = 'black';
+        
+        // Set the content of the text item:
+        textL.content = 'L';
+ 
+        var textM = new PointText(new Point(50, 270));
+        textM.fillColor = 'black';
+        
+        // Set the content of the text item:
+        textM.content = 'M';
+        var textN = new PointText(new Point(50, 290));
+        textN.fillColor = 'black';
+        
+        // Set the content of the text item:
+        textN.content = 'N';
+
+        var textO = new PointText(new Point(50, 310));
+        textO.fillColor = 'black';
+        
+        // Set the content of the text item:
+        textO.content = 'O';
+        var textP = new PointText(new Point(50, 330));
+        textP.fillColor = 'black';
+        
+        // Set the content of the text item:
+        textP.content = 'P';
+ 
+
+
+        var textQ = new PointText(new Point(50, 350));
+        textQ.fillColor = 'black';
+        
+        // Set the content of the text item:
+        textQ.content = 'Q';
+        var textR = new PointText(new Point(50, 370));
+        textR.fillColor = 'black';
+        
+        // Set the content of the text item:
+        textR.content = 'R';
+
+
+        var textS = new PointText(new Point(50, 390));
+        textS.fillColor = 'black';
+        
+        // Set the content of the text item:
+        textS.content = 'S';
+        var textT = new PointText(new Point(50, 410));
+        textT.fillColor = 'black';
+        
+        // Set the content of the text item:
+        textT.content = 'T';
+
+        var textU = new PointText(new Point(50, 430));
+        textU.fillColor = 'black';
+        
+        // Set the content of the text item:
+        textU.content = 'U';
+        var textV = new PointText(new Point(50, 450));
+        textV.fillColor = 'black';
+        
+        // Set the content of the text item:
+        textV.content = 'V';
+ 
+        var textW = new PointText(new Point(50, 470));
+        textW.fillColor = 'black';
+        
+        // Set the content of the text item:
+        textW.content = 'W';
+        var textX = new PointText(new Point(50, 490));
+        textX.fillColor = 'black';
+        
+        // Set the content of the text item:
+        textX.content = 'X';
+
+        var textY = new PointText(new Point(50, 510));
+        textY.fillColor = 'black';
+        
+        // Set the content of the text item:
+        textY.content = 'Y';
+        var textZ = new PointText(new Point(50, 530));
+        textZ.fillColor = 'black';
+        
+        // Set the content of the text item:
+        textZ.content = 'Z';
+ 
+    
+        var group = new Group([textA, textB, textC, textD, textE, textF, textG, textH, textI, textJ, textK, textL, textM, textN, textO, textP, textQ, textR, textS, textT, textU, textV, textW, textX, textY, textZ]);
+
+        group.onMouseDrag = function(event){
+            group.position += event.delta;
+    
+        }
+
+ 
+    </script>
+    <script type="text/paperscript" canvas="canvas3">
+        var textA = new PointText(new Point(50, 30));
+        textA.fillColor = 'black';
+        
+        // Set the content of the text item:
+        textA.content = 'A';
+        var textB = new PointText(new Point(50, 50));
+        textB.fillColor = 'black';
+        
+        // Set the content of the text item:
+        textB.content = 'B';
+
+        var textC = new PointText(new Point(50, 70));
+        textC.fillColor = 'black';
+        
+        // Set the content of the text item:
+        textC.content = 'C';
+        var textD = new PointText(new Point(50, 90));
+        textD.fillColor = 'black';
+        
+        // Set the content of the text item:
+        textD.content = 'D';
+ 
+        var textE = new PointText(new Point(50, 110));
+        textE.fillColor = 'black';
+        
+        // Set the content of the text item:
+        textE.content = 'E';
+        var textF = new PointText(new Point(50, 130));
+        textF.fillColor = 'black';
+        
+        // Set the content of the text item:
+        textF.content = 'F';
+
+        var textG = new PointText(new Point(50, 150));
+        textG.fillColor = 'black';
+        
+        // Set the content of the text item:
+        textG.content = 'G';
+        var textH = new PointText(new Point(50, 170));
+        textH.fillColor = 'black';
+        
+        // Set the content of the text item:
+        textH.content = 'H';
+
+
+        var textI = new PointText(new Point(50, 190));
+        textI.fillColor = 'black';
+        
+        // Set the content of the text item:
+        textI.content = 'I';
+        var textJ = new PointText(new Point(50, 210));
+        textJ.fillColor = 'black';
+        
+        // Set the content of the text item:
+        textJ.content = 'J';
+
+        var textK = new PointText(new Point(50, 230));
+        textK.fillColor = 'black';
+        
+        // Set the content of the text item:
+        textK.content = 'K';
+        var textL = new PointText(new Point(50, 250));
+        textL.fillColor = 'black';
+        
+        // Set the content of the text item:
+        textL.content = 'L';
+ 
+        var textM = new PointText(new Point(50, 270));
+        textM.fillColor = 'black';
+        
+        // Set the content of the text item:
+        textM.content = 'M';
+        var textN = new PointText(new Point(50, 290));
+        textN.fillColor = 'black';
+        
+        // Set the content of the text item:
+        textN.content = 'N';
+
+        var textO = new PointText(new Point(50, 310));
+        textO.fillColor = 'black';
+        
+        // Set the content of the text item:
+        textO.content = 'O';
+        var textP = new PointText(new Point(50, 330));
+        textP.fillColor = 'black';
+        
+        // Set the content of the text item:
+        textP.content = 'P';
+ 
+
+
+        var textQ = new PointText(new Point(50, 350));
+        textQ.fillColor = 'black';
+        
+        // Set the content of the text item:
+        textQ.content = 'Q';
+        var textR = new PointText(new Point(50, 370));
+        textR.fillColor = 'black';
+        
+        // Set the content of the text item:
+        textR.content = 'R';
+
+
+        var textS = new PointText(new Point(50, 390));
+        textS.fillColor = 'black';
+        
+        // Set the content of the text item:
+        textS.content = 'S';
+        var textT = new PointText(new Point(50, 410));
+        textT.fillColor = 'black';
+        
+        // Set the content of the text item:
+        textT.content = 'T';
+
+        var textU = new PointText(new Point(50, 430));
+        textU.fillColor = 'black';
+        
+        // Set the content of the text item:
+        textU.content = 'U';
+        var textV = new PointText(new Point(50, 450));
+        textV.fillColor = 'black';
+        
+        // Set the content of the text item:
+        textV.content = 'V';
+ 
+        var textW = new PointText(new Point(50, 470));
+        textW.fillColor = 'black';
+        
+        // Set the content of the text item:
+        textW.content = 'W';
+        var textX = new PointText(new Point(50, 490));
+        textX.fillColor = 'black';
+        
+        // Set the content of the text item:
+        textX.content = 'X';
+
+        var textY = new PointText(new Point(50, 510));
+        textY.fillColor = 'black';
+        
+        // Set the content of the text item:
+        textY.content = 'Y';
+        var textZ = new PointText(new Point(50, 530));
+        textZ.fillColor = 'black';
+        
+        // Set the content of the text item:
+        textZ.content = 'Z';
+ 
+    
+        var group = new Group([textA, textB, textC, textD, textE, textF, textG, textH, textI, textJ, textK, textL, textM, textN, textO, textP, textQ, textR, textS, textT, textU, textV, textW, textX, textY, textZ]);
+
+        group.onMouseDrag = function(event){
+            group.position += event.delta;
+    
+        }
+
+ 
+    </script>
+    <script type="text/paperscript" canvas="canvas4">
+        var textA = new PointText(new Point(50, 30));
+        textA.fillColor = 'black';
+        
+        // Set the content of the text item:
+        textA.content = 'A';
+        var textB = new PointText(new Point(50, 50));
+        textB.fillColor = 'black';
+        
+        // Set the content of the text item:
+        textB.content = 'B';
+
+        var textC = new PointText(new Point(50, 70));
+        textC.fillColor = 'black';
+        
+        // Set the content of the text item:
+        textC.content = 'C';
+        var textD = new PointText(new Point(50, 90));
+        textD.fillColor = 'black';
+        
+        // Set the content of the text item:
+        textD.content = 'D';
+ 
+        var textE = new PointText(new Point(50, 110));
+        textE.fillColor = 'black';
+        
+        // Set the content of the text item:
+        textE.content = 'E';
+        var textF = new PointText(new Point(50, 130));
+        textF.fillColor = 'black';
+        
+        // Set the content of the text item:
+        textF.content = 'F';
+
+        var textG = new PointText(new Point(50, 150));
+        textG.fillColor = 'black';
+        
+        // Set the content of the text item:
+        textG.content = 'G';
+        var textH = new PointText(new Point(50, 170));
+        textH.fillColor = 'black';
+        
+        // Set the content of the text item:
+        textH.content = 'H';
+
+
+        var textI = new PointText(new Point(50, 190));
+        textI.fillColor = 'black';
+        
+        // Set the content of the text item:
+        textI.content = 'I';
+        var textJ = new PointText(new Point(50, 210));
+        textJ.fillColor = 'black';
+        
+        // Set the content of the text item:
+        textJ.content = 'J';
+
+        var textK = new PointText(new Point(50, 230));
+        textK.fillColor = 'black';
+        
+        // Set the content of the text item:
+        textK.content = 'K';
+        var textL = new PointText(new Point(50, 250));
+        textL.fillColor = 'black';
+        
+        // Set the content of the text item:
+        textL.content = 'L';
+ 
+        var textM = new PointText(new Point(50, 270));
+        textM.fillColor = 'black';
+        
+        // Set the content of the text item:
+        textM.content = 'M';
+        var textN = new PointText(new Point(50, 290));
+        textN.fillColor = 'black';
+        
+        // Set the content of the text item:
+        textN.content = 'N';
+
+        var textO = new PointText(new Point(50, 310));
+        textO.fillColor = 'black';
+        
+        // Set the content of the text item:
+        textO.content = 'O';
+        var textP = new PointText(new Point(50, 330));
+        textP.fillColor = 'black';
+        
+        // Set the content of the text item:
+        textP.content = 'P';
+ 
+
+
+        var textQ = new PointText(new Point(50, 350));
+        textQ.fillColor = 'black';
+        
+        // Set the content of the text item:
+        textQ.content = 'Q';
+        var textR = new PointText(new Point(50, 370));
+        textR.fillColor = 'black';
+        
+        // Set the content of the text item:
+        textR.content = 'R';
+
+
+        var textS = new PointText(new Point(50, 390));
+        textS.fillColor = 'black';
+        
+        // Set the content of the text item:
+        textS.content = 'S';
+        var textT = new PointText(new Point(50, 410));
+        textT.fillColor = 'black';
+        
+        // Set the content of the text item:
+        textT.content = 'T';
+
+        var textU = new PointText(new Point(50, 430));
+        textU.fillColor = 'black';
+        
+        // Set the content of the text item:
+        textU.content = 'U';
+        var textV = new PointText(new Point(50, 450));
+        textV.fillColor = 'black';
+        
+        // Set the content of the text item:
+        textV.content = 'V';
+ 
+        var textW = new PointText(new Point(50, 470));
+        textW.fillColor = 'black';
+        
+        // Set the content of the text item:
+        textW.content = 'W';
+        var textX = new PointText(new Point(50, 490));
+        textX.fillColor = 'black';
+        
+        // Set the content of the text item:
+        textX.content = 'X';
+
+        var textY = new PointText(new Point(50, 510));
+        textY.fillColor = 'black';
+        
+        // Set the content of the text item:
+        textY.content = 'Y';
+        var textZ = new PointText(new Point(50, 530));
+        textZ.fillColor = 'black';
+        
+        // Set the content of the text item:
+        textZ.content = 'Z';
+ 
+    
+        var group = new Group([textA, textB, textC, textD, textE, textF, textG, textH, textI, textJ, textK, textL, textM, textN, textO, textP, textQ, textR, textS, textT, textU, textV, textW, textX, textY, textZ]);
+
+        group.onMouseDrag = function(event){
+            group.position += event.delta;
+    
+        }
+
+ 
+    </script>
+    <script type="text/paperscript" canvas="canvas5">
+        var textA = new PointText(new Point(50, 30));
+        textA.fillColor = 'black';
+        
+        // Set the content of the text item:
+        textA.content = 'A';
+        var textB = new PointText(new Point(50, 50));
+        textB.fillColor = 'black';
+        
+        // Set the content of the text item:
+        textB.content = 'B';
+
+        var textC = new PointText(new Point(50, 70));
+        textC.fillColor = 'black';
+        
+        // Set the content of the text item:
+        textC.content = 'C';
+        var textD = new PointText(new Point(50, 90));
+        textD.fillColor = 'black';
+        
+        // Set the content of the text item:
+        textD.content = 'D';
+ 
+        var textE = new PointText(new Point(50, 110));
+        textE.fillColor = 'black';
+        
+        // Set the content of the text item:
+        textE.content = 'E';
+        var textF = new PointText(new Point(50, 130));
+        textF.fillColor = 'black';
+        
+        // Set the content of the text item:
+        textF.content = 'F';
+
+        var textG = new PointText(new Point(50, 150));
+        textG.fillColor = 'black';
+        
+        // Set the content of the text item:
+        textG.content = 'G';
+        var textH = new PointText(new Point(50, 170));
+        textH.fillColor = 'black';
+        
+        // Set the content of the text item:
+        textH.content = 'H';
+
+
+        var textI = new PointText(new Point(50, 190));
+        textI.fillColor = 'black';
+        
+        // Set the content of the text item:
+        textI.content = 'I';
+        var textJ = new PointText(new Point(50, 210));
+        textJ.fillColor = 'black';
+        
+        // Set the content of the text item:
+        textJ.content = 'J';
+
+        var textK = new PointText(new Point(50, 230));
+        textK.fillColor = 'black';
+        
+        // Set the content of the text item:
+        textK.content = 'K';
+        var textL = new PointText(new Point(50, 250));
+        textL.fillColor = 'black';
+        
+        // Set the content of the text item:
+        textL.content = 'L';
+ 
+        var textM = new PointText(new Point(50, 270));
+        textM.fillColor = 'black';
+        
+        // Set the content of the text item:
+        textM.content = 'M';
+        var textN = new PointText(new Point(50, 290));
+        textN.fillColor = 'black';
+        
+        // Set the content of the text item:
+        textN.content = 'N';
+
+        var textO = new PointText(new Point(50, 310));
+        textO.fillColor = 'black';
+        
+        // Set the content of the text item:
+        textO.content = 'O';
+        var textP = new PointText(new Point(50, 330));
+        textP.fillColor = 'black';
+        
+        // Set the content of the text item:
+        textP.content = 'P';
+ 
+
+
+        var textQ = new PointText(new Point(50, 350));
+        textQ.fillColor = 'black';
+        
+        // Set the content of the text item:
+        textQ.content = 'Q';
+        var textR = new PointText(new Point(50, 370));
+        textR.fillColor = 'black';
+        
+        // Set the content of the text item:
+        textR.content = 'R';
+
+
+        var textS = new PointText(new Point(50, 390));
+        textS.fillColor = 'black';
+        
+        // Set the content of the text item:
+        textS.content = 'S';
+        var textT = new PointText(new Point(50, 410));
+        textT.fillColor = 'black';
+        
+        // Set the content of the text item:
+        textT.content = 'T';
+
+        var textU = new PointText(new Point(50, 430));
+        textU.fillColor = 'black';
+        
+        // Set the content of the text item:
+        textU.content = 'U';
+        var textV = new PointText(new Point(50, 450));
+        textV.fillColor = 'black';
+        
+        // Set the content of the text item:
+        textV.content = 'V';
+ 
+        var textW = new PointText(new Point(50, 470));
+        textW.fillColor = 'black';
+        
+        // Set the content of the text item:
+        textW.content = 'W';
+        var textX = new PointText(new Point(50, 490));
+        textX.fillColor = 'black';
+        
+        // Set the content of the text item:
+        textX.content = 'X';
+
+        var textY = new PointText(new Point(50, 510));
+        textY.fillColor = 'black';
+        
+        // Set the content of the text item:
+        textY.content = 'Y';
+        var textZ = new PointText(new Point(50, 530));
+        textZ.fillColor = 'black';
+        
+        // Set the content of the text item:
+        textZ.content = 'Z';
+ 
+    
+        var group = new Group([textA, textB, textC, textD, textE, textF, textG, textH, textI, textJ, textK, textL, textM, textN, textO, textP, textQ, textR, textS, textT, textU, textV, textW, textX, textY, textZ]);
+
+        group.onMouseDrag = function(event){
+            group.position += event.delta;
+    
+        }
+
+ 
+    </script>
+    <script type="text/paperscript" canvas="canvas6">
+        var textA = new PointText(new Point(50, 30));
+        textA.fillColor = 'black';
+        
+        // Set the content of the text item:
+        textA.content = 'A';
+        var textB = new PointText(new Point(50, 50));
+        textB.fillColor = 'black';
+        
+        // Set the content of the text item:
+        textB.content = 'B';
+
+        var textC = new PointText(new Point(50, 70));
+        textC.fillColor = 'black';
+        
+        // Set the content of the text item:
+        textC.content = 'C';
+        var textD = new PointText(new Point(50, 90));
+        textD.fillColor = 'black';
+        
+        // Set the content of the text item:
+        textD.content = 'D';
+ 
+        var textE = new PointText(new Point(50, 110));
+        textE.fillColor = 'black';
+        
+        // Set the content of the text item:
+        textE.content = 'E';
+        var textF = new PointText(new Point(50, 130));
+        textF.fillColor = 'black';
+        
+        // Set the content of the text item:
+        textF.content = 'F';
+
+        var textG = new PointText(new Point(50, 150));
+        textG.fillColor = 'black';
+        
+        // Set the content of the text item:
+        textG.content = 'G';
+        var textH = new PointText(new Point(50, 170));
+        textH.fillColor = 'black';
+        
+        // Set the content of the text item:
+        textH.content = 'H';
+
+
+        var textI = new PointText(new Point(50, 190));
+        textI.fillColor = 'black';
+        
+        // Set the content of the text item:
+        textI.content = 'I';
+        var textJ = new PointText(new Point(50, 210));
+        textJ.fillColor = 'black';
+        
+        // Set the content of the text item:
+        textJ.content = 'J';
+
+        var textK = new PointText(new Point(50, 230));
+        textK.fillColor = 'black';
+        
+        // Set the content of the text item:
+        textK.content = 'K';
+        var textL = new PointText(new Point(50, 250));
+        textL.fillColor = 'black';
+        
+        // Set the content of the text item:
+        textL.content = 'L';
+ 
+        var textM = new PointText(new Point(50, 270));
+        textM.fillColor = 'black';
+        
+        // Set the content of the text item:
+        textM.content = 'M';
+        var textN = new PointText(new Point(50, 290));
+        textN.fillColor = 'black';
+        
+        // Set the content of the text item:
+        textN.content = 'N';
+
+        var textO = new PointText(new Point(50, 310));
+        textO.fillColor = 'black';
+        
+        // Set the content of the text item:
+        textO.content = 'O';
+        var textP = new PointText(new Point(50, 330));
+        textP.fillColor = 'black';
+        
+        // Set the content of the text item:
+        textP.content = 'P';
+ 
+
+
+        var textQ = new PointText(new Point(50, 350));
+        textQ.fillColor = 'black';
+        
+        // Set the content of the text item:
+        textQ.content = 'Q';
+        var textR = new PointText(new Point(50, 370));
+        textR.fillColor = 'black';
+        
+        // Set the content of the text item:
+        textR.content = 'R';
+
+
+        var textS = new PointText(new Point(50, 390));
+        textS.fillColor = 'black';
+        
+        // Set the content of the text item:
+        textS.content = 'S';
+        var textT = new PointText(new Point(50, 410));
+        textT.fillColor = 'black';
+        
+        // Set the content of the text item:
+        textT.content = 'T';
+
+        var textU = new PointText(new Point(50, 430));
+        textU.fillColor = 'black';
+        
+        // Set the content of the text item:
+        textU.content = 'U';
+        var textV = new PointText(new Point(50, 450));
+        textV.fillColor = 'black';
+        
+        // Set the content of the text item:
+        textV.content = 'V';
+ 
+        var textW = new PointText(new Point(50, 470));
+        textW.fillColor = 'black';
+        
+        // Set the content of the text item:
+        textW.content = 'W';
+        var textX = new PointText(new Point(50, 490));
+        textX.fillColor = 'black';
+        
+        // Set the content of the text item:
+        textX.content = 'X';
+
+        var textY = new PointText(new Point(50, 510));
+        textY.fillColor = 'black';
+        
+        // Set the content of the text item:
+        textY.content = 'Y';
+        var textZ = new PointText(new Point(50, 530));
+        textZ.fillColor = 'black';
+        
+        // Set the content of the text item:
+        textZ.content = 'Z';
+ 
+    
+        var group = new Group([textA, textB, textC, textD, textE, textF, textG, textH, textI, textJ, textK, textL, textM, textN, textO, textP, textQ, textR, textS, textT, textU, textV, textW, textX, textY, textZ]);
+
+        group.onMouseDrag = function(event){
+            group.position += event.delta;
+    
+        }
+
+ 
+    </script>
+
 </head>
 <body>
-    <canvas id="canvas" resize style="background-color: #4b5320;"></canvas>
+    <div class="row" style="height: 50%;">
+
+    </div>
+    <div class="row">
+        <div class="col-sm-4">
+
+        </div>
+        <div class="col-sm-6">
+                <div class="row">
+        <div class="col-sm-2">
+                <canvas id="canvas" resize style="background-color: #4b5320; height: 100%;"></canvas>
+                <br><br><br><br><br>
+
+        </div>
+        <div class="col-sm-2">
+                <canvas id="canvas2" resize style="background-color: #4b5320;"></canvas>
+
+            </div>
+            <div class="col-sm-2">
+                    <canvas id="canvas3" resize style="background-color: #4b5320;"></canvas>
+
+                </div>
+                <div class="col-sm-2">
+                        <canvas id="canvas4" resize style="background-color: #4b5320;"></canvas>
+
+                    </div>
+                    <div class="col-sm-2">
+                            <canvas id="canvas5" resize style="background-color: #4b5320;"></canvas>
+
+                        </div>
+                        <div class="col-sm-2">
+                                <canvas id="canvas6" resize style="background-color: #4b5320;"></canvas>
+
+                            </div>
+    </div>
+        </div>
+        <div class="col-sm-2">
+            
+        </div>
+    </div>
+
 </body>
 </html>
