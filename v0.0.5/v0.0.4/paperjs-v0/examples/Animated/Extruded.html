@@ -1006,6 +1006,7 @@
         });
         shape.onMouseDown = function(event) {
             this.fillColor = 'grey';
+            console.log("reset button has been hit");
         }
         shape.onMouseUp = function(event){
             this.fillColor = "darkgrey";
@@ -1020,6 +1021,8 @@
 
         shape.onMouseDown = function(event) {
             this.fillColor = 'black';
+            console.log("lever to encypher has been pushed");
+            localStorage["counter"] += 6;
         }
         shape.onMouseUp = function(event){
             this.fillColor = "grey";
@@ -1049,7 +1052,14 @@
                 </div>
                 <div class="col-sm-2" style="background-color: grey; color: white;">
                     <div class="text text-center">
-                        0000
+                        <script>
+                            var num = 0000;
+                            num = localStorage["counter"];
+                            if(num == undefined){
+                                num = 0000;
+                            }
+                            document.write(num);
+                            </script>
                     </div>
                 </div>
             </div>
