@@ -182,8 +182,17 @@
 
         group.onMouseDrag = function(event){
             group.position += event.delta;
+            if(textA.position == [35, 160]){
+                console.log("true!!");
+            }
     
         }
+        var shape = new Shape.Circle({
+            center: [35, 160],
+            radius: 10,
+            strokeColor: 'black'
+        });
+       
       
 
  
