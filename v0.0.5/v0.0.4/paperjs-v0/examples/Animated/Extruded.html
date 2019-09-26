@@ -22,6 +22,7 @@
       #html, body{
           background-color: #4b5320;
       }
+
     </style>
     <script type="text/javascript" src="../../dist/paper-full.js"></script>
     <script type="text/paperscript" canvas="canvas">
@@ -832,11 +833,24 @@
             group.position += event.delta;
     
         }
-
- 
+        
+        var path = new Path.Rectangle(new Point(50, 50), new Size(100, 50));
+        path.style = {
+            fillColor: 'white',
+            strokeColor: 'black'
+        };
+        
+        // Create a copy of the path and set its stroke color to red:
+        var copy = path.clone();
+        copy.strokeColor = 'red';
+        
+        function onFrame(event) {
+            // Each frame, rotate the copy by 1 degree:
+            copy.rotate(1);
+        }
     </script>
     <script type="text/paperscript" canvas="canvas6">
-        var rectangle = new Rectangle(new Point(0, 190), new Size(65, 25));
+        var rectangle = new Rectangle(new Point(0, 190), new Size(65, 15));
         var shape = new Shape.Rectangle(rectangle);
         shape.strokeColor = 'black';
         
@@ -1022,13 +1036,53 @@
         shape.onMouseDown = function(event) {
             this.fillColor = 'black';
             console.log("lever to encypher has been pushed");
-            localStorage["counter"] += 6;
+            localStorage["counter"] += 1;
         }
         shape.onMouseUp = function(event){
             this.fillColor = "grey";
         }
     </script>
+    <script type="text/paperscript" canvas="canvasCypher">
+        var shape = new Shape.Rectangle({
+            point: [40, 50],
+            size: [50, 50],
+            strokeColor: 'black',
+            fillColor: "darkgrey"
+        });
+var text = new PointText(new Point(60, 80));
+text.fillColor = 'black';
 
+// Set the content of the text item:
+text.content = 'C';
+localStorage["cypher"] = "c";
+        shape.onMouseDown = function(event) {
+            this.fillColor = 'grey';
+            console.log("reset button has been hit");
+            if(localStorage["cypher"] == "c"){
+            text.content = 'D';
+            localStorage["cypher"] = "d";
+            }
+            else{
+                text.content = "C";
+                localStorage["cypher"] = "c";
+            }
+        }
+        text.onMouseDown = function(event) {
+            this.fillColor = 'grey';
+            console.log("reset button has been hit");
+            if(localStorage["cypher"] == "c"){
+            text.content = 'D';
+            localStorage["cypher"] = "d";
+            }
+            else{
+                text.content = "C";
+                localStorage["cypher"] = "c";
+            }
+        }
+        shape.onMouseUp = function(event){
+            this.fillColor = "darkgrey";
+        }
+    </script>
 </head>
 <body>
     <div class="row" style="height: 50%;">
@@ -1048,15 +1102,22 @@
         <div class="col-sm-4">
             <div class="row">
                 <div class="col-sm-6">
+                    <div class="row">
+                        <div class="col-sm-2">
 
+                        </div>
+                        <div class="col-sm-10">
+                            <canvas id="canvasCypher"></canvas>
+                        </div>
+                    </div>
                 </div>
-                <div class="col-sm-2" style="background-color: grey; color: white;">
+                <div class="col-sm-2" style="height: 40px; background-color: grey; color: white;">
                     <div class="text text-center">
                         <script>
-                            var num = 0000;
+                            var num = 0;
                             num = localStorage["counter"];
                             if(num == undefined){
-                                num = 0000;
+                                num = 0;
                             }
                             document.write(num);
                             </script>
