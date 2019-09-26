@@ -1061,10 +1061,12 @@ localStorage["cypher"] = "c";
             if(localStorage["cypher"] == "c"){
             text.content = 'D';
             localStorage["cypher"] = "d";
+            console.log("switching to decypher now");
             }
             else{
                 text.content = "C";
                 localStorage["cypher"] = "c";
+                console.log("switching to cypher now");
             }
         }
         text.onMouseDown = function(event) {
@@ -1073,10 +1075,12 @@ localStorage["cypher"] = "c";
             if(localStorage["cypher"] == "c"){
             text.content = 'D';
             localStorage["cypher"] = "d";
+            console.log("Switching to decypher now");
             }
             else{
                 text.content = "C";
                 localStorage["cypher"] = "c";
+                console.log("Switching to cypher now");
             }
         }
         shape.onMouseUp = function(event){
