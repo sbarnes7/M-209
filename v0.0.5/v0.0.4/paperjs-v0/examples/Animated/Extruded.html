@@ -179,19 +179,29 @@
         textZ.content = 'Z';
     
         var group = new Group([textA, textB, textC, textD, textE, textF, textG, textH, textI, textJ, textK, textL, textM, textN, textO, textP, textQ, textR, textS, textT, textU, textV, textW, textX, textY, textZ]);
-
-        group.onMouseDrag = function(event){
-            group.position += event.delta;
-            if(textA.position == [35, 160]){
-                console.log("true!!");
-            }
-    
-        }
-        var shape = new Shape.Circle({
-            center: [35, 160],
+  var shape = new Shape.Circle({
+            center: [55, 215],
             radius: 10,
             strokeColor: 'black'
         });
+        group.onMouseDrag = function(event){
+            group.position += event.delta;
+            
+    
+        }
+        group.onMouseUp = function(event){
+            console.log(textA.position._y);
+            if(textA.position._y > 190){
+                if(textA.position._y < 215){
+                console.log("true");
+                }
+            }
+            //if(new Point(textA.position._x, textA.position._y) >= new Point(0, 190) && new Point(textA.position._x, textA.position._y) <= new Point(65, 215)){
+                //console.log("true!!");
+           // }
+           // console.log(textA.position._x);
+        }
+      
        
       
 
