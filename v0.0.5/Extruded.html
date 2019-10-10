@@ -42,10 +42,7 @@
 }
     </style>
 
-<script>
-var num = parseInt(0);
-localStorage["num"] = num;
-</script>
+
   
    
     <script type="text/paperscript" canvas="canvasButton">
@@ -74,11 +71,7 @@ localStorage["num"] = num;
             this.fillColor = 'black';
             console.log("lever to encypher has been pushed");
             console.log(localStorage["wheel1"] + " " + localStorage["wheel2"] + " " + localStorage["wheel3"] + " " + localStorage["wheel4"] + " " + localStorage["wheel5"] + " " + localStorage["wheel6"]);
-           
-           var num = parseInt(0);
-           num = localStorage["num"];
-            num++;
-            localStorage["num"] = num;
+            localStorage["counter"] += 1;
         }
         shape.onMouseUp = function(event){
             this.fillColor = "grey";
@@ -143,11 +136,12 @@ localStorage["cypher"] = "c";
     </span>
     <br>
     <div align="center">
-
+            letter counter goes here there
             <script>
-            num = localStorage["num"];
-            document.write(num);
+            var num = 0;
+            dopcument.write(num);
             </script>
+            here
 
     </div>
     <span >
