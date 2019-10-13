@@ -12,12 +12,15 @@
     <title>M-209</title>
     <link rel="stylesheet" href="../css/style.css">
 
+    <script src="m209.js"></script>
+
     <script type="text/paperscript" src="wheel1.js" canvas="canvas"></script>
     <script type="text/paperscript" src="wheel2.js" canvas="canvas2"></script>
     <script type="text/paperscript" src="wheel3.js" canvas="canvas3"></script>
     <script type="text/paperscript" src="wheel4.js" canvas="canvas4"></script>
     <script type="text/paperscript" src="wheel5.js" canvas="canvas5"></script>
     <script type="text/paperscript" src="wheel6.js" canvas="canvas6"></script>
+    <script type="text/paperscript" src="indicatingDisk.js" canvas="canvas7"></script>
 
     <style>
   canvas[resize] {
@@ -27,11 +30,17 @@
 	    height: 400px; 
 	  }
       canvas[resize2]{
-          height: 450px;
+          height: 200px;
           width: 200px;
       }
       canvas[resize3]{
-          height: 350px;
+          height: 50%;
+      }
+      canvas[resize4]{
+          height: 200px;
+          width: 200px;
+          background-color: grey;
+
       }
       #html, body{
           background-color: #4b5320;
@@ -131,7 +140,7 @@ localStorage["cypher"] = "c";
     </script>
 </head>
 <body>
-        <div align = "center" style="background-color: #b1a688;">hello world</div>
+        <div align = "center" style="background-color: #b1a688;">this is where the output will go</div>
         
     </span>
     <br>
@@ -161,5 +170,7 @@ localStorage["cypher"] = "c";
             <canvas id="canvas6" style="width: 3%;" resize ></canvas>&emsp;&emsp;
             </div>
 </span>
+<canvas id="canvas7" style="width: 3%;" resize4 ></canvas>&emsp;&emsp;
+
 </body>
 </html>

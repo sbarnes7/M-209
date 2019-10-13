@@ -128,21 +128,6 @@ if(local === "4"){
 
 var Wheel_Pins = [Wheel1_pins,Wheel2_pins,Wheel3_pins,Wheel4_pins,Wheel5_pins,Wheel6_pins];
 
-//old code:
-/*
-var Wheel1_pins = [1,1,0,1,0,0,0,1,1,0,1,0,1,1,0,0,0,0,1,1,0,1,1,0,0,0];
-var Wheel2_pins = [1,0,0,1,1,0,1,0,0,1,1,1,0,0,1,0,0,1,1,0,1,0,1,0,0];
-var Wheel3_pins = [1,1,0,0,0,0,1,1,0,1,0,1,1,1,0,0,0,1,1,1,1,0,1];
-var Wheel4_pins = [0,0,1,0,1,1,0,1,1,0,0,0,1,1,0,1,0,0,1,1,1];
-var Wheel5_pins = [0,1,0,1,1,1,0,1,1,0,0,0,1,1,0,1,0,0,1];
-var Wheel6_pins = [1,1,0,1,0,0,0,1,0,0,1,0,0,1,1,0,1];
-
-
-var Left_lugs = [3,0,1,1,4,0,0,0,0,2,2,2,2,2,2,2,2,2,2,2,2,0,0,0,0,0,0];
-var Right_lugs = [6,6,6,5,5,4,4,4,4,0,0,0,0,0,0,0,0,0,0,5,5,5,5,5,5,5,5];
-*/
-
-
 var Wheel1 = 'ABCDEFGHIJKLMNOPQRSTUVWXYZ';
 var Wheel2 = 'ABCDEFGHIJKLMNOPQRSTUVXYZ';
 var Wheel3 = 'ABCDEFGHIJKLMNOPQRSTUVX';
@@ -442,11 +427,7 @@ function decrypt (letter, IMI_arr){
     }
     return decoded;
 }
-/*
-*
-*
-*
-*/
+
 function getLugs(){
     a = document.getElementsByTagName("select");
 

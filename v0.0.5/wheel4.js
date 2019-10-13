@@ -227,71 +227,22 @@
         };  
         // Set the content of the text item:
         textU.content = 'U';
-        var textV = new PointText(new Point(30, 630));
-        textV.fillColor = 'black';
-        textV.style = {
-            fontFamily: 'Courier New',
-            fontSize: 20,
-            fillColor: 'black',
-            justification: 'center'
-        };  
-        // Set the content of the text item:
-        textV.content = 'V';
- 
-        var textW = new PointText(new Point(30, 660));
-        textW.fillColor = 'black';
-        textW.style = {
-            fontFamily: 'Courier New',
-            fontSize: 20,
-            fillColor: 'black',
-            justification: 'center'
-        };  
-        // Set the content of the text item:
-        textW.content = 'W';
-        var textX = new PointText(new Point(30, 690));
-        textX.fillColor = 'black';
-        textX.style = {
-            fontFamily: 'Courier New',
-            fontSize: 20,
-            fillColor: 'black',
-            justification: 'center'
-        };  
-        // Set the content of the text item:
-        textX.content = 'X';
 
-        var textY = new PointText(new Point(30, 720));
-        textY.fillColor = 'black';
-        textY.style = {
-            fontFamily: 'Courier New',
-            fontSize: 20,
-            fillColor: 'black',
-            justification: 'center'
-        };  
-        // Set the content of the text item:
-        textY.content = 'Y';
-        var textZ = new PointText(new Point(30, 750));
-        textZ.fillColor = 'black';
-        textZ.style = {
-            fontFamily: 'Courier New',
-            fontSize: 20,
-            fillColor: 'black',
-            justification: 'center'
-        };  
-        // Set the content of the text item:
-        textZ.content = 'Z';
     
-        var group = new Group([textA, textB, textC, textD, textE, textF, textG, textH, textI, textJ, textK, textL, textM, textN, textO, textP, textQ, textR, textS, textT, textU, textV, textW, textX, textY, textZ]);
+        var group = new Group([textA, textB, textC, textD, textE, textF, textG, textH, textI, textJ, textK, textL, textM, textN, textO, textP, textQ, textR, textS, textT, textU]);
         group.onMouseDrag = function(event){
             group.position += event.delta;
             
     
         }
         group.onMouseUp = function(event){
-            for(var i = 0; i < 26; i++){
+            for(var i = 0; i < 21; i++){
                 if(group.children[i].position._y > 190){
                     if(group.children[i].position._y < 215){
                                         console.log(group.children[i].content);
                                         localStorage["wheel4"] = group.children[i].content;
+                                        var wheel4Val = group.children[i].content;
+
 
                     }
                 }

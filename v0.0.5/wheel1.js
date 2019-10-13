@@ -282,7 +282,9 @@
     
         var group = new Group([textA, textB, textC, textD, textE, textF, textG, textH, textI, textJ, textK, textL, textM, textN, textO, textP, textQ, textR, textS, textT, textU, textV, textW, textX, textY, textZ]);
         group.onMouseDrag = function(event){
+            //group.position = (group.position._x, group.posiiton._y + event.delta.y);
             group.position += event.delta;
+        
             
     
         }
@@ -292,9 +294,11 @@
                     if(group.children[i].position._y < 215){
                                         console.log(group.children[i].content);
                                         localStorage["wheel1"] = group.children[i].content;
+                                        var wheel1Val = group.children[i].content;
                     }
                 }
-            }
+            }            console.log(group.position);
+
             console.log(textA.position._y);
             if(textA.position._y > 190){
                 if(textA.position._y < 215){

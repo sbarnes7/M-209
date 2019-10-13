@@ -238,17 +238,8 @@
         // Set the content of the text item:
         textV.content = 'V';
  
-        var textW = new PointText(new Point(30, 660));
-        textW.fillColor = 'black';
-        textW.style = {
-            fontFamily: 'Courier New',
-            fontSize: 20,
-            fillColor: 'black',
-            justification: 'center'
-        };  
-        // Set the content of the text item:
-        textW.content = 'W';
-        var textX = new PointText(new Point(30, 690));
+       
+        var textX = new PointText(new Point(30, 660));
         textX.fillColor = 'black';
         textX.style = {
             fontFamily: 'Courier New',
@@ -259,7 +250,7 @@
         // Set the content of the text item:
         textX.content = 'X';
 
-        var textY = new PointText(new Point(30, 720));
+        var textY = new PointText(new Point(30, 690));
         textY.fillColor = 'black';
         textY.style = {
             fontFamily: 'Courier New',
@@ -269,7 +260,7 @@
         };  
         // Set the content of the text item:
         textY.content = 'Y';
-        var textZ = new PointText(new Point(30, 750));
+        var textZ = new PointText(new Point(30, 720));
         textZ.fillColor = 'black';
         textZ.style = {
             fontFamily: 'Courier New',
@@ -280,18 +271,20 @@
         // Set the content of the text item:
         textZ.content = 'Z';
     
-        var group = new Group([textA, textB, textC, textD, textE, textF, textG, textH, textI, textJ, textK, textL, textM, textN, textO, textP, textQ, textR, textS, textT, textU, textV, textW, textX, textY, textZ]);
+        var group = new Group([textA, textB, textC, textD, textE, textF, textG, textH, textI, textJ, textK, textL, textM, textN, textO, textP, textQ, textR, textS, textT, textU, textV, textX, textY, textZ]);
         group.onMouseDrag = function(event){
             group.position += event.delta;
             
     
         }
         group.onMouseUp = function(event){
-            for(var i = 0; i < 26; i++){
+            for(var i = 0; i < 25; i++){
                 if(group.children[i].position._y > 190){
                     if(group.children[i].position._y < 215){
                                         console.log(group.children[i].content);
                                         localStorage["wheel2"] = group.children[i].content;
+                                        var wheel2Val = group.children[i].content;
+
 
                     }
                 }
