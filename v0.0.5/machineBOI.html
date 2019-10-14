@@ -52,8 +52,149 @@
     </style>
 
 <script>
-var num = parseInt(0);
-localStorage["num"] = num;
+
+var letterCnt = 0;
+    var encrypt_string = ' ';
+    var decrypt_string = ' ';
+    function init() {
+        var letCount = document.getElementById("letterCounter");
+        var outputbox = document.getElementById("output-box");
+        var prevbox = document.getElementById("decrypt-box");
+
+        outputbox.innerHTML = 'Current Tape';
+        prevbox.innerHTML = 'Previous Tape';
+
+        letCount.innerHTML = letterCnt;
+    }
+
+
+    //var sel = document.getElementsByTagName("option");
+
+
+    /*function reset() {
+        var outputbox = document.getElementById("output-box");
+        var prevbox = document.getElementById("decrypt-box");
+        var letCount = document.getElementById("letterCounter");
+        letterCnt = 0;
+        letCount.innerHTML = letterCnt;
+
+
+
+        encrypt_string = ' ';
+        decrypt_string = ' ';
+        
+        outputbox.innerHTML = 'Current Tape';
+        prevbox.innerHTML = 'Previous Tape';
+
+
+    }*/
+
+    function eval() {
+        var letCount = document.getElementById("letterCounter");
+
+        var outputbox = document.getElementById("output-box");
+        var prevbox = document.getElementById("decrypt-box");
+
+
+        //Encipher or decipher:
+        var cipherVal = localStorage["cypher"];
+
+        //Indicating disk:
+        var letterDropdown = document.getElementById("exampleFormControlSelect2");
+        var diskLetterVal = localStorage["diskVal"];
+
+
+        //Save all 6 wheels:
+        var wheel1Val = localStorage["wheel1"];
+
+        var wheel2Val = localStorage["wheel2"];
+
+        var wheel3Val = localStorage["wheel3"];
+
+        var wheel4Val = localStorage["wheel4"];
+
+        var wheel5Val = localStorage["wheel5"];
+
+        var wheel6Val = localStorage["wheel6"];
+
+        var IMI_arr = [localStorage["wheel1"],localStorage["wheel2"],localStorage["wheel3"],localStorage["wheel4"],localStorage["wheel5"],localStorage["wheel6"]];
+
+        //increment the letters showing up on the wheel: IGNORE FOR NOW
+        /*if (wheel1Dropdown.selectedIndex == 25) {
+            wheel1Dropdown.selectedIndex = 0;
+        }
+        else {
+            wheel1Dropdown.selectedIndex += 1;
+        }
+        if (wheel2Dropdown.selectedIndex == 24) {
+            wheel2Dropdown.selectedIndex = 0;
+        }
+        else {
+            wheel2Dropdown.selectedIndex += 1;
+        }
+        if (wheel3Dropdown.selectedIndex == 22) {
+            wheel3Dropdown.selectedIndex = 0;
+        }
+        else {
+            wheel3Dropdown.selectedIndex += 1;
+        }
+        if (wheel4Dropdown.selectedIndex == 20) {
+            wheel4Dropdown.selectedIndex = 0;
+        }
+        else {
+            wheel4Dropdown.selectedIndex += 1;
+        }
+        if (wheel5Dropdown.selectedIndex == 18) {
+            wheel5Dropdown.selectedIndex = 0;
+        }
+        else {
+            wheel5Dropdown.selectedIndex += 1;
+        }
+        if (wheel6Dropdown.selectedIndex == 16) {
+            wheel6Dropdown.selectedIndex = 0;
+        }
+        else {
+            wheel6Dropdown.selectedIndex += 1;
+        }*/
+
+        letterCnt += 1;
+        letCount.innerHTML = letterCnt;
+        diskLetterVal = diskLetterVal.toUpperCase();
+
+        if (cipherVal == 'c') {
+            encrypt_string += encrypt(diskLetterVal, IMI_arr);
+            // console.log(encrypt_string);
+
+            if (decrypt_string != ' ') {
+                letterCnt = 1;
+                letCount.innerHTML = letterCnt;
+                prevbox.innerHTML = 'Decryption String: ' + decrypt_string;
+            }
+            if (letterCnt % 5 == 0) {
+                encrypt_string += ' ';
+            }
+            outputbox.innerHTML = encrypt_string;
+            decrypt_string = ' ';
+        } else if (cipherVal = 'd') {
+            decrypt_string += decrypt(diskLetterVal, IMI_arr);
+
+            if (encrypt_string != ' ') {
+                letterCnt = 1;
+                letCount.innerHTML = letterCnt;
+                prevbox.innerHTML = 'Encryption String: ' + encrypt_string;
+
+            }
+            //if(letterCnt %5 == 0)
+            //{
+            //decrypt_string+= ' ';
+            //}
+            // decryptbox.innerHTML = decrypt_string;
+            outputbox.innerHTML = decrypt_string;
+            encrypt_string = ' ';
+        }
+
+    }
+    window.onload = init;
 </script>
   
    
@@ -140,7 +281,7 @@ localStorage["cypher"] = "c";
     </script>
 </head>
 <body>
-        <div align = "center" style="background-color: #b1a688;">this is where the output will go</div>
+        <div align = "center" id="output-box" style="background-color: #b1a688;">this is where the output will go</div>
         
     </span>
     <br>
@@ -152,7 +293,9 @@ localStorage["cypher"] = "c";
     </span>
     <br>
     <div align="center">
+<div id="letterCounter">
 
+</div>
             <script>
             num = localStorage["num"];
             document.write(num);
@@ -172,5 +315,6 @@ localStorage["cypher"] = "c";
 </span>
 <canvas id="canvas7" style="width: 3%;" resize4 ></canvas>&emsp;&emsp;
 
+<div id="decrypt-box"></div>
 </body>
 </html>
