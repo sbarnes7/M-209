@@ -30,17 +30,23 @@
 	    height: 400px; 
 	  }
       canvas[resize2]{
-          height: 200px;
-          width: 200px;
+          height: 450px;
+          width: 100px;
       }
       canvas[resize3]{
           height: 50%;
+          width: 150px;
       }
       canvas[resize4]{
           height: 200px;
           width: 200px;
           background-color: grey;
+          border-style: solid;
 
+      }
+      canvas[resize5]{
+          height: 150px;
+          width: 150px;
       }
       #html, body{
           background-color: #4b5320;
@@ -224,7 +230,7 @@ var letterCnt = 0;
             this.fillColor = 'black';
             console.log("lever to encypher has been pushed");
             console.log(localStorage["wheel1"] + " " + localStorage["wheel2"] + " " + localStorage["wheel3"] + " " + localStorage["wheel4"] + " " + localStorage["wheel5"] + " " + localStorage["wheel6"]);
-           
+           eval();
            var num = parseInt(0);
            num = localStorage["num"];
             num++;
@@ -281,40 +287,65 @@ localStorage["cypher"] = "c";
     </script>
 </head>
 <body>
-        <div align = "center" id="output-box" style="background-color: #b1a688;">this is where the output will go</div>
-        
-    </span>
-    <br>
-    <span>
-        <div align="right">
-            <canvas id="canvasButton" resize2></canvas>
+            <div align = "center" id="output-box" style="background-color: #b1a688;">this is where the output will go</div>
+    <div class="row" style="width: 100%;">
+        <div class="col-sm-10">
+
+        </div>
+        <div class="col-sm-1">
+            <canvas id="canvasButton" resize5 ></canvas>
+
+        </div>
+        <div class="col-sm-1">
             <canvas id="canvasLever" resize2></canvas>
-            </div>
-    </span>
-    <br>
-    <div align="center">
-<div id="letterCounter">
+
+        </div>
+    </div>
+    <div class="row" style="width: 100%;">
+        <div class="col-sm">
+
+        </div>
+        <div class="col-sm">
+<canvas id="canvas7"style="width: 40%;"  resize4 ></canvas>&emsp;&emsp;
+
+        </div>
+        <div class="col-sm">
+            <canvas id="canvasCypher"  resize3></canvas> 
+
+        </div>
+        <div class="col-sm">
+            <br><br>
+<div id="letterCounter" style="border-style: solid; background-color: grey; color: white; border-color: black;">
 
 </div>
-            <script>
-            num = localStorage["num"];
-            document.write(num);
-            </script>
+        </div>
+        <div class="col-sm">
+            <canvas id="canvas" style="width: 40%;" resize ></canvas>&emsp;&emsp;
+
+        </div>
+        <div class="col-sm">
+                        <canvas id="canvas2" style="width: 40%;" resize ></canvas>&emsp;&emsp;
+
+            </div>
+            <div class="col-sm">
+                        <canvas id="canvas3" style="width: 40%;" resize ></canvas>&emsp;&emsp;
+
+                </div>
+                <div class="col-sm">
+                        <canvas id="canvas4" style="width: 40%;" resize ></canvas>&emsp;&emsp;
+
+                    </div>
+                    <div class="col-sm">
+                        <canvas id="canvas5" style="width: 40%;" resize ></canvas>&emsp;&emsp;
+
+                        </div>
+                        <div class="col-sm">
+                        <canvas id="canvas6" style="width: 40%;" resize ></canvas>&emsp;&emsp;
+
+                            </div>
 
     </div>
-    <span >
-            <div align="center">
-            <canvas id="canvasCypher" resize3></canvas> 
-            <canvas id="canvas" style="width: 3%;" resize ></canvas>&emsp;&emsp;
-            <canvas id="canvas2" style="width: 3%;" resize ></canvas>&emsp;&emsp;
-            <canvas id="canvas3" style="width: 3%;" resize ></canvas>&emsp;&emsp;
-            <canvas id="canvas4" style="width: 3%;" resize ></canvas>&emsp;&emsp;
-            <canvas id="canvas5" style="width: 3%;" resize ></canvas>&emsp;&emsp;
-            <canvas id="canvas6" style="width: 3%;" resize ></canvas>&emsp;&emsp;
-            </div>
-</span>
-<canvas id="canvas7" style="width: 3%;" resize4 ></canvas>&emsp;&emsp;
-
+        
 <div id="decrypt-box"></div>
 </body>
 </html>
