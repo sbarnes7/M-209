@@ -169,7 +169,8 @@ var letterCnt = 0;
 
         if (cipherVal == 'c') {
             encrypt_string += encrypt(diskLetterVal, IMI_arr);
-            // console.log(encrypt_string);
+             console.log(encrypt_string);
+             console.log("hhhhh");
 
             if (decrypt_string != ' ') {
                 letterCnt = 1;
@@ -236,6 +237,7 @@ var letterCnt = 0;
            num = localStorage["num"];
             num++;
             localStorage["num"] = num;
+            inc1();
         }
         shape.onMouseUp = function(event){
             this.fillColor = "grey";

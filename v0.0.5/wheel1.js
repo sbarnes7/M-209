@@ -293,11 +293,13 @@
                 if(group.children[i].position._y > 190){
                     if(group.children[i].position._y < 215){
                                         console.log(group.children[i].content);
+
                                         localStorage["wheel1"] = group.children[i].content;
                                         var wheel1Val = group.children[i].content;
                     }
                 }
-            }            console.log(group.position);
+                console.log("done");
+            }     
 
             console.log(textA.position._y);
             if(textA.position._y > 190){
@@ -305,10 +307,11 @@
                 console.log("true");
                 }
             }
-            //if(new Point(textA.position._x, textA.position._y) >= new Point(0, 190) && new Point(textA.position._x, textA.position._y) <= new Point(65, 215)){
-                //console.log("true!!");
-           // }
-           // console.log(textA.position._x);
+        }
+        function inc1(){
+            for(var i = 0; i < 26; i++){
+                group.children[i].position.y -= 30;
+            }
         }
       
        
