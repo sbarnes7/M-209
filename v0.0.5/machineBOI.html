@@ -58,6 +58,12 @@
     </style>
 
 <script>
+localStorage["wheel1"] = "H";
+localStorage["wheel2"] = "H";
+localStorage["wheel3"] = "H";
+localStorage["wheel4"] = "H";
+localStorage["wheel5"] = "H";
+localStorage["wheel6"] = "H";
 
 var letterCnt = 0;
     var encrypt_string = ' ';
@@ -170,7 +176,7 @@ var letterCnt = 0;
         if (cipherVal == 'c') {
             encrypt_string += encrypt(diskLetterVal, IMI_arr);
              console.log(encrypt_string);
-             console.log("hhhhh");
+           //  console.log("hhhhh");
 
             if (decrypt_string != ' ') {
                 letterCnt = 1;
@@ -498,19 +504,19 @@ var letterCnt = 0;
             for(var i = 0; i < 26; i++){
                 if(group.children[i].position._y > 190){
                     if(group.children[i].position._y < 215){
-                                        console.log(group.children[i].content);
+                                      //  console.log(group.children[i].content);
 
                                         localStorage["wheel1"] = group.children[i].content;
                                         var wheel1Val = group.children[i].content;
                     }
                 }
-                console.log("done");
+             //   console.log("done");
             }     
 
-            console.log(textA.position._y);
+           // console.log(textA.position._y);
             if(textA.position._y > 190){
                 if(textA.position._y < 215){
-                console.log("true");
+            //    console.log("true");
                 }
             }
         }
@@ -519,8 +525,23 @@ var letterCnt = 0;
             scope.activate();
             e.preventDefault();
            for(var i = 0; i < 26; i++){
+               if(localStorage["wheel1"] == "Z"){
+                   group.children[i].position.y += 750;
+               }
+               else{
                 group.children[i].position.y -= 30;
+           
+               }
+        }
+        for(var j = 0; j < 26; j++){
+                          if(group.children[j].position._y > 190){
+                if(group.children[j].position._y < 215){
+                                    localStorage["wheel1"] = group.children[j].content;
+                                    var wheel1Val = group.children[j].content;
+                }
             }
+        }
+        
             return false;
           } //end doSubmit function
           
@@ -810,7 +831,7 @@ var letterCnt = 0;
             for(var i = 0; i < 25; i++){
                 if(group.children[i].position._y > 190){
                     if(group.children[i].position._y < 215){
-                                        console.log(group.children[i].content);
+                                      //  console.log(group.children[i].content);
                                         localStorage["wheel2"] = group.children[i].content;
                                         var wheel2Val = group.children[i].content;
 
@@ -818,10 +839,10 @@ var letterCnt = 0;
                     }
                 }
             }
-            console.log(textA.position._y);
+           // console.log(textA.position._y);
             if(textA.position._y > 190){
                 if(textA.position._y < 215){
-                console.log("true");
+             //   console.log("true");
                 }
             }
             //if(new Point(textA.position._x, textA.position._y) >= new Point(0, 190) && new Point(textA.position._x, textA.position._y) <= new Point(65, 215)){
@@ -836,8 +857,23 @@ var letterCnt = 0;
             scope.activate();
             e.preventDefault();
            for(var i = 0; i < 25; i++){
+               if(localStorage["wheel2"] == "Z"){
+                   group.children[i].position.y += 715;
+               }
+               else{
                 group.children[i].position.y -= 30;
+           
+               }
+        }
+        for(var j = 0; j < 25; j++){
+                          if(group.children[j].position._y > 190){
+                if(group.children[j].position._y < 215){
+                                    localStorage["wheel2"] = group.children[j].content;
+                                    var wheel2Val = group.children[j].content;
+                }
             }
+        }
+        
             return false;
           } //end doSubmit function
           
@@ -1110,7 +1146,7 @@ var letterCnt = 0;
             for(var i = 0; i < 23; i++){
                 if(group.children[i].position._y > 190){
                     if(group.children[i].position._y < 215){
-                                        console.log(group.children[i].content);
+                                       // console.log(group.children[i].content);
                                         localStorage["wheel3"] = group.children[i].content;
                                         var wheel3Val = group.children[i].content;
 
@@ -1118,10 +1154,10 @@ var letterCnt = 0;
                     }
                 }
             }
-            console.log(textA.position._y);
+         //   console.log(textA.position._y);
             if(textA.position._y > 190){
                 if(textA.position._y < 215){
-                console.log("true");
+              //  console.log("true");
                 }
             }
             //if(new Point(textA.position._x, textA.position._y) >= new Point(0, 190) && new Point(textA.position._x, textA.position._y) <= new Point(65, 215)){
@@ -1135,8 +1171,23 @@ var letterCnt = 0;
             scope.activate();
             e.preventDefault();
            for(var i = 0; i < 23; i++){
+               if(localStorage["wheel3"] == "X"){
+                   group.children[i].position.y += 660;
+               }
+               else{
                 group.children[i].position.y -= 30;
+           
+               }
+        }
+        for(var j = 0; j < 23; j++){
+                          if(group.children[j].position._y > 190){
+                if(group.children[j].position._y < 215){
+                                    localStorage["wheel3"] = group.children[j].content;
+                                    var wheel3Val = group.children[j].content;
+                }
             }
+        }
+        
             return false;
           } //end doSubmit function
           
@@ -1384,7 +1435,7 @@ var letterCnt = 0;
             for(var i = 0; i < 21; i++){
                 if(group.children[i].position._y > 190){
                     if(group.children[i].position._y < 215){
-                                        console.log(group.children[i].content);
+                                      //  console.log(group.children[i].content);
                                         localStorage["wheel4"] = group.children[i].content;
                                         var wheel4Val = group.children[i].content;
 
@@ -1392,10 +1443,10 @@ var letterCnt = 0;
                     }
                 }
             }
-            console.log(textA.position._y);
+           // console.log(textA.position._y);
             if(textA.position._y > 190){
                 if(textA.position._y < 215){
-                console.log("true");
+              //  console.log("true");
                 }
             }
             //if(new Point(textA.position._x, textA.position._y) >= new Point(0, 190) && new Point(textA.position._x, textA.position._y) <= new Point(65, 215)){
@@ -1408,8 +1459,23 @@ var letterCnt = 0;
             scope.activate();
             e.preventDefault();
            for(var i = 0; i < 21; i++){
+               if(localStorage["wheel4"] == "U"){
+                   group.children[i].position.y += 600;
+               }
+               else{
                 group.children[i].position.y -= 30;
+           
+               }
+        }
+        for(var j = 0; j < 21; j++){
+                          if(group.children[j].position._y > 190){
+                if(group.children[j].position._y < 215){
+                                    localStorage["wheel4"] = group.children[j].content;
+                                    var wheel4Val = group.children[j].content;
+                }
             }
+        }
+        
             return false;
           } //end doSubmit function
           
@@ -1636,7 +1702,7 @@ var letterCnt = 0;
             for(var i = 0; i < 19; i++){
                 if(group.children[i].position._y > 190){
                     if(group.children[i].position._y < 215){
-                                        console.log(group.children[i].content);
+                                      //  console.log(group.children[i].content);
                                         localStorage["wheel5"] = group.children[i].content;
                                         var wheel5Val = group.children[i].content;
 
@@ -1644,10 +1710,10 @@ var letterCnt = 0;
                     }
                 }
             }
-            console.log(textA.position._y);
+           // console.log(textA.position._y);
             if(textA.position._y > 190){
                 if(textA.position._y < 215){
-                console.log("true");
+                //console.log("true");
                 }
             }
             //if(new Point(textA.position._x, textA.position._y) >= new Point(0, 190) && new Point(textA.position._x, textA.position._y) <= new Point(65, 215)){
@@ -1660,8 +1726,23 @@ var letterCnt = 0;
             scope.activate();
             e.preventDefault();
            for(var i = 0; i < 19; i++){
+               if(localStorage["wheel5"] == "S"){
+                   group.children[i].position.y += 540;
+               }
+               else{
                 group.children[i].position.y -= 30;
+           
+               }
+        }
+        for(var j = 0; j < 19; j++){
+                          if(group.children[j].position._y > 190){
+                if(group.children[j].position._y < 215){
+                                    localStorage["wheel5"] = group.children[j].content;
+                                    var wheel5Val = group.children[j].content;
+                }
             }
+        }
+        
             return false;
           } //end doSubmit function
           
@@ -1865,7 +1946,7 @@ var letterCnt = 0;
             for(var i = 0; i < 17; i++){
                 if(group.children[i].position._y > 190){
                     if(group.children[i].position._y < 215){
-                                        console.log(group.children[i].content);
+                                       // console.log(group.children[i].content);
                                         localStorage["wheel6"] = group.children[i].content;
                                         var wheel6Val = group.children[i].content;
 
@@ -1873,10 +1954,10 @@ var letterCnt = 0;
                     }
                 }
             }
-            console.log(textA.position._y);
+           // console.log(textA.position._y);
             if(textA.position._y > 190){
                 if(textA.position._y < 215){
-                console.log("true");
+               // console.log("true");
                 }
             }
             //if(new Point(textA.position._x, textA.position._y) >= new Point(0, 190) && new Point(textA.position._x, textA.position._y) <= new Point(65, 215)){
@@ -1889,8 +1970,23 @@ var letterCnt = 0;
             scope.activate();
             e.preventDefault();
            for(var i = 0; i < 17; i++){
+               if(localStorage["wheel6"] == "Q"){
+                   group.children[i].position.y += 480;
+               }
+               else{
                 group.children[i].position.y -= 30;
+           
+               }
+        }
+        for(var j = 0; j < 17; j++){
+                          if(group.children[j].position._y > 190){
+                if(group.children[j].position._y < 215){
+                                    localStorage["wheel6"] = group.children[j].content;
+                                    var wheel6Val = group.children[j].content;
+                }
             }
+        }
+        
             return false;
           } //end doSubmit function
           
@@ -2189,16 +2285,16 @@ var letterCnt = 0;
             for(var i = 0; i < 26; i++){
                 if(group.children[i].position._y > 100){
                     if(group.children[i].position._y < 125){
-                                        console.log(group.children[i].content);
+                                      //  console.log(group.children[i].content);
                                         localStorage["diskVal"] = group.children[i].content;
                                         var diskVal = group.children[i].content;
                     }
                 }
             }
-            console.log(textA.position._y);
+          //  console.log(textA.position._y);
             if(textA.position._y > 190){
                 if(textA.position._y < 215){
-                console.log("true");
+               // console.log("true");
                 }
             }
             //if(new Point(textA.position._x, textA.position._y) >= new Point(0, 190) && new Point(textA.position._x, textA.position._y) <= new Point(65, 215)){
@@ -2219,7 +2315,7 @@ var letterCnt = 0;
         });
         shape.onMouseDown = function(event) {
             this.fillColor = 'grey';
-            console.log("reset button has been hit");
+           // console.log("reset button has been hit");
         }
         shape.onMouseUp = function(event){
             this.fillColor = "darkgrey";
@@ -2235,7 +2331,7 @@ var letterCnt = 0;
 
         shape.onMouseDown = function(event) {
             this.fillColor = 'black';
-            console.log("lever to encypher has been pushed");
+           // console.log("lever to encypher has been pushed");
             console.log(localStorage["wheel1"] + " " + localStorage["wheel2"] + " " + localStorage["wheel3"] + " " + localStorage["wheel4"] + " " + localStorage["wheel5"] + " " + localStorage["wheel6"]);
            eval();
            var num = parseInt(0);
@@ -2270,30 +2366,30 @@ text.content = 'C';
 localStorage["cypher"] = "c";
         shape.onMouseDown = function(event) {
             this.fillColor = 'grey';
-            console.log("reset button has been hit");
+          //  console.log("reset button has been hit");
             if(localStorage["cypher"] == "c"){
             text.content = 'D';
             localStorage["cypher"] = "d";
-            console.log("switching to decypher now");
+          //  console.log("switching to decypher now");
             }
             else{
                 text.content = "C";
                 localStorage["cypher"] = "c";
-                console.log("switching to cypher now");
+              //  console.log("switching to cypher now");
             }
         }
         text.onMouseDown = function(event) {
             this.fillColor = 'grey';
-            console.log("reset button has been hit");
+          //  console.log("reset button has been hit");
             if(localStorage["cypher"] == "c"){
             text.content = 'D';
             localStorage["cypher"] = "d";
-            console.log("Switching to decypher now");
+          //  console.log("Switching to decypher now");
             }
             else{
                 text.content = "C";
                 localStorage["cypher"] = "c";
-                console.log("Switching to cypher now");
+                //console.log("Switching to cypher now");
             }
         }
         shape.onMouseUp = function(event){
