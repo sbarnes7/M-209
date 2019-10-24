@@ -514,14 +514,17 @@ var letterCnt = 0;
                 }
             }
         }
-        function inc1(){
-            for(var i = 0; i < 26; i++){
+        var scope = this;
+        inc1 = function(e){
+            scope.activate();
+            e.preventDefault();
+           for(var i = 0; i < 26; i++){
                 group.children[i].position.y -= 30;
             }
-        }
-      
-       
-      
+            return false;
+          } //end doSubmit function
+          
+          window.inc1= inc1;      
       </script>
       <script type="text/paperscript" canvas="canvas2">
         var rectangle = new Rectangle(new Point(0, 190), new Size(65, 25));
@@ -826,6 +829,21 @@ var letterCnt = 0;
            // }
            // console.log(textA.position._x);
         }
+
+
+        var scope = this;
+        inc2 = function(e){
+            scope.activate();
+            e.preventDefault();
+           for(var i = 0; i < 25; i++){
+                group.children[i].position.y -= 30;
+            }
+            return false;
+          } //end doSubmit function
+          
+          window.inc2= inc2;
+
+
       </script>
       <script type="text/paperscript" canvas="canvas3">
         var rectangle = new Rectangle(new Point(0, 190), new Size(65, 25));
@@ -1111,6 +1129,18 @@ var letterCnt = 0;
            // }
            // console.log(textA.position._x);
         }
+
+        var scope = this;
+        inc3 = function(e){
+            scope.activate();
+            e.preventDefault();
+           for(var i = 0; i < 23; i++){
+                group.children[i].position.y -= 30;
+            }
+            return false;
+          } //end doSubmit function
+          
+          window.inc3= inc3;
       </script>
       <script type="text/paperscript" canvas="canvas4">
         var rectangle = new Rectangle(new Point(0, 190), new Size(65, 25));
@@ -1373,6 +1403,17 @@ var letterCnt = 0;
            // }
            // console.log(textA.position._x);
         }
+        var scope = this;
+        inc4 = function(e){
+            scope.activate();
+            e.preventDefault();
+           for(var i = 0; i < 21; i++){
+                group.children[i].position.y -= 30;
+            }
+            return false;
+          } //end doSubmit function
+          
+          window.inc4= inc4;
       </script>
       <script type="text/paperscript" canvas="canvas5">
         var rectangle = new Rectangle(new Point(0, 190), new Size(65, 25));
@@ -1614,6 +1655,17 @@ var letterCnt = 0;
            // }
            // console.log(textA.position._x);
         }
+        var scope = this;
+        inc5 = function(e){
+            scope.activate();
+            e.preventDefault();
+           for(var i = 0; i < 19; i++){
+                group.children[i].position.y -= 30;
+            }
+            return false;
+          } //end doSubmit function
+          
+          window.inc5= inc5;
       </script>
       <script type="text/paperscript" canvas="canvas6">
         var rectangle = new Rectangle(new Point(0, 190), new Size(65, 25));
@@ -1832,6 +1884,17 @@ var letterCnt = 0;
            // }
            // console.log(textA.position._x);
         }
+        var scope = this;
+        inc6 = function(e){
+            scope.activate();
+            e.preventDefault();
+           for(var i = 0; i < 17; i++){
+                group.children[i].position.y -= 30;
+            }
+            return false;
+          } //end doSubmit function
+          
+          window.inc6= inc6;
       </script>
       <script type="text/paperscript" canvas="canvas7">
         var rectangle = new Rectangle(new Point(0, 100), new Size(65, 25));
@@ -2179,7 +2242,14 @@ var letterCnt = 0;
            num = localStorage["num"];
             num++;
             localStorage["num"] = num;
-            inc1();
+            inc1(event);
+            inc2(event);
+            inc3(event);
+            inc4(event);
+            inc5(event);
+            inc6(event);
+
+
         }
         shape.onMouseUp = function(event){
             this.fillColor = "grey";
