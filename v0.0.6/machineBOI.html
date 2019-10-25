@@ -209,6 +209,7 @@ var letterCnt = 0;
     }
     window.onload = init;
 </script>
+    <!--wheel1 canvas-->
       <script type="text/paperscript" canvas="canvas">
         var rectangle = new Rectangle(new Point(0, 190), new Size(65, 25));
         var shape = new Shape.Rectangle(rectangle);
@@ -495,6 +496,7 @@ var letterCnt = 0;
         var group = new Group([textA, textB, textC, textD, textE, textF, textG, textH, textI, textJ, textK, textL, textM, textN, textO, textP, textQ, textR, textS, textT, textU, textV, textW, textX, textY, textZ]);
         group.onMouseDrag = function(event){
             //group.position = (group.position._x, group.posiiton._y + event.delta.y);
+            event.delta.x = 0;
             group.position += event.delta;
         
             
@@ -547,6 +549,7 @@ var letterCnt = 0;
           
           window.inc1= inc1;      
       </script>
+      <!--wheel2 canvas-->
       <script type="text/paperscript" canvas="canvas2">
         var rectangle = new Rectangle(new Point(0, 190), new Size(65, 25));
         var shape = new Shape.Rectangle(rectangle);
@@ -823,6 +826,7 @@ var letterCnt = 0;
     
         var group = new Group([textA, textB, textC, textD, textE, textF, textG, textH, textI, textJ, textK, textL, textM, textN, textO, textP, textQ, textR, textS, textT, textU, textV, textX, textY, textZ]);
         group.onMouseDrag = function(event){
+            event.delta.x = 0;
             group.position += event.delta;
             
     
@@ -881,6 +885,7 @@ var letterCnt = 0;
 
 
       </script>
+      <!--wheel3 canvas-->
       <script type="text/paperscript" canvas="canvas3">
         var rectangle = new Rectangle(new Point(0, 190), new Size(65, 25));
         var shape = new Shape.Rectangle(rectangle);
@@ -1138,6 +1143,7 @@ var letterCnt = 0;
     
         var group = new Group([textA, textB, textC, textD, textE, textF, textG, textH, textI, textJ, textK, textL, textM, textN, textO, textP, textQ, textR, textS, textT, textU, textV, textX]);
         group.onMouseDrag = function(event){
+            event.delta.x = 0;
             group.position += event.delta;
             
     
@@ -1193,6 +1199,7 @@ var letterCnt = 0;
           
           window.inc3= inc3;
       </script>
+      <!--wheel4 canvas-->
       <script type="text/paperscript" canvas="canvas4">
         var rectangle = new Rectangle(new Point(0, 190), new Size(65, 25));
         var shape = new Shape.Rectangle(rectangle);
@@ -1427,6 +1434,7 @@ var letterCnt = 0;
     
         var group = new Group([textA, textB, textC, textD, textE, textF, textG, textH, textI, textJ, textK, textL, textM, textN, textO, textP, textQ, textR, textS, textT, textU]);
         group.onMouseDrag = function(event){
+            event.delta.x = 0;
             group.position += event.delta;
             
     
@@ -1481,6 +1489,7 @@ var letterCnt = 0;
           
           window.inc4= inc4;
       </script>
+      <!--wheel5 canvas-->
       <script type="text/paperscript" canvas="canvas5">
         var rectangle = new Rectangle(new Point(0, 190), new Size(65, 25));
         var shape = new Shape.Rectangle(rectangle);
@@ -1694,6 +1703,7 @@ var letterCnt = 0;
     
         var group = new Group([textA, textB, textC, textD, textE, textF, textG, textH, textI, textJ, textK, textL, textM, textN, textO, textP, textQ, textR, textS]);
         group.onMouseDrag = function(event){
+            event.delta.x = 0;
             group.position += event.delta;
             
     
@@ -1748,6 +1758,7 @@ var letterCnt = 0;
           
           window.inc5= inc5;
       </script>
+      <!--wheel6 canvas-->
       <script type="text/paperscript" canvas="canvas6">
         var rectangle = new Rectangle(new Point(0, 190), new Size(65, 25));
         var shape = new Shape.Rectangle(rectangle);
@@ -1938,6 +1949,7 @@ var letterCnt = 0;
  
         var group = new Group([textA, textB, textC, textD, textE, textF, textG, textH, textI, textJ, textK, textL, textM, textN, textO, textP, textQ]);
         group.onMouseDrag = function(event){
+            event.delta.x = 0;
             group.position += event.delta;
             
     
@@ -2277,6 +2289,7 @@ var letterCnt = 0;
     
         var group = new Group([textA, textB, textC, textD, textE, textF, textG, textH, textI, textJ, textK, textL, textM, textN, textO, textP, textQ, textR, textS, textT, textU, textV, textW, textX, textY, textZ]);
         group.onMouseDrag = function(event){
+            event.delta.x = 0;
             group.position += event.delta;
             
     
@@ -2414,7 +2427,6 @@ localStorage["cypher"] = "c";
     </div>
     <div class="row" style="width: 100%;">
         <div class="col-sm">
-
         </div>
         <div class="col-sm">
 <canvas id="canvas7"style="width: 40%;"  resize4 ></canvas>&emsp;&emsp;
@@ -2432,31 +2444,30 @@ localStorage["cypher"] = "c";
         </div>
         <div class="col-sm">
             <canvas id="canvas" style="width: 40%;" resize ></canvas>&emsp;&emsp;
-
         </div>
         <div class="col-sm">
                         <canvas id="canvas2" style="width: 40%;" resize ></canvas>&emsp;&emsp;
-
             </div>
             <div class="col-sm">
                         <canvas id="canvas3" style="width: 40%;" resize ></canvas>&emsp;&emsp;
-
                 </div>
                 <div class="col-sm">
                         <canvas id="canvas4" style="width: 40%;" resize ></canvas>&emsp;&emsp;
-
                     </div>
                     <div class="col-sm">
                         <canvas id="canvas5" style="width: 40%;" resize ></canvas>&emsp;&emsp;
-
                         </div>
                         <div class="col-sm">
                         <canvas id="canvas6" style="width: 40%;" resize ></canvas>&emsp;&emsp;
-
                             </div>
-
     </div>
         
 <div id="decrypt-box"></div>
 </body>
+<!--to loop the letters around
+    - if group at i content is A at certain point on canvas
+        - duplicate the group adding x to the original letter above the current group (i*30??)
+    - if group at i content is z at certain point on canvas
+        - create new group subtracting x to the original letter (i*30??)
+-->
 </html>
