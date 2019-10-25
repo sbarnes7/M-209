@@ -1,0 +1,2462 @@
+<!DOCTYPE html>
+<html>
+<head>
+        <script type="text/javascript" src="paper.js"></script> 
+
+        <link rel="stylesheet" href="https://stackpath.bootstrapcdn.com/bootstrap/4.3.1/css/bootstrap.min.css" integrity="sha384-ggOyR0iXCbMQv3Xipma34MD+dH/1fQ784/j6cY/iJTQUOhcWr7x9JvoRxT2MZw1T" crossorigin="anonymous">
+        <script src="https://code.jquery.com/jquery-3.3.1.slim.min.js" integrity="sha384-q8i/X+965DzO0rT7abK41JStQIAqVgRVzpbzo5smXKp4YfRvH+8abtTE1Pi6jizo" crossorigin="anonymous"></script>
+<script src="https://cdnjs.cloudflare.com/ajax/libs/popper.js/1.14.7/umd/popper.min.js" integrity="sha384-UO2eT0CpHqdSJQ6hJty5KVphtPhzWj9WO1clHTMGa3JDZwrnQq4sF86dIHNDz0W1" crossorigin="anonymous"></script>
+<script src="https://stackpath.bootstrapcdn.com/bootstrap/4.3.1/js/bootstrap.min.js" integrity="sha384-JjSmVgyd0p3pXB1rRibZUAYoIIy6OrQ6VrjIEaFf/nJGzIxFDsf4x0xIM+B07jRM" crossorigin="anonymous"></script>
+
+    <meta charset="UTF-8">
+    <title>M-209</title>
+    <link rel="stylesheet" href="../css/style.css">
+
+    <script src="m209.js"></script>
+
+    <!--<script type="text/paperscript" src="wheel1.js" canvas="canvas"></script>
+    <script type="text/paperscript" src="wheel2.js" canvas="canvas2"></script>
+    <script type="text/paperscript" src="wheel3.js" canvas="canvas3"></script>
+    <script type="text/paperscript" src="wheel4.js" canvas="canvas4"></script>
+    <script type="text/paperscript" src="wheel5.js" canvas="canvas5"></script>
+    <script type="text/paperscript" src="wheel6.js" canvas="canvas6"></script>
+    <script type="text/paperscript" src="indicatingDisk.js" canvas="canvas7"></script>-->
+
+    <style>
+  canvas[resize] {
+	    border-style: solid;
+        background-color: grey;
+	    width: 50%;
+	    height: 400px; 
+	  }
+      canvas[resize2]{
+          height: 450px;
+          width: 100px;
+      }
+      canvas[resize3]{
+          height: 50%;
+          width: 150px;
+      }
+      canvas[resize4]{
+          height: 200px;
+          width: 200px;
+          background-color: grey;
+          border-style: solid;
+
+      }
+      canvas[resize5]{
+          height: 150px;
+          width: 150px;
+      }
+      #html, body{
+          background-color: #4b5320;
+      }
+#html, body{
+    height: 100%;
+    width: 100%;
+}
+    </style>
+
+<script>
+localStorage["wheel1"] = "H";
+localStorage["wheel2"] = "H";
+localStorage["wheel3"] = "H";
+localStorage["wheel4"] = "H";
+localStorage["wheel5"] = "H";
+localStorage["wheel6"] = "H";
+
+var letterCnt = 0;
+    var encrypt_string = ' ';
+    var decrypt_string = ' ';
+    function init() {
+        var letCount = document.getElementById("letterCounter");
+        var outputbox = document.getElementById("output-box");
+        var prevbox = document.getElementById("decrypt-box");
+
+        outputbox.innerHTML = 'Current Tape';
+        prevbox.innerHTML = 'Previous Tape';
+
+        letCount.innerHTML = letterCnt;
+    }
+
+
+    //var sel = document.getElementsByTagName("option");
+
+
+    function reset() {
+        var outputbox = document.getElementById("output-box");
+        var prevbox = document.getElementById("decrypt-box");
+        var letCount = document.getElementById("letterCounter");
+        letterCnt = 0;
+        letCount.innerHTML = letterCnt;
+
+
+
+        encrypt_string = ' ';
+        decrypt_string = ' ';
+        
+        outputbox.innerHTML = 'Current Tape';
+        prevbox.innerHTML = 'Previous Tape';
+
+
+    }
+
+    function eval() {
+        var letCount = document.getElementById("letterCounter");
+
+        var outputbox = document.getElementById("output-box");
+        var prevbox = document.getElementById("decrypt-box");
+
+
+        //Encipher or decipher:
+        var cipherVal = localStorage["cypher"];
+
+        //Indicating disk:
+        var letterDropdown = document.getElementById("exampleFormControlSelect2");
+        var diskLetterVal = localStorage["diskVal"];
+
+
+        //Save all 6 wheels:
+        var wheel1Val = localStorage["wheel1"];
+
+        var wheel2Val = localStorage["wheel2"];
+
+        var wheel3Val = localStorage["wheel3"];
+
+        var wheel4Val = localStorage["wheel4"];
+
+        var wheel5Val = localStorage["wheel5"];
+
+        var wheel6Val = localStorage["wheel6"];
+
+        var IMI_arr = [localStorage["wheel1"],localStorage["wheel2"],localStorage["wheel3"],localStorage["wheel4"],localStorage["wheel5"],localStorage["wheel6"]];
+
+        //increment the letters showing up on the wheel: IGNORE FOR NOW
+        /*if (wheel1Dropdown.selectedIndex == 25) {
+            wheel1Dropdown.selectedIndex = 0;
+        }
+        else {
+            wheel1Dropdown.selectedIndex += 1;
+        }
+        if (wheel2Dropdown.selectedIndex == 24) {
+            wheel2Dropdown.selectedIndex = 0;
+        }
+        else {
+            wheel2Dropdown.selectedIndex += 1;
+        }
+        if (wheel3Dropdown.selectedIndex == 22) {
+            wheel3Dropdown.selectedIndex = 0;
+        }
+        else {
+            wheel3Dropdown.selectedIndex += 1;
+        }
+        if (wheel4Dropdown.selectedIndex == 20) {
+            wheel4Dropdown.selectedIndex = 0;
+        }
+        else {
+            wheel4Dropdown.selectedIndex += 1;
+        }
+        if (wheel5Dropdown.selectedIndex == 18) {
+            wheel5Dropdown.selectedIndex = 0;
+        }
+        else {
+            wheel5Dropdown.selectedIndex += 1;
+        }
+        if (wheel6Dropdown.selectedIndex == 16) {
+            wheel6Dropdown.selectedIndex = 0;
+        }
+        else {
+            wheel6Dropdown.selectedIndex += 1;
+        }*/
+
+        letterCnt += 1;
+        letCount.innerHTML = letterCnt;
+        diskLetterVal = diskLetterVal.toUpperCase();
+
+        if (cipherVal == 'c') {
+            encrypt_string += encrypt(diskLetterVal, IMI_arr);
+             console.log(encrypt_string);
+           //  console.log("hhhhh");
+
+            if (decrypt_string != ' ') {
+                letterCnt = 1;
+                letCount.innerHTML = letterCnt;
+                prevbox.innerHTML = 'Decryption String: ' + decrypt_string;
+            }
+            if (letterCnt % 5 == 0) {
+                encrypt_string += ' ';
+            }
+            outputbox.innerHTML = encrypt_string;
+            decrypt_string = ' ';
+        } else if (cipherVal = 'd') {
+            decrypt_string += decrypt(diskLetterVal, IMI_arr);
+
+            if (encrypt_string != ' ') {
+                letterCnt = 1;
+                letCount.innerHTML = letterCnt;
+                prevbox.innerHTML = 'Encryption String: ' + encrypt_string;
+
+            }
+            //if(letterCnt %5 == 0)
+            //{
+            //decrypt_string+= ' ';
+            //}
+            // decryptbox.innerHTML = decrypt_string;
+            outputbox.innerHTML = decrypt_string;
+            encrypt_string = ' ';
+        }
+
+    }
+    window.onload = init;
+</script>
+      <script type="text/paperscript" canvas="canvas">
+        var rectangle = new Rectangle(new Point(0, 190), new Size(65, 25));
+        var shape = new Shape.Rectangle(rectangle);
+        shape.strokeColor = 'black';
+        
+
+        var textA = new PointText(new Point(30, 0));
+        textA.fillColor = 'black';
+        textA.style = {
+            fontFamily: 'Courier New',
+            fontSize: 20,
+            fillColor: 'black',
+            justification: 'center'
+        };        
+        // Set the content of the text item:
+        textA.content = 'A';
+        var textB = new PointText(new Point(30, 30));
+        textB.fillColor = 'black';
+        textB.style = {
+            fontFamily: 'Courier New',
+            fontSize: 20,
+            fillColor: 'black',
+            justification: 'center'
+        };  
+        // Set the content of the text item:
+        textB.content = 'B';
+
+        var textC = new PointText(new Point(30, 60));
+        textC.fillColor = 'black';
+        textC.style = {
+            fontFamily: 'Courier New',
+            fontSize: 20,
+            fillColor: 'black',
+            justification: 'center'
+        };  
+        // Set the content of the text item:
+        textC.content = 'C';
+        var textD = new PointText(new Point(30, 90));
+        textD.fillColor = 'black';
+        textD.style = {
+            fontFamily: 'Courier New',
+            fontSize: 20,
+            fillColor: 'black',
+            justification: 'center'
+        };  
+        // Set the content of the text item:
+        textD.content = 'D';
+ 
+        var textE = new PointText(new Point(30, 120));
+        textE.fillColor = 'black';
+        textE.style = {
+            fontFamily: 'Courier New',
+            fontSize: 20,
+            fillColor: 'black',
+            justification: 'center'
+        };  
+        // Set the content of the text item:
+        textE.content = 'E';
+        var textF = new PointText(new Point(30, 150));
+        textF.fillColor = 'black';
+        textF.style = {
+            fontFamily: 'Courier New',
+            fontSize: 20,
+            fillColor: 'black',
+            justification: 'center'
+        };  
+        // Set the content of the text item:
+        textF.content = 'F';
+
+        var textG = new PointText(new Point(30, 180));
+        textG.fillColor = 'black';
+        textG.style = {
+            fontFamily: 'Courier New',
+            fontSize: 20,
+            fillColor: 'black',
+            justification: 'center'
+        };  
+        // Set the content of the text item:
+        textG.content = 'G';
+        var textH = new PointText(new Point(30, 210));
+        textH.fillColor = 'black';
+        textH.style = {
+            fontFamily: 'Courier New',
+            fontSize: 20,
+            fillColor: 'black',
+            justification: 'center'
+        };  
+        // Set the content of the text item:
+        textH.content = 'H';
+
+
+        var textI = new PointText(new Point(30, 240));
+        textI.fillColor = 'black';
+        textI.style = {
+            fontFamily: 'Courier New',
+            fontSize: 20,
+            fillColor: 'black',
+            justification: 'center'
+        };  
+        // Set the content of the text item:
+        textI.content = 'I';
+        var textJ = new PointText(new Point(30, 270));
+        textJ.fillColor = 'black';
+        
+        // Set the content of the text item:
+        textJ.content = 'J';
+        textJ.style = {
+            fontFamily: 'Courier New',
+            fontSize: 20,
+            fillColor: 'black',
+            justification: 'center'
+        };  
+        var textK = new PointText(new Point(30, 300));
+        textK.fillColor = 'black';
+        textK.style = {
+            fontFamily: 'Courier New',
+            fontSize: 20,
+            fillColor: 'black',
+            justification: 'center'
+        };  
+        // Set the content of the text item:
+        textK.content = 'K';
+        var textL = new PointText(new Point(30, 330));
+        textL.fillColor = 'black';
+        textL.style = {
+            fontFamily: 'Courier New',
+            fontSize: 20,
+            fillColor: 'black',
+            justification: 'center'
+        };  
+        // Set the content of the text item:
+        textL.content = 'L';
+ 
+        var textM = new PointText(new Point(30, 360));
+        textM.fillColor = 'black';
+        textM.style = {
+            fontFamily: 'Courier New',
+            fontSize: 20,
+            fillColor: 'black',
+            justification: 'center'
+        };  
+        // Set the content of the text item:
+        textM.content = 'M';
+        var textN = new PointText(new Point(30, 390));
+        textN.fillColor = 'black';
+        textN.style = {
+            fontFamily: 'Courier New',
+            fontSize: 20,
+            fillColor: 'black',
+            justification: 'center'
+        };  
+        // Set the content of the text item:
+        textN.content = 'N';
+
+        var textO = new PointText(new Point(30, 420));
+        textO.fillColor = 'black';
+        textO.style = {
+            fontFamily: 'Courier New',
+            fontSize: 20,
+            fillColor: 'black',
+            justification: 'center'
+        };  
+        // Set the content of the text item:
+        textO.content = 'O';
+        var textP = new PointText(new Point(30, 450));
+        textP.fillColor = 'black';
+        textP.style = {
+            fontFamily: 'Courier New',
+            fontSize: 20,
+            fillColor: 'black',
+            justification: 'center'
+        };  
+        // Set the content of the text item:
+        textP.content = 'P';
+ 
+
+
+        var textQ = new PointText(new Point(30, 480));
+        textQ.fillColor = 'black';
+        textQ.style = {
+            fontFamily: 'Courier New',
+            fontSize: 20,
+            fillColor: 'black',
+            justification: 'center'
+        };  
+        // Set the content of the text item:
+        textQ.content = 'Q';
+        var textR = new PointText(new Point(30, 510));
+        textR.fillColor = 'black';
+        textR.style = {
+            fontFamily: 'Courier New',
+            fontSize: 20,
+            fillColor: 'black',
+            justification: 'center'
+        };  
+        // Set the content of the text item:
+        textR.content = 'R';
+
+
+        var textS = new PointText(new Point(30, 540));
+        textS.fillColor = 'black';
+        textS.style = {
+            fontFamily: 'Courier New',
+            fontSize: 20,
+            fillColor: 'black',
+            justification: 'center'
+        };  
+        // Set the content of the text item:
+        textS.content = 'S';
+        var textT = new PointText(new Point(30, 570));
+        textT.fillColor = 'black';
+        textT.style = {
+            fontFamily: 'Courier New',
+            fontSize: 20,
+            fillColor: 'black',
+            justification: 'center'
+        };  
+        // Set the content of the text item:
+        textT.content = 'T';
+
+        var textU = new PointText(new Point(30, 600));
+        textU.fillColor = 'black';
+        textU.style = {
+            fontFamily: 'Courier New',
+            fontSize: 20,
+            fillColor: 'black',
+            justification: 'center'
+        };  
+        // Set the content of the text item:
+        textU.content = 'U';
+        var textV = new PointText(new Point(30, 630));
+        textV.fillColor = 'black';
+        textV.style = {
+            fontFamily: 'Courier New',
+            fontSize: 20,
+            fillColor: 'black',
+            justification: 'center'
+        };  
+        // Set the content of the text item:
+        textV.content = 'V';
+ 
+        var textW = new PointText(new Point(30, 660));
+        textW.fillColor = 'black';
+        textW.style = {
+            fontFamily: 'Courier New',
+            fontSize: 20,
+            fillColor: 'black',
+            justification: 'center'
+        };  
+        // Set the content of the text item:
+        textW.content = 'W';
+        var textX = new PointText(new Point(30, 690));
+        textX.fillColor = 'black';
+        textX.style = {
+            fontFamily: 'Courier New',
+            fontSize: 20,
+            fillColor: 'black',
+            justification: 'center'
+        };  
+        // Set the content of the text item:
+        textX.content = 'X';
+
+        var textY = new PointText(new Point(30, 720));
+        textY.fillColor = 'black';
+        textY.style = {
+            fontFamily: 'Courier New',
+            fontSize: 20,
+            fillColor: 'black',
+            justification: 'center'
+        };  
+        // Set the content of the text item:
+        textY.content = 'Y';
+        var textZ = new PointText(new Point(30, 750));
+        textZ.fillColor = 'black';
+        textZ.style = {
+            fontFamily: 'Courier New',
+            fontSize: 20,
+            fillColor: 'black',
+            justification: 'center'
+        };  
+        // Set the content of the text item:
+        textZ.content = 'Z';
+    
+        var group = new Group([textA, textB, textC, textD, textE, textF, textG, textH, textI, textJ, textK, textL, textM, textN, textO, textP, textQ, textR, textS, textT, textU, textV, textW, textX, textY, textZ]);
+        group.onMouseDrag = function(event){
+            //group.position = (group.position._x, group.posiiton._y + event.delta.y);
+            group.position += event.delta;
+        
+            
+    
+        }
+        group.onMouseUp = function(event){
+            for(var i = 0; i < 26; i++){
+                if(group.children[i].position._y > 190){
+                    if(group.children[i].position._y < 215){
+                                      //  console.log(group.children[i].content);
+
+                                        localStorage["wheel1"] = group.children[i].content;
+                                        var wheel1Val = group.children[i].content;
+                    }
+                }
+             //   console.log("done");
+            }     
+
+           // console.log(textA.position._y);
+            if(textA.position._y > 190){
+                if(textA.position._y < 215){
+            //    console.log("true");
+                }
+            }
+        }
+        var scope = this;
+        inc1 = function(e){
+            scope.activate();
+            e.preventDefault();
+           for(var i = 0; i < 26; i++){
+               if(localStorage["wheel1"] == "Z"){
+                   group.children[i].position.y += 750;
+               }
+               else{
+                group.children[i].position.y -= 30;
+           
+               }
+        }
+        for(var j = 0; j < 26; j++){
+                          if(group.children[j].position._y > 190){
+                if(group.children[j].position._y < 215){
+                                    localStorage["wheel1"] = group.children[j].content;
+                                    var wheel1Val = group.children[j].content;
+                }
+            }
+        }
+        
+            return false;
+          } //end doSubmit function
+          
+          window.inc1= inc1;      
+      </script>
+      <script type="text/paperscript" canvas="canvas2">
+        var rectangle = new Rectangle(new Point(0, 190), new Size(65, 25));
+        var shape = new Shape.Rectangle(rectangle);
+        shape.strokeColor = 'black';
+        
+
+        var textA = new PointText(new Point(30, 0));
+        textA.fillColor = 'black';
+        textA.style = {
+            fontFamily: 'Courier New',
+            fontSize: 20,
+            fillColor: 'black',
+            justification: 'center'
+        };        
+        // Set the content of the text item:
+        textA.content = 'A';
+        var textB = new PointText(new Point(30, 30));
+        textB.fillColor = 'black';
+        textB.style = {
+            fontFamily: 'Courier New',
+            fontSize: 20,
+            fillColor: 'black',
+            justification: 'center'
+        };  
+        // Set the content of the text item:
+        textB.content = 'B';
+
+        var textC = new PointText(new Point(30, 60));
+        textC.fillColor = 'black';
+        textC.style = {
+            fontFamily: 'Courier New',
+            fontSize: 20,
+            fillColor: 'black',
+            justification: 'center'
+        };  
+        // Set the content of the text item:
+        textC.content = 'C';
+        var textD = new PointText(new Point(30, 90));
+        textD.fillColor = 'black';
+        textD.style = {
+            fontFamily: 'Courier New',
+            fontSize: 20,
+            fillColor: 'black',
+            justification: 'center'
+        };  
+        // Set the content of the text item:
+        textD.content = 'D';
+ 
+        var textE = new PointText(new Point(30, 120));
+        textE.fillColor = 'black';
+        textE.style = {
+            fontFamily: 'Courier New',
+            fontSize: 20,
+            fillColor: 'black',
+            justification: 'center'
+        };  
+        // Set the content of the text item:
+        textE.content = 'E';
+        var textF = new PointText(new Point(30, 150));
+        textF.fillColor = 'black';
+        textF.style = {
+            fontFamily: 'Courier New',
+            fontSize: 20,
+            fillColor: 'black',
+            justification: 'center'
+        };  
+        // Set the content of the text item:
+        textF.content = 'F';
+
+        var textG = new PointText(new Point(30, 180));
+        textG.fillColor = 'black';
+        textG.style = {
+            fontFamily: 'Courier New',
+            fontSize: 20,
+            fillColor: 'black',
+            justification: 'center'
+        };  
+        // Set the content of the text item:
+        textG.content = 'G';
+        var textH = new PointText(new Point(30, 210));
+        textH.fillColor = 'black';
+        textH.style = {
+            fontFamily: 'Courier New',
+            fontSize: 20,
+            fillColor: 'black',
+            justification: 'center'
+        };  
+        // Set the content of the text item:
+        textH.content = 'H';
+
+
+        var textI = new PointText(new Point(30, 240));
+        textI.fillColor = 'black';
+        textI.style = {
+            fontFamily: 'Courier New',
+            fontSize: 20,
+            fillColor: 'black',
+            justification: 'center'
+        };  
+        // Set the content of the text item:
+        textI.content = 'I';
+        var textJ = new PointText(new Point(30, 270));
+        textJ.fillColor = 'black';
+        
+        // Set the content of the text item:
+        textJ.content = 'J';
+        textJ.style = {
+            fontFamily: 'Courier New',
+            fontSize: 20,
+            fillColor: 'black',
+            justification: 'center'
+        };  
+        var textK = new PointText(new Point(30, 300));
+        textK.fillColor = 'black';
+        textK.style = {
+            fontFamily: 'Courier New',
+            fontSize: 20,
+            fillColor: 'black',
+            justification: 'center'
+        };  
+        // Set the content of the text item:
+        textK.content = 'K';
+        var textL = new PointText(new Point(30, 330));
+        textL.fillColor = 'black';
+        textL.style = {
+            fontFamily: 'Courier New',
+            fontSize: 20,
+            fillColor: 'black',
+            justification: 'center'
+        };  
+        // Set the content of the text item:
+        textL.content = 'L';
+ 
+        var textM = new PointText(new Point(30, 360));
+        textM.fillColor = 'black';
+        textM.style = {
+            fontFamily: 'Courier New',
+            fontSize: 20,
+            fillColor: 'black',
+            justification: 'center'
+        };  
+        // Set the content of the text item:
+        textM.content = 'M';
+        var textN = new PointText(new Point(30, 390));
+        textN.fillColor = 'black';
+        textN.style = {
+            fontFamily: 'Courier New',
+            fontSize: 20,
+            fillColor: 'black',
+            justification: 'center'
+        };  
+        // Set the content of the text item:
+        textN.content = 'N';
+
+        var textO = new PointText(new Point(30, 420));
+        textO.fillColor = 'black';
+        textO.style = {
+            fontFamily: 'Courier New',
+            fontSize: 20,
+            fillColor: 'black',
+            justification: 'center'
+        };  
+        // Set the content of the text item:
+        textO.content = 'O';
+        var textP = new PointText(new Point(30, 450));
+        textP.fillColor = 'black';
+        textP.style = {
+            fontFamily: 'Courier New',
+            fontSize: 20,
+            fillColor: 'black',
+            justification: 'center'
+        };  
+        // Set the content of the text item:
+        textP.content = 'P';
+ 
+
+
+        var textQ = new PointText(new Point(30, 480));
+        textQ.fillColor = 'black';
+        textQ.style = {
+            fontFamily: 'Courier New',
+            fontSize: 20,
+            fillColor: 'black',
+            justification: 'center'
+        };  
+        // Set the content of the text item:
+        textQ.content = 'Q';
+        var textR = new PointText(new Point(30, 510));
+        textR.fillColor = 'black';
+        textR.style = {
+            fontFamily: 'Courier New',
+            fontSize: 20,
+            fillColor: 'black',
+            justification: 'center'
+        };  
+        // Set the content of the text item:
+        textR.content = 'R';
+
+
+        var textS = new PointText(new Point(30, 540));
+        textS.fillColor = 'black';
+        textS.style = {
+            fontFamily: 'Courier New',
+            fontSize: 20,
+            fillColor: 'black',
+            justification: 'center'
+        };  
+        // Set the content of the text item:
+        textS.content = 'S';
+        var textT = new PointText(new Point(30, 570));
+        textT.fillColor = 'black';
+        textT.style = {
+            fontFamily: 'Courier New',
+            fontSize: 20,
+            fillColor: 'black',
+            justification: 'center'
+        };  
+        // Set the content of the text item:
+        textT.content = 'T';
+
+        var textU = new PointText(new Point(30, 600));
+        textU.fillColor = 'black';
+        textU.style = {
+            fontFamily: 'Courier New',
+            fontSize: 20,
+            fillColor: 'black',
+            justification: 'center'
+        };  
+        // Set the content of the text item:
+        textU.content = 'U';
+        var textV = new PointText(new Point(30, 630));
+        textV.fillColor = 'black';
+        textV.style = {
+            fontFamily: 'Courier New',
+            fontSize: 20,
+            fillColor: 'black',
+            justification: 'center'
+        };  
+        // Set the content of the text item:
+        textV.content = 'V';
+ 
+       
+        var textX = new PointText(new Point(30, 660));
+        textX.fillColor = 'black';
+        textX.style = {
+            fontFamily: 'Courier New',
+            fontSize: 20,
+            fillColor: 'black',
+            justification: 'center'
+        };  
+        // Set the content of the text item:
+        textX.content = 'X';
+
+        var textY = new PointText(new Point(30, 690));
+        textY.fillColor = 'black';
+        textY.style = {
+            fontFamily: 'Courier New',
+            fontSize: 20,
+            fillColor: 'black',
+            justification: 'center'
+        };  
+        // Set the content of the text item:
+        textY.content = 'Y';
+        var textZ = new PointText(new Point(30, 720));
+        textZ.fillColor = 'black';
+        textZ.style = {
+            fontFamily: 'Courier New',
+            fontSize: 20,
+            fillColor: 'black',
+            justification: 'center'
+        };  
+        // Set the content of the text item:
+        textZ.content = 'Z';
+    
+        var group = new Group([textA, textB, textC, textD, textE, textF, textG, textH, textI, textJ, textK, textL, textM, textN, textO, textP, textQ, textR, textS, textT, textU, textV, textX, textY, textZ]);
+        group.onMouseDrag = function(event){
+            group.position += event.delta;
+            
+    
+        }
+        group.onMouseUp = function(event){
+            for(var i = 0; i < 25; i++){
+                if(group.children[i].position._y > 190){
+                    if(group.children[i].position._y < 215){
+                                      //  console.log(group.children[i].content);
+                                        localStorage["wheel2"] = group.children[i].content;
+                                        var wheel2Val = group.children[i].content;
+
+
+                    }
+                }
+            }
+           // console.log(textA.position._y);
+            if(textA.position._y > 190){
+                if(textA.position._y < 215){
+             //   console.log("true");
+                }
+            }
+            //if(new Point(textA.position._x, textA.position._y) >= new Point(0, 190) && new Point(textA.position._x, textA.position._y) <= new Point(65, 215)){
+                //console.log("true!!");
+           // }
+           // console.log(textA.position._x);
+        }
+
+
+        var scope = this;
+        inc2 = function(e){
+            scope.activate();
+            e.preventDefault();
+           for(var i = 0; i < 25; i++){
+               if(localStorage["wheel2"] == "Z"){
+                   group.children[i].position.y += 715;
+               }
+               else{
+                group.children[i].position.y -= 30;
+           
+               }
+        }
+        for(var j = 0; j < 25; j++){
+                          if(group.children[j].position._y > 190){
+                if(group.children[j].position._y < 215){
+                                    localStorage["wheel2"] = group.children[j].content;
+                                    var wheel2Val = group.children[j].content;
+                }
+            }
+        }
+        
+            return false;
+          } //end doSubmit function
+          
+          window.inc2= inc2;
+
+
+      </script>
+      <script type="text/paperscript" canvas="canvas3">
+        var rectangle = new Rectangle(new Point(0, 190), new Size(65, 25));
+        var shape = new Shape.Rectangle(rectangle);
+        shape.strokeColor = 'black';
+        
+
+        var textA = new PointText(new Point(30, 0));
+        textA.fillColor = 'black';
+        textA.style = {
+            fontFamily: 'Courier New',
+            fontSize: 20,
+            fillColor: 'black',
+            justification: 'center'
+        };        
+        // Set the content of the text item:
+        textA.content = 'A';
+        var textB = new PointText(new Point(30, 30));
+        textB.fillColor = 'black';
+        textB.style = {
+            fontFamily: 'Courier New',
+            fontSize: 20,
+            fillColor: 'black',
+            justification: 'center'
+        };  
+        // Set the content of the text item:
+        textB.content = 'B';
+
+        var textC = new PointText(new Point(30, 60));
+        textC.fillColor = 'black';
+        textC.style = {
+            fontFamily: 'Courier New',
+            fontSize: 20,
+            fillColor: 'black',
+            justification: 'center'
+        };  
+        // Set the content of the text item:
+        textC.content = 'C';
+        var textD = new PointText(new Point(30, 90));
+        textD.fillColor = 'black';
+        textD.style = {
+            fontFamily: 'Courier New',
+            fontSize: 20,
+            fillColor: 'black',
+            justification: 'center'
+        };  
+        // Set the content of the text item:
+        textD.content = 'D';
+ 
+        var textE = new PointText(new Point(30, 120));
+        textE.fillColor = 'black';
+        textE.style = {
+            fontFamily: 'Courier New',
+            fontSize: 20,
+            fillColor: 'black',
+            justification: 'center'
+        };  
+        // Set the content of the text item:
+        textE.content = 'E';
+        var textF = new PointText(new Point(30, 150));
+        textF.fillColor = 'black';
+        textF.style = {
+            fontFamily: 'Courier New',
+            fontSize: 20,
+            fillColor: 'black',
+            justification: 'center'
+        };  
+        // Set the content of the text item:
+        textF.content = 'F';
+
+        var textG = new PointText(new Point(30, 180));
+        textG.fillColor = 'black';
+        textG.style = {
+            fontFamily: 'Courier New',
+            fontSize: 20,
+            fillColor: 'black',
+            justification: 'center'
+        };  
+        // Set the content of the text item:
+        textG.content = 'G';
+        var textH = new PointText(new Point(30, 210));
+        textH.fillColor = 'black';
+        textH.style = {
+            fontFamily: 'Courier New',
+            fontSize: 20,
+            fillColor: 'black',
+            justification: 'center'
+        };  
+        // Set the content of the text item:
+        textH.content = 'H';
+
+
+        var textI = new PointText(new Point(30, 240));
+        textI.fillColor = 'black';
+        textI.style = {
+            fontFamily: 'Courier New',
+            fontSize: 20,
+            fillColor: 'black',
+            justification: 'center'
+        };  
+        // Set the content of the text item:
+        textI.content = 'I';
+        var textJ = new PointText(new Point(30, 270));
+        textJ.fillColor = 'black';
+        
+        // Set the content of the text item:
+        textJ.content = 'J';
+        textJ.style = {
+            fontFamily: 'Courier New',
+            fontSize: 20,
+            fillColor: 'black',
+            justification: 'center'
+        };  
+        var textK = new PointText(new Point(30, 300));
+        textK.fillColor = 'black';
+        textK.style = {
+            fontFamily: 'Courier New',
+            fontSize: 20,
+            fillColor: 'black',
+            justification: 'center'
+        };  
+        // Set the content of the text item:
+        textK.content = 'K';
+        var textL = new PointText(new Point(30, 330));
+        textL.fillColor = 'black';
+        textL.style = {
+            fontFamily: 'Courier New',
+            fontSize: 20,
+            fillColor: 'black',
+            justification: 'center'
+        };  
+        // Set the content of the text item:
+        textL.content = 'L';
+ 
+        var textM = new PointText(new Point(30, 360));
+        textM.fillColor = 'black';
+        textM.style = {
+            fontFamily: 'Courier New',
+            fontSize: 20,
+            fillColor: 'black',
+            justification: 'center'
+        };  
+        // Set the content of the text item:
+        textM.content = 'M';
+        var textN = new PointText(new Point(30, 390));
+        textN.fillColor = 'black';
+        textN.style = {
+            fontFamily: 'Courier New',
+            fontSize: 20,
+            fillColor: 'black',
+            justification: 'center'
+        };  
+        // Set the content of the text item:
+        textN.content = 'N';
+
+        var textO = new PointText(new Point(30, 420));
+        textO.fillColor = 'black';
+        textO.style = {
+            fontFamily: 'Courier New',
+            fontSize: 20,
+            fillColor: 'black',
+            justification: 'center'
+        };  
+        // Set the content of the text item:
+        textO.content = 'O';
+        var textP = new PointText(new Point(30, 450));
+        textP.fillColor = 'black';
+        textP.style = {
+            fontFamily: 'Courier New',
+            fontSize: 20,
+            fillColor: 'black',
+            justification: 'center'
+        };  
+        // Set the content of the text item:
+        textP.content = 'P';
+ 
+
+
+        var textQ = new PointText(new Point(30, 480));
+        textQ.fillColor = 'black';
+        textQ.style = {
+            fontFamily: 'Courier New',
+            fontSize: 20,
+            fillColor: 'black',
+            justification: 'center'
+        };  
+        // Set the content of the text item:
+        textQ.content = 'Q';
+        var textR = new PointText(new Point(30, 510));
+        textR.fillColor = 'black';
+        textR.style = {
+            fontFamily: 'Courier New',
+            fontSize: 20,
+            fillColor: 'black',
+            justification: 'center'
+        };  
+        // Set the content of the text item:
+        textR.content = 'R';
+
+
+        var textS = new PointText(new Point(30, 540));
+        textS.fillColor = 'black';
+        textS.style = {
+            fontFamily: 'Courier New',
+            fontSize: 20,
+            fillColor: 'black',
+            justification: 'center'
+        };  
+        // Set the content of the text item:
+        textS.content = 'S';
+        var textT = new PointText(new Point(30, 570));
+        textT.fillColor = 'black';
+        textT.style = {
+            fontFamily: 'Courier New',
+            fontSize: 20,
+            fillColor: 'black',
+            justification: 'center'
+        };  
+        // Set the content of the text item:
+        textT.content = 'T';
+
+        var textU = new PointText(new Point(30, 600));
+        textU.fillColor = 'black';
+        textU.style = {
+            fontFamily: 'Courier New',
+            fontSize: 20,
+            fillColor: 'black',
+            justification: 'center'
+        };  
+        // Set the content of the text item:
+        textU.content = 'U';
+        var textV = new PointText(new Point(30, 630));
+        textV.fillColor = 'black';
+        textV.style = {
+            fontFamily: 'Courier New',
+            fontSize: 20,
+            fillColor: 'black',
+            justification: 'center'
+        };  
+        // Set the content of the text item:
+        textV.content = 'V';
+ 
+
+        var textX = new PointText(new Point(30, 660));
+        textX.fillColor = 'black';
+        textX.style = {
+            fontFamily: 'Courier New',
+            fontSize: 20,
+            fillColor: 'black',
+            justification: 'center'
+        };  
+        // Set the content of the text item:
+        textX.content = 'X';
+
+      
+    
+        var group = new Group([textA, textB, textC, textD, textE, textF, textG, textH, textI, textJ, textK, textL, textM, textN, textO, textP, textQ, textR, textS, textT, textU, textV, textX]);
+        group.onMouseDrag = function(event){
+            group.position += event.delta;
+            
+    
+        }
+        group.onMouseUp = function(event){
+            for(var i = 0; i < 23; i++){
+                if(group.children[i].position._y > 190){
+                    if(group.children[i].position._y < 215){
+                                       // console.log(group.children[i].content);
+                                        localStorage["wheel3"] = group.children[i].content;
+                                        var wheel3Val = group.children[i].content;
+
+
+                    }
+                }
+            }
+         //   console.log(textA.position._y);
+            if(textA.position._y > 190){
+                if(textA.position._y < 215){
+              //  console.log("true");
+                }
+            }
+            //if(new Point(textA.position._x, textA.position._y) >= new Point(0, 190) && new Point(textA.position._x, textA.position._y) <= new Point(65, 215)){
+                //console.log("true!!");
+           // }
+           // console.log(textA.position._x);
+        }
+
+        var scope = this;
+        inc3 = function(e){
+            scope.activate();
+            e.preventDefault();
+           for(var i = 0; i < 23; i++){
+               if(localStorage["wheel3"] == "X"){
+                   group.children[i].position.y += 660;
+               }
+               else{
+                group.children[i].position.y -= 30;
+           
+               }
+        }
+        for(var j = 0; j < 23; j++){
+                          if(group.children[j].position._y > 190){
+                if(group.children[j].position._y < 215){
+                                    localStorage["wheel3"] = group.children[j].content;
+                                    var wheel3Val = group.children[j].content;
+                }
+            }
+        }
+        
+            return false;
+          } //end doSubmit function
+          
+          window.inc3= inc3;
+      </script>
+      <script type="text/paperscript" canvas="canvas4">
+        var rectangle = new Rectangle(new Point(0, 190), new Size(65, 25));
+        var shape = new Shape.Rectangle(rectangle);
+        shape.strokeColor = 'black';
+        
+
+        var textA = new PointText(new Point(30, 0));
+        textA.fillColor = 'black';
+        textA.style = {
+            fontFamily: 'Courier New',
+            fontSize: 20,
+            fillColor: 'black',
+            justification: 'center'
+        };        
+        // Set the content of the text item:
+        textA.content = 'A';
+        var textB = new PointText(new Point(30, 30));
+        textB.fillColor = 'black';
+        textB.style = {
+            fontFamily: 'Courier New',
+            fontSize: 20,
+            fillColor: 'black',
+            justification: 'center'
+        };  
+        // Set the content of the text item:
+        textB.content = 'B';
+
+        var textC = new PointText(new Point(30, 60));
+        textC.fillColor = 'black';
+        textC.style = {
+            fontFamily: 'Courier New',
+            fontSize: 20,
+            fillColor: 'black',
+            justification: 'center'
+        };  
+        // Set the content of the text item:
+        textC.content = 'C';
+        var textD = new PointText(new Point(30, 90));
+        textD.fillColor = 'black';
+        textD.style = {
+            fontFamily: 'Courier New',
+            fontSize: 20,
+            fillColor: 'black',
+            justification: 'center'
+        };  
+        // Set the content of the text item:
+        textD.content = 'D';
+ 
+        var textE = new PointText(new Point(30, 120));
+        textE.fillColor = 'black';
+        textE.style = {
+            fontFamily: 'Courier New',
+            fontSize: 20,
+            fillColor: 'black',
+            justification: 'center'
+        };  
+        // Set the content of the text item:
+        textE.content = 'E';
+        var textF = new PointText(new Point(30, 150));
+        textF.fillColor = 'black';
+        textF.style = {
+            fontFamily: 'Courier New',
+            fontSize: 20,
+            fillColor: 'black',
+            justification: 'center'
+        };  
+        // Set the content of the text item:
+        textF.content = 'F';
+
+        var textG = new PointText(new Point(30, 180));
+        textG.fillColor = 'black';
+        textG.style = {
+            fontFamily: 'Courier New',
+            fontSize: 20,
+            fillColor: 'black',
+            justification: 'center'
+        };  
+        // Set the content of the text item:
+        textG.content = 'G';
+        var textH = new PointText(new Point(30, 210));
+        textH.fillColor = 'black';
+        textH.style = {
+            fontFamily: 'Courier New',
+            fontSize: 20,
+            fillColor: 'black',
+            justification: 'center'
+        };  
+        // Set the content of the text item:
+        textH.content = 'H';
+
+
+        var textI = new PointText(new Point(30, 240));
+        textI.fillColor = 'black';
+        textI.style = {
+            fontFamily: 'Courier New',
+            fontSize: 20,
+            fillColor: 'black',
+            justification: 'center'
+        };  
+        // Set the content of the text item:
+        textI.content = 'I';
+        var textJ = new PointText(new Point(30, 270));
+        textJ.fillColor = 'black';
+        
+        // Set the content of the text item:
+        textJ.content = 'J';
+        textJ.style = {
+            fontFamily: 'Courier New',
+            fontSize: 20,
+            fillColor: 'black',
+            justification: 'center'
+        };  
+        var textK = new PointText(new Point(30, 300));
+        textK.fillColor = 'black';
+        textK.style = {
+            fontFamily: 'Courier New',
+            fontSize: 20,
+            fillColor: 'black',
+            justification: 'center'
+        };  
+        // Set the content of the text item:
+        textK.content = 'K';
+        var textL = new PointText(new Point(30, 330));
+        textL.fillColor = 'black';
+        textL.style = {
+            fontFamily: 'Courier New',
+            fontSize: 20,
+            fillColor: 'black',
+            justification: 'center'
+        };  
+        // Set the content of the text item:
+        textL.content = 'L';
+ 
+        var textM = new PointText(new Point(30, 360));
+        textM.fillColor = 'black';
+        textM.style = {
+            fontFamily: 'Courier New',
+            fontSize: 20,
+            fillColor: 'black',
+            justification: 'center'
+        };  
+        // Set the content of the text item:
+        textM.content = 'M';
+        var textN = new PointText(new Point(30, 390));
+        textN.fillColor = 'black';
+        textN.style = {
+            fontFamily: 'Courier New',
+            fontSize: 20,
+            fillColor: 'black',
+            justification: 'center'
+        };  
+        // Set the content of the text item:
+        textN.content = 'N';
+
+        var textO = new PointText(new Point(30, 420));
+        textO.fillColor = 'black';
+        textO.style = {
+            fontFamily: 'Courier New',
+            fontSize: 20,
+            fillColor: 'black',
+            justification: 'center'
+        };  
+        // Set the content of the text item:
+        textO.content = 'O';
+        var textP = new PointText(new Point(30, 450));
+        textP.fillColor = 'black';
+        textP.style = {
+            fontFamily: 'Courier New',
+            fontSize: 20,
+            fillColor: 'black',
+            justification: 'center'
+        };  
+        // Set the content of the text item:
+        textP.content = 'P';
+ 
+
+
+        var textQ = new PointText(new Point(30, 480));
+        textQ.fillColor = 'black';
+        textQ.style = {
+            fontFamily: 'Courier New',
+            fontSize: 20,
+            fillColor: 'black',
+            justification: 'center'
+        };  
+        // Set the content of the text item:
+        textQ.content = 'Q';
+        var textR = new PointText(new Point(30, 510));
+        textR.fillColor = 'black';
+        textR.style = {
+            fontFamily: 'Courier New',
+            fontSize: 20,
+            fillColor: 'black',
+            justification: 'center'
+        };  
+        // Set the content of the text item:
+        textR.content = 'R';
+
+
+        var textS = new PointText(new Point(30, 540));
+        textS.fillColor = 'black';
+        textS.style = {
+            fontFamily: 'Courier New',
+            fontSize: 20,
+            fillColor: 'black',
+            justification: 'center'
+        };  
+        // Set the content of the text item:
+        textS.content = 'S';
+        var textT = new PointText(new Point(30, 570));
+        textT.fillColor = 'black';
+        textT.style = {
+            fontFamily: 'Courier New',
+            fontSize: 20,
+            fillColor: 'black',
+            justification: 'center'
+        };  
+        // Set the content of the text item:
+        textT.content = 'T';
+
+        var textU = new PointText(new Point(30, 600));
+        textU.fillColor = 'black';
+        textU.style = {
+            fontFamily: 'Courier New',
+            fontSize: 20,
+            fillColor: 'black',
+            justification: 'center'
+        };  
+        // Set the content of the text item:
+        textU.content = 'U';
+
+    
+        var group = new Group([textA, textB, textC, textD, textE, textF, textG, textH, textI, textJ, textK, textL, textM, textN, textO, textP, textQ, textR, textS, textT, textU]);
+        group.onMouseDrag = function(event){
+            group.position += event.delta;
+            
+    
+        }
+        group.onMouseUp = function(event){
+            for(var i = 0; i < 21; i++){
+                if(group.children[i].position._y > 190){
+                    if(group.children[i].position._y < 215){
+                                      //  console.log(group.children[i].content);
+                                        localStorage["wheel4"] = group.children[i].content;
+                                        var wheel4Val = group.children[i].content;
+
+
+                    }
+                }
+            }
+           // console.log(textA.position._y);
+            if(textA.position._y > 190){
+                if(textA.position._y < 215){
+              //  console.log("true");
+                }
+            }
+            //if(new Point(textA.position._x, textA.position._y) >= new Point(0, 190) && new Point(textA.position._x, textA.position._y) <= new Point(65, 215)){
+                //console.log("true!!");
+           // }
+           // console.log(textA.position._x);
+        }
+        var scope = this;
+        inc4 = function(e){
+            scope.activate();
+            e.preventDefault();
+           for(var i = 0; i < 21; i++){
+               if(localStorage["wheel4"] == "U"){
+                   group.children[i].position.y += 600;
+               }
+               else{
+                group.children[i].position.y -= 30;
+           
+               }
+        }
+        for(var j = 0; j < 21; j++){
+                          if(group.children[j].position._y > 190){
+                if(group.children[j].position._y < 215){
+                                    localStorage["wheel4"] = group.children[j].content;
+                                    var wheel4Val = group.children[j].content;
+                }
+            }
+        }
+        
+            return false;
+          } //end doSubmit function
+          
+          window.inc4= inc4;
+      </script>
+      <script type="text/paperscript" canvas="canvas5">
+        var rectangle = new Rectangle(new Point(0, 190), new Size(65, 25));
+        var shape = new Shape.Rectangle(rectangle);
+        shape.strokeColor = 'black';
+        
+
+        var textA = new PointText(new Point(30, 0));
+        textA.fillColor = 'black';
+        textA.style = {
+            fontFamily: 'Courier New',
+            fontSize: 20,
+            fillColor: 'black',
+            justification: 'center'
+        };        
+        // Set the content of the text item:
+        textA.content = 'A';
+        var textB = new PointText(new Point(30, 30));
+        textB.fillColor = 'black';
+        textB.style = {
+            fontFamily: 'Courier New',
+            fontSize: 20,
+            fillColor: 'black',
+            justification: 'center'
+        };  
+        // Set the content of the text item:
+        textB.content = 'B';
+
+        var textC = new PointText(new Point(30, 60));
+        textC.fillColor = 'black';
+        textC.style = {
+            fontFamily: 'Courier New',
+            fontSize: 20,
+            fillColor: 'black',
+            justification: 'center'
+        };  
+        // Set the content of the text item:
+        textC.content = 'C';
+        var textD = new PointText(new Point(30, 90));
+        textD.fillColor = 'black';
+        textD.style = {
+            fontFamily: 'Courier New',
+            fontSize: 20,
+            fillColor: 'black',
+            justification: 'center'
+        };  
+        // Set the content of the text item:
+        textD.content = 'D';
+ 
+        var textE = new PointText(new Point(30, 120));
+        textE.fillColor = 'black';
+        textE.style = {
+            fontFamily: 'Courier New',
+            fontSize: 20,
+            fillColor: 'black',
+            justification: 'center'
+        };  
+        // Set the content of the text item:
+        textE.content = 'E';
+        var textF = new PointText(new Point(30, 150));
+        textF.fillColor = 'black';
+        textF.style = {
+            fontFamily: 'Courier New',
+            fontSize: 20,
+            fillColor: 'black',
+            justification: 'center'
+        };  
+        // Set the content of the text item:
+        textF.content = 'F';
+
+        var textG = new PointText(new Point(30, 180));
+        textG.fillColor = 'black';
+        textG.style = {
+            fontFamily: 'Courier New',
+            fontSize: 20,
+            fillColor: 'black',
+            justification: 'center'
+        };  
+        // Set the content of the text item:
+        textG.content = 'G';
+        var textH = new PointText(new Point(30, 210));
+        textH.fillColor = 'black';
+        textH.style = {
+            fontFamily: 'Courier New',
+            fontSize: 20,
+            fillColor: 'black',
+            justification: 'center'
+        };  
+        // Set the content of the text item:
+        textH.content = 'H';
+
+
+        var textI = new PointText(new Point(30, 240));
+        textI.fillColor = 'black';
+        textI.style = {
+            fontFamily: 'Courier New',
+            fontSize: 20,
+            fillColor: 'black',
+            justification: 'center'
+        };  
+        // Set the content of the text item:
+        textI.content = 'I';
+        var textJ = new PointText(new Point(30, 270));
+        textJ.fillColor = 'black';
+        
+        // Set the content of the text item:
+        textJ.content = 'J';
+        textJ.style = {
+            fontFamily: 'Courier New',
+            fontSize: 20,
+            fillColor: 'black',
+            justification: 'center'
+        };  
+        var textK = new PointText(new Point(30, 300));
+        textK.fillColor = 'black';
+        textK.style = {
+            fontFamily: 'Courier New',
+            fontSize: 20,
+            fillColor: 'black',
+            justification: 'center'
+        };  
+        // Set the content of the text item:
+        textK.content = 'K';
+        var textL = new PointText(new Point(30, 330));
+        textL.fillColor = 'black';
+        textL.style = {
+            fontFamily: 'Courier New',
+            fontSize: 20,
+            fillColor: 'black',
+            justification: 'center'
+        };  
+        // Set the content of the text item:
+        textL.content = 'L';
+ 
+        var textM = new PointText(new Point(30, 360));
+        textM.fillColor = 'black';
+        textM.style = {
+            fontFamily: 'Courier New',
+            fontSize: 20,
+            fillColor: 'black',
+            justification: 'center'
+        };  
+        // Set the content of the text item:
+        textM.content = 'M';
+        var textN = new PointText(new Point(30, 390));
+        textN.fillColor = 'black';
+        textN.style = {
+            fontFamily: 'Courier New',
+            fontSize: 20,
+            fillColor: 'black',
+            justification: 'center'
+        };  
+        // Set the content of the text item:
+        textN.content = 'N';
+
+        var textO = new PointText(new Point(30, 420));
+        textO.fillColor = 'black';
+        textO.style = {
+            fontFamily: 'Courier New',
+            fontSize: 20,
+            fillColor: 'black',
+            justification: 'center'
+        };  
+        // Set the content of the text item:
+        textO.content = 'O';
+        var textP = new PointText(new Point(30, 450));
+        textP.fillColor = 'black';
+        textP.style = {
+            fontFamily: 'Courier New',
+            fontSize: 20,
+            fillColor: 'black',
+            justification: 'center'
+        };  
+        // Set the content of the text item:
+        textP.content = 'P';
+ 
+
+
+        var textQ = new PointText(new Point(30, 480));
+        textQ.fillColor = 'black';
+        textQ.style = {
+            fontFamily: 'Courier New',
+            fontSize: 20,
+            fillColor: 'black',
+            justification: 'center'
+        };  
+        // Set the content of the text item:
+        textQ.content = 'Q';
+        var textR = new PointText(new Point(30, 510));
+        textR.fillColor = 'black';
+        textR.style = {
+            fontFamily: 'Courier New',
+            fontSize: 20,
+            fillColor: 'black',
+            justification: 'center'
+        };  
+        // Set the content of the text item:
+        textR.content = 'R';
+
+
+        var textS = new PointText(new Point(30, 540));
+        textS.fillColor = 'black';
+        textS.style = {
+            fontFamily: 'Courier New',
+            fontSize: 20,
+            fillColor: 'black',
+            justification: 'center'
+        };  
+        // Set the content of the text item:
+        textS.content = 'S';
+
+    
+        var group = new Group([textA, textB, textC, textD, textE, textF, textG, textH, textI, textJ, textK, textL, textM, textN, textO, textP, textQ, textR, textS]);
+        group.onMouseDrag = function(event){
+            group.position += event.delta;
+            
+    
+        }
+        group.onMouseUp = function(event){
+            for(var i = 0; i < 19; i++){
+                if(group.children[i].position._y > 190){
+                    if(group.children[i].position._y < 215){
+                                      //  console.log(group.children[i].content);
+                                        localStorage["wheel5"] = group.children[i].content;
+                                        var wheel5Val = group.children[i].content;
+
+
+                    }
+                }
+            }
+           // console.log(textA.position._y);
+            if(textA.position._y > 190){
+                if(textA.position._y < 215){
+                //console.log("true");
+                }
+            }
+            //if(new Point(textA.position._x, textA.position._y) >= new Point(0, 190) && new Point(textA.position._x, textA.position._y) <= new Point(65, 215)){
+                //console.log("true!!");
+           // }
+           // console.log(textA.position._x);
+        }
+        var scope = this;
+        inc5 = function(e){
+            scope.activate();
+            e.preventDefault();
+           for(var i = 0; i < 19; i++){
+               if(localStorage["wheel5"] == "S"){
+                   group.children[i].position.y += 540;
+               }
+               else{
+                group.children[i].position.y -= 30;
+           
+               }
+        }
+        for(var j = 0; j < 19; j++){
+                          if(group.children[j].position._y > 190){
+                if(group.children[j].position._y < 215){
+                                    localStorage["wheel5"] = group.children[j].content;
+                                    var wheel5Val = group.children[j].content;
+                }
+            }
+        }
+        
+            return false;
+          } //end doSubmit function
+          
+          window.inc5= inc5;
+      </script>
+      <script type="text/paperscript" canvas="canvas6">
+        var rectangle = new Rectangle(new Point(0, 190), new Size(65, 25));
+        var shape = new Shape.Rectangle(rectangle);
+        shape.strokeColor = 'black';
+        
+
+        var textA = new PointText(new Point(30, 0));
+        textA.fillColor = 'black';
+        textA.style = {
+            fontFamily: 'Courier New',
+            fontSize: 20,
+            fillColor: 'black',
+            justification: 'center'
+        };        
+        // Set the content of the text item:
+        textA.content = 'A';
+        var textB = new PointText(new Point(30, 30));
+        textB.fillColor = 'black';
+        textB.style = {
+            fontFamily: 'Courier New',
+            fontSize: 20,
+            fillColor: 'black',
+            justification: 'center'
+        };  
+        // Set the content of the text item:
+        textB.content = 'B';
+
+        var textC = new PointText(new Point(30, 60));
+        textC.fillColor = 'black';
+        textC.style = {
+            fontFamily: 'Courier New',
+            fontSize: 20,
+            fillColor: 'black',
+            justification: 'center'
+        };  
+        // Set the content of the text item:
+        textC.content = 'C';
+        var textD = new PointText(new Point(30, 90));
+        textD.fillColor = 'black';
+        textD.style = {
+            fontFamily: 'Courier New',
+            fontSize: 20,
+            fillColor: 'black',
+            justification: 'center'
+        };  
+        // Set the content of the text item:
+        textD.content = 'D';
+ 
+        var textE = new PointText(new Point(30, 120));
+        textE.fillColor = 'black';
+        textE.style = {
+            fontFamily: 'Courier New',
+            fontSize: 20,
+            fillColor: 'black',
+            justification: 'center'
+        };  
+        // Set the content of the text item:
+        textE.content = 'E';
+        var textF = new PointText(new Point(30, 150));
+        textF.fillColor = 'black';
+        textF.style = {
+            fontFamily: 'Courier New',
+            fontSize: 20,
+            fillColor: 'black',
+            justification: 'center'
+        };  
+        // Set the content of the text item:
+        textF.content = 'F';
+
+        var textG = new PointText(new Point(30, 180));
+        textG.fillColor = 'black';
+        textG.style = {
+            fontFamily: 'Courier New',
+            fontSize: 20,
+            fillColor: 'black',
+            justification: 'center'
+        };  
+        // Set the content of the text item:
+        textG.content = 'G';
+        var textH = new PointText(new Point(30, 210));
+        textH.fillColor = 'black';
+        textH.style = {
+            fontFamily: 'Courier New',
+            fontSize: 20,
+            fillColor: 'black',
+            justification: 'center'
+        };  
+        // Set the content of the text item:
+        textH.content = 'H';
+
+
+        var textI = new PointText(new Point(30, 240));
+        textI.fillColor = 'black';
+        textI.style = {
+            fontFamily: 'Courier New',
+            fontSize: 20,
+            fillColor: 'black',
+            justification: 'center'
+        };  
+        // Set the content of the text item:
+        textI.content = 'I';
+        var textJ = new PointText(new Point(30, 270));
+        textJ.fillColor = 'black';
+        
+        // Set the content of the text item:
+        textJ.content = 'J';
+        textJ.style = {
+            fontFamily: 'Courier New',
+            fontSize: 20,
+            fillColor: 'black',
+            justification: 'center'
+        };  
+        var textK = new PointText(new Point(30, 300));
+        textK.fillColor = 'black';
+        textK.style = {
+            fontFamily: 'Courier New',
+            fontSize: 20,
+            fillColor: 'black',
+            justification: 'center'
+        };  
+        // Set the content of the text item:
+        textK.content = 'K';
+        var textL = new PointText(new Point(30, 330));
+        textL.fillColor = 'black';
+        textL.style = {
+            fontFamily: 'Courier New',
+            fontSize: 20,
+            fillColor: 'black',
+            justification: 'center'
+        };  
+        // Set the content of the text item:
+        textL.content = 'L';
+ 
+        var textM = new PointText(new Point(30, 360));
+        textM.fillColor = 'black';
+        textM.style = {
+            fontFamily: 'Courier New',
+            fontSize: 20,
+            fillColor: 'black',
+            justification: 'center'
+        };  
+        // Set the content of the text item:
+        textM.content = 'M';
+        var textN = new PointText(new Point(30, 390));
+        textN.fillColor = 'black';
+        textN.style = {
+            fontFamily: 'Courier New',
+            fontSize: 20,
+            fillColor: 'black',
+            justification: 'center'
+        };  
+        // Set the content of the text item:
+        textN.content = 'N';
+
+        var textO = new PointText(new Point(30, 420));
+        textO.fillColor = 'black';
+        textO.style = {
+            fontFamily: 'Courier New',
+            fontSize: 20,
+            fillColor: 'black',
+            justification: 'center'
+        };  
+        // Set the content of the text item:
+        textO.content = 'O';
+        var textP = new PointText(new Point(30, 450));
+        textP.fillColor = 'black';
+        textP.style = {
+            fontFamily: 'Courier New',
+            fontSize: 20,
+            fillColor: 'black',
+            justification: 'center'
+        };  
+        // Set the content of the text item:
+        textP.content = 'P';
+ 
+
+
+        var textQ = new PointText(new Point(30, 480));
+        textQ.fillColor = 'black';
+        textQ.style = {
+            fontFamily: 'Courier New',
+            fontSize: 20,
+            fillColor: 'black',
+            justification: 'center'
+        };  
+        // Set the content of the text item:
+        textQ.content = 'Q';
+ 
+        var group = new Group([textA, textB, textC, textD, textE, textF, textG, textH, textI, textJ, textK, textL, textM, textN, textO, textP, textQ]);
+        group.onMouseDrag = function(event){
+            group.position += event.delta;
+            
+    
+        }
+        group.onMouseUp = function(event){
+            for(var i = 0; i < 17; i++){
+                if(group.children[i].position._y > 190){
+                    if(group.children[i].position._y < 215){
+                                       // console.log(group.children[i].content);
+                                        localStorage["wheel6"] = group.children[i].content;
+                                        var wheel6Val = group.children[i].content;
+
+
+                    }
+                }
+            }
+           // console.log(textA.position._y);
+            if(textA.position._y > 190){
+                if(textA.position._y < 215){
+               // console.log("true");
+                }
+            }
+            //if(new Point(textA.position._x, textA.position._y) >= new Point(0, 190) && new Point(textA.position._x, textA.position._y) <= new Point(65, 215)){
+                //console.log("true!!");
+           // }
+           // console.log(textA.position._x);
+        }
+        var scope = this;
+        inc6 = function(e){
+            scope.activate();
+            e.preventDefault();
+           for(var i = 0; i < 17; i++){
+               if(localStorage["wheel6"] == "Q"){
+                   group.children[i].position.y += 480;
+               }
+               else{
+                group.children[i].position.y -= 30;
+           
+               }
+        }
+        for(var j = 0; j < 17; j++){
+                          if(group.children[j].position._y > 190){
+                if(group.children[j].position._y < 215){
+                                    localStorage["wheel6"] = group.children[j].content;
+                                    var wheel6Val = group.children[j].content;
+                }
+            }
+        }
+        
+            return false;
+          } //end doSubmit function
+          
+          window.inc6= inc6;
+      </script>
+      <script type="text/paperscript" canvas="canvas7">
+        var rectangle = new Rectangle(new Point(0, 100), new Size(65, 25));
+        var shape = new Shape.Rectangle(rectangle);
+        shape.strokeColor = 'black';
+        
+
+        var textA = new PointText(new Point(30, 0));
+        textA.fillColor = 'black';
+        textA.style = {
+            fontFamily: 'Courier New',
+            fontSize: 20,
+            fillColor: 'black',
+            justification: 'center'
+        };        
+        // Set the content of the text item:
+        textA.content = 'A';
+        var textB = new PointText(new Point(30, 30));
+        textB.fillColor = 'black';
+        textB.style = {
+            fontFamily: 'Courier New',
+            fontSize: 20,
+            fillColor: 'black',
+            justification: 'center'
+        };  
+        // Set the content of the text item:
+        textB.content = 'B';
+
+        var textC = new PointText(new Point(30, 60));
+        textC.fillColor = 'black';
+        textC.style = {
+            fontFamily: 'Courier New',
+            fontSize: 20,
+            fillColor: 'black',
+            justification: 'center'
+        };  
+        // Set the content of the text item:
+        textC.content = 'C';
+        var textD = new PointText(new Point(30, 90));
+        textD.fillColor = 'black';
+        textD.style = {
+            fontFamily: 'Courier New',
+            fontSize: 20,
+            fillColor: 'black',
+            justification: 'center'
+        };  
+        // Set the content of the text item:
+        textD.content = 'D';
+ 
+        var textE = new PointText(new Point(30, 120));
+        textE.fillColor = 'black';
+        textE.style = {
+            fontFamily: 'Courier New',
+            fontSize: 20,
+            fillColor: 'black',
+            justification: 'center'
+        };  
+        // Set the content of the text item:
+        textE.content = 'E';
+        var textF = new PointText(new Point(30, 150));
+        textF.fillColor = 'black';
+        textF.style = {
+            fontFamily: 'Courier New',
+            fontSize: 20,
+            fillColor: 'black',
+            justification: 'center'
+        };  
+        // Set the content of the text item:
+        textF.content = 'F';
+
+        var textG = new PointText(new Point(30, 180));
+        textG.fillColor = 'black';
+        textG.style = {
+            fontFamily: 'Courier New',
+            fontSize: 20,
+            fillColor: 'black',
+            justification: 'center'
+        };  
+        // Set the content of the text item:
+        textG.content = 'G';
+        var textH = new PointText(new Point(30, 210));
+        textH.fillColor = 'black';
+        textH.style = {
+            fontFamily: 'Courier New',
+            fontSize: 20,
+            fillColor: 'black',
+            justification: 'center'
+        };  
+        // Set the content of the text item:
+        textH.content = 'H';
+
+
+        var textI = new PointText(new Point(30, 240));
+        textI.fillColor = 'black';
+        textI.style = {
+            fontFamily: 'Courier New',
+            fontSize: 20,
+            fillColor: 'black',
+            justification: 'center'
+        };  
+        // Set the content of the text item:
+        textI.content = 'I';
+        var textJ = new PointText(new Point(30, 270));
+        textJ.fillColor = 'black';
+        
+        // Set the content of the text item:
+        textJ.content = 'J';
+        textJ.style = {
+            fontFamily: 'Courier New',
+            fontSize: 20,
+            fillColor: 'black',
+            justification: 'center'
+        };  
+        var textK = new PointText(new Point(30, 300));
+        textK.fillColor = 'black';
+        textK.style = {
+            fontFamily: 'Courier New',
+            fontSize: 20,
+            fillColor: 'black',
+            justification: 'center'
+        };  
+        // Set the content of the text item:
+        textK.content = 'K';
+        var textL = new PointText(new Point(30, 330));
+        textL.fillColor = 'black';
+        textL.style = {
+            fontFamily: 'Courier New',
+            fontSize: 20,
+            fillColor: 'black',
+            justification: 'center'
+        };  
+        // Set the content of the text item:
+        textL.content = 'L';
+ 
+        var textM = new PointText(new Point(30, 360));
+        textM.fillColor = 'black';
+        textM.style = {
+            fontFamily: 'Courier New',
+            fontSize: 20,
+            fillColor: 'black',
+            justification: 'center'
+        };  
+        // Set the content of the text item:
+        textM.content = 'M';
+        var textN = new PointText(new Point(30, 390));
+        textN.fillColor = 'black';
+        textN.style = {
+            fontFamily: 'Courier New',
+            fontSize: 20,
+            fillColor: 'black',
+            justification: 'center'
+        };  
+        // Set the content of the text item:
+        textN.content = 'N';
+
+        var textO = new PointText(new Point(30, 420));
+        textO.fillColor = 'black';
+        textO.style = {
+            fontFamily: 'Courier New',
+            fontSize: 20,
+            fillColor: 'black',
+            justification: 'center'
+        };  
+        // Set the content of the text item:
+        textO.content = 'O';
+        var textP = new PointText(new Point(30, 450));
+        textP.fillColor = 'black';
+        textP.style = {
+            fontFamily: 'Courier New',
+            fontSize: 20,
+            fillColor: 'black',
+            justification: 'center'
+        };  
+        // Set the content of the text item:
+        textP.content = 'P';
+ 
+
+
+        var textQ = new PointText(new Point(30, 480));
+        textQ.fillColor = 'black';
+        textQ.style = {
+            fontFamily: 'Courier New',
+            fontSize: 20,
+            fillColor: 'black',
+            justification: 'center'
+        };  
+        // Set the content of the text item:
+        textQ.content = 'Q';
+        var textR = new PointText(new Point(30, 510));
+        textR.fillColor = 'black';
+        textR.style = {
+            fontFamily: 'Courier New',
+            fontSize: 20,
+            fillColor: 'black',
+            justification: 'center'
+        };  
+        // Set the content of the text item:
+        textR.content = 'R';
+
+
+        var textS = new PointText(new Point(30, 540));
+        textS.fillColor = 'black';
+        textS.style = {
+            fontFamily: 'Courier New',
+            fontSize: 20,
+            fillColor: 'black',
+            justification: 'center'
+        };  
+        // Set the content of the text item:
+        textS.content = 'S';
+        var textT = new PointText(new Point(30, 570));
+        textT.fillColor = 'black';
+        textT.style = {
+            fontFamily: 'Courier New',
+            fontSize: 20,
+            fillColor: 'black',
+            justification: 'center'
+        };  
+        // Set the content of the text item:
+        textT.content = 'T';
+
+        var textU = new PointText(new Point(30, 600));
+        textU.fillColor = 'black';
+        textU.style = {
+            fontFamily: 'Courier New',
+            fontSize: 20,
+            fillColor: 'black',
+            justification: 'center'
+        };  
+        // Set the content of the text item:
+        textU.content = 'U';
+        var textV = new PointText(new Point(30, 630));
+        textV.fillColor = 'black';
+        textV.style = {
+            fontFamily: 'Courier New',
+            fontSize: 20,
+            fillColor: 'black',
+            justification: 'center'
+        };  
+        // Set the content of the text item:
+        textV.content = 'V';
+ 
+        var textW = new PointText(new Point(30, 660));
+        textW.fillColor = 'black';
+        textW.style = {
+            fontFamily: 'Courier New',
+            fontSize: 20,
+            fillColor: 'black',
+            justification: 'center'
+        };  
+        // Set the content of the text item:
+        textW.content = 'W';
+        var textX = new PointText(new Point(30, 690));
+        textX.fillColor = 'black';
+        textX.style = {
+            fontFamily: 'Courier New',
+            fontSize: 20,
+            fillColor: 'black',
+            justification: 'center'
+        };  
+        // Set the content of the text item:
+        textX.content = 'X';
+
+        var textY = new PointText(new Point(30, 720));
+        textY.fillColor = 'black';
+        textY.style = {
+            fontFamily: 'Courier New',
+            fontSize: 20,
+            fillColor: 'black',
+            justification: 'center'
+        };  
+        // Set the content of the text item:
+        textY.content = 'Y';
+        var textZ = new PointText(new Point(30, 750));
+        textZ.fillColor = 'black';
+        textZ.style = {
+            fontFamily: 'Courier New',
+            fontSize: 20,
+            fillColor: 'black',
+            justification: 'center'
+        };  
+        // Set the content of the text item:
+        textZ.content = 'Z';
+    
+        var group = new Group([textA, textB, textC, textD, textE, textF, textG, textH, textI, textJ, textK, textL, textM, textN, textO, textP, textQ, textR, textS, textT, textU, textV, textW, textX, textY, textZ]);
+        group.onMouseDrag = function(event){
+            group.position += event.delta;
+            
+    
+        }
+        group.onMouseUp = function(event){
+            for(var i = 0; i < 26; i++){
+                if(group.children[i].position._y > 100){
+                    if(group.children[i].position._y < 125){
+                                      //  console.log(group.children[i].content);
+                                        localStorage["diskVal"] = group.children[i].content;
+                                        var diskVal = group.children[i].content;
+                    }
+                }
+            }
+          //  console.log(textA.position._y);
+            if(textA.position._y > 190){
+                if(textA.position._y < 215){
+               // console.log("true");
+                }
+            }
+            //if(new Point(textA.position._x, textA.position._y) >= new Point(0, 190) && new Point(textA.position._x, textA.position._y) <= new Point(65, 215)){
+                //console.log("true!!");
+           // }
+           // console.log(textA.position._x);
+        }
+      
+       
+      
+      </script>
+    <script type="text/paperscript" canvas="canvasButton">
+        var shape = new Shape.Circle({
+            center: [80, 50],
+            radius: 30,
+            strokeColor: 'black',
+            fillColor: "darkgrey"
+        });
+        shape.onMouseDown = function(event) {
+            this.fillColor = 'grey';
+           // console.log("reset button has been hit");
+        }
+        shape.onMouseUp = function(event){
+            this.fillColor = "darkgrey";
+            reset();
+        }
+    </script>
+    <script type="text/paperscript" canvas="canvasLever">
+        var rectangle = new Rectangle(new Point(20, 20), new Size(60, 500));
+    var cornerSize = new Size(10, 10);
+    var shape = new Shape.Rectangle(rectangle, cornerSize);
+    shape.strokeColor = 'black';
+    shape.fillColor= "grey";
+
+        shape.onMouseDown = function(event) {
+            this.fillColor = 'black';
+           // console.log("lever to encypher has been pushed");
+            console.log(localStorage["wheel1"] + " " + localStorage["wheel2"] + " " + localStorage["wheel3"] + " " + localStorage["wheel4"] + " " + localStorage["wheel5"] + " " + localStorage["wheel6"]);
+           eval();
+           var num = parseInt(0);
+           num = localStorage["num"];
+            num++;
+            localStorage["num"] = num;
+            inc1(event);
+            inc2(event);
+            inc3(event);
+            inc4(event);
+            inc5(event);
+            inc6(event);
+
+
+        }
+        shape.onMouseUp = function(event){
+            this.fillColor = "grey";
+        }
+    </script>
+    <script type="text/paperscript" canvas="canvasCypher">
+        var shape = new Shape.Rectangle({
+            point: [40, 50],
+            size: [50, 50],
+            strokeColor: 'black',
+            fillColor: "darkgrey"
+        });
+var text = new PointText(new Point(60, 80));
+text.fillColor = 'black';
+
+// Set the content of the text item:
+text.content = 'C';
+localStorage["cypher"] = "c";
+        shape.onMouseDown = function(event) {
+            this.fillColor = 'grey';
+          //  console.log("reset button has been hit");
+            if(localStorage["cypher"] == "c"){
+            text.content = 'D';
+            localStorage["cypher"] = "d";
+          //  console.log("switching to decypher now");
+            }
+            else{
+                text.content = "C";
+                localStorage["cypher"] = "c";
+              //  console.log("switching to cypher now");
+            }
+        }
+        text.onMouseDown = function(event) {
+            this.fillColor = 'grey';
+          //  console.log("reset button has been hit");
+            if(localStorage["cypher"] == "c"){
+            text.content = 'D';
+            localStorage["cypher"] = "d";
+          //  console.log("Switching to decypher now");
+            }
+            else{
+                text.content = "C";
+                localStorage["cypher"] = "c";
+                //console.log("Switching to cypher now");
+            }
+        }
+        shape.onMouseUp = function(event){
+            this.fillColor = "darkgrey";
+        }
+    </script>
+</head>
+<body>
+            <div align = "center" id="output-box" style="background-color: #b1a688;">this is where the output will go</div>
+    <div class="row" style="width: 100%;">
+        <div class="col-sm-10">
+
+        </div>
+        <div class="col-sm-1">
+            <canvas id="canvasButton" resize5 ></canvas>
+
+        </div>
+        <div class="col-sm-1">
+            <canvas id="canvasLever" resize2></canvas>
+
+        </div>
+    </div>
+    <div class="row" style="width: 100%;">
+        <div class="col-sm">
+
+        </div>
+        <div class="col-sm">
+<canvas id="canvas7"style="width: 40%;"  resize4 ></canvas>&emsp;&emsp;
+
+        </div>
+        <div class="col-sm">
+            <canvas id="canvasCypher"  resize3></canvas> 
+
+        </div>
+        <div class="col-sm">
+            <br><br>
+<div id="letterCounter" style="border-style: solid; background-color: grey; color: white; border-color: black;">
+
+</div>
+        </div>
+        <div class="col-sm">
+            <canvas id="canvas" style="width: 40%;" resize ></canvas>&emsp;&emsp;
+
+        </div>
+        <div class="col-sm">
+                        <canvas id="canvas2" style="width: 40%;" resize ></canvas>&emsp;&emsp;
+
+            </div>
+            <div class="col-sm">
+                        <canvas id="canvas3" style="width: 40%;" resize ></canvas>&emsp;&emsp;
+
+                </div>
+                <div class="col-sm">
+                        <canvas id="canvas4" style="width: 40%;" resize ></canvas>&emsp;&emsp;
+
+                    </div>
+                    <div class="col-sm">
+                        <canvas id="canvas5" style="width: 40%;" resize ></canvas>&emsp;&emsp;
+
+                        </div>
+                        <div class="col-sm">
+                        <canvas id="canvas6" style="width: 40%;" resize ></canvas>&emsp;&emsp;
+
+                            </div>
+
+    </div>
+        
+<div id="decrypt-box"></div>
+</body>
+</html>

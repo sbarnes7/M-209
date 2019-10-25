@@ -1,0 +1,159 @@
+<!DOCTYPE html>
+<html>
+<head>
+        <script type="text/javascript" src="paper.js"></script> 
+
+        <link rel="stylesheet" href="https://stackpath.bootstrapcdn.com/bootstrap/4.3.1/css/bootstrap.min.css" integrity="sha384-ggOyR0iXCbMQv3Xipma34MD+dH/1fQ784/j6cY/iJTQUOhcWr7x9JvoRxT2MZw1T" crossorigin="anonymous">
+        <script src="https://code.jquery.com/jquery-3.3.1.slim.min.js" integrity="sha384-q8i/X+965DzO0rT7abK41JStQIAqVgRVzpbzo5smXKp4YfRvH+8abtTE1Pi6jizo" crossorigin="anonymous"></script>
+<script src="https://cdnjs.cloudflare.com/ajax/libs/popper.js/1.14.7/umd/popper.min.js" integrity="sha384-UO2eT0CpHqdSJQ6hJty5KVphtPhzWj9WO1clHTMGa3JDZwrnQq4sF86dIHNDz0W1" crossorigin="anonymous"></script>
+<script src="https://stackpath.bootstrapcdn.com/bootstrap/4.3.1/js/bootstrap.min.js" integrity="sha384-JjSmVgyd0p3pXB1rRibZUAYoIIy6OrQ6VrjIEaFf/nJGzIxFDsf4x0xIM+B07jRM" crossorigin="anonymous"></script>
+
+    <meta charset="UTF-8">
+    <title>M-209</title>
+    <link rel="stylesheet" href="../css/style.css">
+
+    <script type="text/paperscript" src="wheel1.js" canvas="canvas"></script>
+    <script type="text/paperscript" src="wheel2.js" canvas="canvas2"></script>
+    <script type="text/paperscript" src="wheel3.js" canvas="canvas3"></script>
+    <script type="text/paperscript" src="wheel4.js" canvas="canvas4"></script>
+    <script type="text/paperscript" src="wheel5.js" canvas="canvas5"></script>
+    <script type="text/paperscript" src="wheel6.js" canvas="canvas6"></script>
+
+    <style>
+  canvas[resize] {
+	    border-style: solid;
+        background-color: grey;
+	    width: 50%;
+	    height: 400px; 
+	  }
+      canvas[resize2]{
+          height: 450px;
+          width: 200px;
+      }
+      canvas[resize3]{
+          height: 350px;
+      }
+      #html, body{
+          background-color: #4b5320;
+      }
+#html, body{
+    height: 100%;
+    width: 100%;
+}
+    </style>
+
+
+  
+   
+    <script type="text/paperscript" canvas="canvasButton">
+        var shape = new Shape.Circle({
+            center: [80, 50],
+            radius: 30,
+            strokeColor: 'black',
+            fillColor: "darkgrey"
+        });
+        shape.onMouseDown = function(event) {
+            this.fillColor = 'grey';
+            console.log("reset button has been hit");
+        }
+        shape.onMouseUp = function(event){
+            this.fillColor = "darkgrey";
+        }
+    </script>
+    <script type="text/paperscript" canvas="canvasLever">
+        var rectangle = new Rectangle(new Point(20, 20), new Size(60, 500));
+    var cornerSize = new Size(10, 10);
+    var shape = new Shape.Rectangle(rectangle, cornerSize);
+    shape.strokeColor = 'black';
+    shape.fillColor= "grey";
+
+        shape.onMouseDown = function(event) {
+            this.fillColor = 'black';
+            console.log("lever to encypher has been pushed");
+            console.log(localStorage["wheel1"] + " " + localStorage["wheel2"] + " " + localStorage["wheel3"] + " " + localStorage["wheel4"] + " " + localStorage["wheel5"] + " " + localStorage["wheel6"]);
+            localStorage["counter"] += 1;
+        }
+        shape.onMouseUp = function(event){
+            this.fillColor = "grey";
+        }
+    </script>
+    <script type="text/paperscript" canvas="canvasCypher">
+        var shape = new Shape.Rectangle({
+            point: [40, 50],
+            size: [50, 50],
+            strokeColor: 'black',
+            fillColor: "darkgrey"
+        });
+var text = new PointText(new Point(60, 80));
+text.fillColor = 'black';
+
+// Set the content of the text item:
+text.content = 'C';
+localStorage["cypher"] = "c";
+        shape.onMouseDown = function(event) {
+            this.fillColor = 'grey';
+            console.log("reset button has been hit");
+            if(localStorage["cypher"] == "c"){
+            text.content = 'D';
+            localStorage["cypher"] = "d";
+            console.log("switching to decypher now");
+            }
+            else{
+                text.content = "C";
+                localStorage["cypher"] = "c";
+                console.log("switching to cypher now");
+            }
+        }
+        text.onMouseDown = function(event) {
+            this.fillColor = 'grey';
+            console.log("reset button has been hit");
+            if(localStorage["cypher"] == "c"){
+            text.content = 'D';
+            localStorage["cypher"] = "d";
+            console.log("Switching to decypher now");
+            }
+            else{
+                text.content = "C";
+                localStorage["cypher"] = "c";
+                console.log("Switching to cypher now");
+            }
+        }
+        shape.onMouseUp = function(event){
+            this.fillColor = "darkgrey";
+        }
+    </script>
+</head>
+<body>
+        <div align = "center" style="background-color: #b1a688;">hello world</div>
+        
+    </span>
+    <br>
+    <span>
+        <div align="right">
+            <canvas id="canvasButton" resize2></canvas>
+            <canvas id="canvasLever" resize2></canvas>
+            </div>
+    </span>
+    <br>
+    <div align="center">
+            letter counter goes here there
+            <script>
+            var num = 0;
+            dopcument.write(num);
+            </script>
+            here
+
+    </div>
+    <span >
+            <div align="center">
+            <canvas id="canvasCypher" resize3></canvas> 
+            <canvas id="canvas" style="width: 3%;" resize ></canvas>&emsp;&emsp;
+            <canvas id="canvas2" style="width: 3%;" resize ></canvas>&emsp;&emsp;
+            <canvas id="canvas3" style="width: 3%;" resize ></canvas>&emsp;&emsp;
+            <canvas id="canvas4" style="width: 3%;" resize ></canvas>&emsp;&emsp;
+            <canvas id="canvas5" style="width: 3%;" resize ></canvas>&emsp;&emsp;
+            <canvas id="canvas6" style="width: 3%;" resize ></canvas>&emsp;&emsp;
+            </div>
+</span>
+</body>
+</html>
