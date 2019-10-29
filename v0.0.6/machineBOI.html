@@ -131,43 +131,6 @@ var letterCnt = 0;
 
         var IMI_arr = [localStorage["wheel1"],localStorage["wheel2"],localStorage["wheel3"],localStorage["wheel4"],localStorage["wheel5"],localStorage["wheel6"]];
 
-        //increment the letters showing up on the wheel: IGNORE FOR NOW
-        /*if (wheel1Dropdown.selectedIndex == 25) {
-            wheel1Dropdown.selectedIndex = 0;
-        }
-        else {
-            wheel1Dropdown.selectedIndex += 1;
-        }
-        if (wheel2Dropdown.selectedIndex == 24) {
-            wheel2Dropdown.selectedIndex = 0;
-        }
-        else {
-            wheel2Dropdown.selectedIndex += 1;
-        }
-        if (wheel3Dropdown.selectedIndex == 22) {
-            wheel3Dropdown.selectedIndex = 0;
-        }
-        else {
-            wheel3Dropdown.selectedIndex += 1;
-        }
-        if (wheel4Dropdown.selectedIndex == 20) {
-            wheel4Dropdown.selectedIndex = 0;
-        }
-        else {
-            wheel4Dropdown.selectedIndex += 1;
-        }
-        if (wheel5Dropdown.selectedIndex == 18) {
-            wheel5Dropdown.selectedIndex = 0;
-        }
-        else {
-            wheel5Dropdown.selectedIndex += 1;
-        }
-        if (wheel6Dropdown.selectedIndex == 16) {
-            wheel6Dropdown.selectedIndex = 0;
-        }
-        else {
-            wheel6Dropdown.selectedIndex += 1;
-        }*/
 
         letterCnt += 1;
         letCount.innerHTML = letterCnt;
@@ -499,6 +462,14 @@ var letterCnt = 0;
             event.delta.x = 0;
             group.position += event.delta;
         
+            for(var i = 0; i < 26; i++){
+                if(group.children[i].position._y < -15){
+                        group.children[i].position.y += 785;
+                }
+                if(group.children[i].position._y > 785){
+                    group.children[i].position.y -= 785;
+                }
+            }
             
     
         }
@@ -512,6 +483,7 @@ var letterCnt = 0;
                                         var wheel1Val = group.children[i].content;
                     }
                 }
+                
              //   console.log("done");
             }     
 
@@ -521,19 +493,19 @@ var letterCnt = 0;
             //    console.log("true");
                 }
             }
+            console.log(textZ.position);
         }
+
+
         var scope = this;
         inc1 = function(e){
             scope.activate();
             e.preventDefault();
            for(var i = 0; i < 26; i++){
-               if(localStorage["wheel1"] == "Z"){
-                   group.children[i].position.y += 750;
-               }
-               else{
+
                 group.children[i].position.y -= 30;
            
-               }
+               
         }
         for(var j = 0; j < 26; j++){
                           if(group.children[j].position._y > 190){
@@ -541,6 +513,15 @@ var letterCnt = 0;
                                     localStorage["wheel1"] = group.children[j].content;
                                     var wheel1Val = group.children[j].content;
                 }
+            }
+        }
+
+        for(var i = 0; i < 26; i++){
+            if(group.children[i].position._y < -15){
+                    group.children[i].position.y += 785;
+            }
+            if(group.children[i].position._y > 785){
+                group.children[i].position.y -= 785;
             }
         }
         
@@ -828,7 +809,14 @@ var letterCnt = 0;
         group.onMouseDrag = function(event){
             event.delta.x = 0;
             group.position += event.delta;
-            
+            for(var i = 0; i < 25; i++){
+                if(group.children[i].position._y < -15){
+                        group.children[i].position.y += 755;
+                }
+                if(group.children[i].position._y > 755){
+                    group.children[i].position.y -= 755;
+                }
+            }
     
         }
         group.onMouseUp = function(event){
@@ -861,13 +849,10 @@ var letterCnt = 0;
             scope.activate();
             e.preventDefault();
            for(var i = 0; i < 25; i++){
-               if(localStorage["wheel2"] == "Z"){
-                   group.children[i].position.y += 715;
-               }
-               else{
+   
                 group.children[i].position.y -= 30;
            
-               }
+               
         }
         for(var j = 0; j < 25; j++){
                           if(group.children[j].position._y > 190){
@@ -875,6 +860,14 @@ var letterCnt = 0;
                                     localStorage["wheel2"] = group.children[j].content;
                                     var wheel2Val = group.children[j].content;
                 }
+            }
+        }
+        for(var i = 0; i < 25; i++){
+            if(group.children[i].position._y < -15){
+                    group.children[i].position.y += 755;
+            }
+            if(group.children[i].position._y > 755){
+                group.children[i].position.y -= 755;
             }
         }
         
@@ -1146,7 +1139,14 @@ var letterCnt = 0;
             event.delta.x = 0;
             group.position += event.delta;
             
-    
+            for(var i = 0; i < 23; i++){
+                if(group.children[i].position._y < -15){
+                        group.children[i].position.y += 695;
+                }
+                if(group.children[i].position._y > 695){
+                    group.children[i].position.y -= 695;
+                }
+            }
         }
         group.onMouseUp = function(event){
             for(var i = 0; i < 23; i++){
@@ -1177,13 +1177,10 @@ var letterCnt = 0;
             scope.activate();
             e.preventDefault();
            for(var i = 0; i < 23; i++){
-               if(localStorage["wheel3"] == "X"){
-                   group.children[i].position.y += 660;
-               }
-               else{
+ 
                 group.children[i].position.y -= 30;
            
-               }
+               
         }
         for(var j = 0; j < 23; j++){
                           if(group.children[j].position._y > 190){
@@ -1191,6 +1188,14 @@ var letterCnt = 0;
                                     localStorage["wheel3"] = group.children[j].content;
                                     var wheel3Val = group.children[j].content;
                 }
+            }
+        }
+        for(var i = 0; i < 23; i++){
+            if(group.children[i].position._y < -15){
+                    group.children[i].position.y += 695;
+            }
+            if(group.children[i].position._y > 695){
+                group.children[i].position.y -= 695;
             }
         }
         
@@ -1436,7 +1441,14 @@ var letterCnt = 0;
         group.onMouseDrag = function(event){
             event.delta.x = 0;
             group.position += event.delta;
-            
+            for(var i = 0; i < 21; i++){
+                if(group.children[i].position._y < -15){
+                        group.children[i].position.y += 635;
+                }
+                if(group.children[i].position._y > 635){
+                    group.children[i].position.y -= 635;
+                }
+            }
     
         }
         group.onMouseUp = function(event){
@@ -1467,13 +1479,10 @@ var letterCnt = 0;
             scope.activate();
             e.preventDefault();
            for(var i = 0; i < 21; i++){
-               if(localStorage["wheel4"] == "U"){
-                   group.children[i].position.y += 600;
-               }
-               else{
+      
                 group.children[i].position.y -= 30;
            
-               }
+               
         }
         for(var j = 0; j < 21; j++){
                           if(group.children[j].position._y > 190){
@@ -1483,7 +1492,14 @@ var letterCnt = 0;
                 }
             }
         }
-        
+        for(var i = 0; i < 21; i++){
+            if(group.children[i].position._y < -15){
+                    group.children[i].position.y += 635;
+            }
+            if(group.children[i].position._y > 635){
+                group.children[i].position.y -= 635;
+            }
+        }
             return false;
           } //end doSubmit function
           
@@ -1705,7 +1721,14 @@ var letterCnt = 0;
         group.onMouseDrag = function(event){
             event.delta.x = 0;
             group.position += event.delta;
-            
+            for(var i = 0; i < 19; i++){
+                if(group.children[i].position._y < -15){
+                        group.children[i].position.y += 575;
+                }
+                if(group.children[i].position._y > 575){
+                    group.children[i].position.y -= 575;
+                }
+            }
     
         }
         group.onMouseUp = function(event){
@@ -1736,13 +1759,10 @@ var letterCnt = 0;
             scope.activate();
             e.preventDefault();
            for(var i = 0; i < 19; i++){
-               if(localStorage["wheel5"] == "S"){
-                   group.children[i].position.y += 540;
-               }
-               else{
+       
                 group.children[i].position.y -= 30;
            
-               }
+               
         }
         for(var j = 0; j < 19; j++){
                           if(group.children[j].position._y > 190){
@@ -1752,7 +1772,14 @@ var letterCnt = 0;
                 }
             }
         }
-        
+        for(var i = 0; i < 19; i++){
+            if(group.children[i].position._y < -15){
+                    group.children[i].position.y += 575;
+            }
+            if(group.children[i].position._y > 575){
+                group.children[i].position.y -= 575;
+            }
+        }
             return false;
           } //end doSubmit function
           
@@ -1952,7 +1979,14 @@ var letterCnt = 0;
             event.delta.x = 0;
             group.position += event.delta;
             
-    
+            for(var i = 0; i < 17; i++){
+                if(group.children[i].position._y < -15){
+                        group.children[i].position.y += 515;
+                }
+                if(group.children[i].position._y > 515){
+                    group.children[i].position.y -= 515;
+                }
+            }
         }
         group.onMouseUp = function(event){
             for(var i = 0; i < 17; i++){
@@ -1982,13 +2016,9 @@ var letterCnt = 0;
             scope.activate();
             e.preventDefault();
            for(var i = 0; i < 17; i++){
-               if(localStorage["wheel6"] == "Q"){
-                   group.children[i].position.y += 480;
-               }
-               else{
                 group.children[i].position.y -= 30;
            
-               }
+               
         }
         for(var j = 0; j < 17; j++){
                           if(group.children[j].position._y > 190){
@@ -1998,7 +2028,14 @@ var letterCnt = 0;
                 }
             }
         }
-        
+        for(var i = 0; i < 17; i++){
+            if(group.children[i].position._y < -15){
+                    group.children[i].position.y += 515;
+            }
+            if(group.children[i].position._y > 515){
+                group.children[i].position.y -= 515;
+            }
+        }
             return false;
           } //end doSubmit function
           
@@ -2412,7 +2449,8 @@ localStorage["cypher"] = "c";
 </head>
 <body>
             <div align = "center" id="output-box" style="background-color: #b1a688;">this is where the output will go</div>
-    <div class="row" style="width: 100%;">
+ <div align = "center" id="decrypt-box" style="background-color: #b1a688;"></div>
+   <div class="row" style="width: 100%;">
         <div class="col-sm-10">
 
         </div>
@@ -2462,7 +2500,6 @@ localStorage["cypher"] = "c";
                             </div>
     </div>
         
-<div id="decrypt-box"></div>
 </body>
 <!--to loop the letters around
     - if group at i content is A at certain point on canvas
