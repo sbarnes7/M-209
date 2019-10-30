@@ -2328,6 +2328,15 @@ var letterCnt = 0;
         group.onMouseDrag = function(event){
             event.delta.x = 0;
             group.position += event.delta;
+
+            for(var i = 0; i < 26; i++){
+                if(group.children[i].position._y < -15){
+                        group.children[i].position.y += 785;
+                }
+                if(group.children[i].position._y > 785){
+                    group.children[i].position.y -= 785;
+                }
+            }
             
     
         }
