@@ -481,6 +481,24 @@ var letterCnt = 0;
 
                                         localStorage["wheel1"] = group.children[i].content;
                                         var wheel1Val = group.children[i].content;
+
+                                        var num1 = group.children[i].position._y;
+                                        var diff = 0;
+                                        console.log(num1);
+                                        if(num1 > 202){
+                                            diff = num1 - 202;
+                                            console.log(diff);
+                                            for(var k = 0; k < 26; k++){
+                                                group.children[k].position.y -= diff;
+                                            }
+                                        }
+                                        else{
+                                            diff = 202 - num1;
+                                            console.log(diff);
+                                            for(var j = 0; j < 26; j++){
+                                                group.children[j].position.y += diff;
+                                            }
+                                        }
                     }
                 }
                 
@@ -827,7 +845,23 @@ var letterCnt = 0;
                                         localStorage["wheel2"] = group.children[i].content;
                                         var wheel2Val = group.children[i].content;
 
-
+                                        var num1 = group.children[i].position._y;
+                                        var diff = 0;
+                                        console.log(num1);
+                                        if(num1 > 202){
+                                            diff = num1 - 202;
+                                            console.log(diff);
+                                            for(var k = 0; k < 25; k++){
+                                                group.children[k].position.y -= diff;
+                                            }
+                                        }
+                                        else{
+                                            diff = 202 - num1;
+                                            console.log(diff);
+                                            for(var j = 0; j < 25; j++){
+                                                group.children[j].position.y += diff;
+                                            }
+                                        }
                     }
                 }
             }
@@ -1156,7 +1190,23 @@ var letterCnt = 0;
                                         localStorage["wheel3"] = group.children[i].content;
                                         var wheel3Val = group.children[i].content;
 
-
+                                        var num1 = group.children[i].position._y;
+                                        var diff = 0;
+                                        console.log(num1);
+                                        if(num1 > 202){
+                                            diff = num1 - 202;
+                                            console.log(diff);
+                                            for(var k = 0; k < 23; k++){
+                                                group.children[k].position.y -= diff;
+                                            }
+                                        }
+                                        else{
+                                            diff = 202 - num1;
+                                            console.log(diff);
+                                            for(var j = 0; j < 23; j++){
+                                                group.children[j].position.y += diff;
+                                            }
+                                        }
                     }
                 }
             }
@@ -1459,7 +1509,23 @@ var letterCnt = 0;
                                         localStorage["wheel4"] = group.children[i].content;
                                         var wheel4Val = group.children[i].content;
 
-
+                                        var num1 = group.children[i].position._y;
+                                        var diff = 0;
+                                        console.log(num1);
+                                        if(num1 > 202){
+                                            diff = num1 - 202;
+                                            console.log(diff);
+                                            for(var k = 0; k < 21; k++){
+                                                group.children[k].position.y -= diff;
+                                            }
+                                        }
+                                        else{
+                                            diff = 202 - num1;
+                                            console.log(diff);
+                                            for(var j = 0; j < 21; j++){
+                                                group.children[j].position.y += diff;
+                                            }
+                                        }
                     }
                 }
             }
@@ -1740,6 +1806,24 @@ var letterCnt = 0;
                                         var wheel5Val = group.children[i].content;
 
 
+
+                                        var num1 = group.children[i].position._y;
+                                        var diff = 0;
+                                        console.log(num1);
+                                        if(num1 > 202){
+                                            diff = num1 - 202;
+                                            console.log(diff);
+                                            for(var k = 0; k < 19; k++){
+                                                group.children[k].position.y -= diff;
+                                            }
+                                        }
+                                        else{
+                                            diff = 202 - num1;
+                                            console.log(diff);
+                                            for(var j = 0; j < 19; j++){
+                                                group.children[j].position.y += diff;
+                                            }
+                                        }
                     }
                 }
             }
@@ -1987,6 +2071,8 @@ var letterCnt = 0;
                     group.children[i].position.y -= 510;
                 }
             }
+
+            
         }
         group.onMouseUp = function(event){
             for(var i = 0; i < 17; i++){
@@ -1996,6 +2082,24 @@ var letterCnt = 0;
                                         localStorage["wheel6"] = group.children[i].content;
                                         var wheel6Val = group.children[i].content;
 
+
+                                        var num1 = group.children[i].position._y;
+                                        var diff = 0;
+                                        console.log(num1);
+                                        if(num1 > 202){
+                                            diff = num1 - 202;
+                                            console.log(diff);
+                                            for(var k = 0; k < 17; k++){
+                                                group.children[k].position.y -= diff;
+                                            }
+                                        }
+                                        else{
+                                            diff = 202 - num1;
+                                            console.log(diff);
+                                            for(var j = 0; j < 17; j++){
+                                                group.children[j].position.y += diff;
+                                            }
+                                        }
 
                     }
                 }
@@ -2347,6 +2451,24 @@ var letterCnt = 0;
                                       //  console.log(group.children[i].content);
                                         localStorage["diskVal"] = group.children[i].content;
                                         var diskVal = group.children[i].content;
+                                        var num1 = group.children[i].position._y;
+                                        var diff = 0;
+                                        console.log(num1);
+                                        if(num1 > 112){
+                                            diff = num1 - 112;
+                                            console.log(diff);
+                                            for(var k = 0; k < 26; k++){
+                                                group.children[k].position.y -= diff;
+                                            }
+                                        }
+                                        else{
+                                            diff = 112 - num1;
+                                            console.log(diff);
+                                            for(var j = 0; j < 26; j++){
+                                                group.children[j].position.y += diff;
+                                            }
+                                        }
+                                        //group.children[i].position.y = 112;
                     }
                 }
             }
