@@ -159,7 +159,7 @@ var letterCnt = 0;
             outputbox.innerHTML = decrypt_string;
             encrypt_string = ' ';
         }
-
+        localStorage["cnt"] = letterCnt;
     }
     window.onload = init;
 </script>
@@ -505,6 +505,34 @@ var letterCnt = 0;
             console.log(textZ.position);
         }
 
+        var scope = this;
+        set = function(e){
+            var offset = 0;
+            offset = localStorage["cnt"] * 30;
+            console.log(offset);
+            for(var i = 0; i < 26; i++){
+                group.children[i].position.y += offset;
+            }
+            for(var i = 0; i < 26; i++){
+                if(group.children[i].position._y < -15){
+                        group.children[i].position.y += 780;
+                }
+                if(group.children[i].position._y > 780){
+                    group.children[i].position.y -= 780;
+                }
+                 if(group.children[i].position._y > 190){
+                if(group.children[i].position._y < 215){
+                                  //  console.log(group.children[i].content);
+
+                                    localStorage["wheel1"] = group.children[i].content;
+                                    var wheel1Val = group.children[i].content;
+            }
+        }
+    }
+           
+            return false;
+        }
+        window.set = set;
 
         var scope = this;
         inc1 = function(e){
@@ -870,6 +898,35 @@ var letterCnt = 0;
 
 
         var scope = this;
+        set2 = function(e){
+            var offset = 0;
+            offset = localStorage["cnt"] * 30;
+            console.log(offset);
+            for(var i = 0; i < 25; i++){
+                group.children[i].position.y += offset;
+            }
+            for(var i = 0; i < 25; i++){
+                if(group.children[i].position._y < -15){
+                        group.children[i].position.y += 750;
+                }
+                if(group.children[i].position._y > 750){
+                    group.children[i].position.y -= 750;
+                }
+                if(group.children[i].position._y > 190){
+                    if(group.children[i].position._y < 215){
+                                      //  console.log(group.children[i].content);
+
+                                        localStorage["wheel2"] = group.children[i].content;
+                                        var wheel2Val = group.children[i].content;
+            }
+        }
+    }
+            return false;
+        }
+        window.set2 = set2;
+
+
+        var scope = this;
         inc2 = function(e){
             scope.activate();
             e.preventDefault();
@@ -1213,6 +1270,35 @@ var letterCnt = 0;
            // console.log(textA.position._x);
         }
 
+
+        var scope = this;
+        set3 = function(e){
+            var offset = 0;
+            offset = localStorage["cnt"] * 30;
+            console.log(offset);
+            for(var i = 0; i < 23; i++){
+                group.children[i].position.y += offset;
+            }
+            for(var i = 0; i < 23; i++){
+                if(group.children[i].position._y < -15){
+                        group.children[i].position.y += 690;
+                }
+                if(group.children[i].position._y > 690){
+                    group.children[i].position.y -= 690;
+                }
+                if(group.children[i].position._y > 190){
+                    if(group.children[i].position._y < 215){
+                                      //  console.log(group.children[i].content);
+
+                                        localStorage["wheel3"] = group.children[i].content;
+                                        var wheel3Val = group.children[i].content;
+            }
+        }
+    }
+            return false;
+        }
+        window.set3 = set3;
+
         var scope = this;
         inc3 = function(e){
             scope.activate();
@@ -1531,6 +1617,35 @@ var letterCnt = 0;
            // }
            // console.log(textA.position._x);
         }
+
+        var scope = this;
+        set4 = function(e){
+            var offset = 0;
+            offset = localStorage["cnt"] * 30;
+            console.log(offset);
+            for(var i = 0; i < 21; i++){
+                group.children[i].position.y += offset;
+            }
+            for(var i = 0; i < 21; i++){
+                if(group.children[i].position._y < -15){
+                        group.children[i].position.y += 630;
+                }
+                if(group.children[i].position._y > 630){
+                    group.children[i].position.y -= 630;
+                }
+                if(group.children[i].position._y > 190){
+                    if(group.children[i].position._y < 215){
+                                      //  console.log(group.children[i].content);
+
+                                        localStorage["wheel4"] = group.children[i].content;
+                                        var wheel4Val = group.children[i].content;
+            }
+        }
+    }
+            return false;
+        }
+        window.set4 = set4;
+
         var scope = this;
         inc4 = function(e){
             scope.activate();
@@ -1829,6 +1944,36 @@ var letterCnt = 0;
            // }
            // console.log(textA.position._x);
         }
+
+        var scope = this;
+        set5 = function(e){
+            var offset = 0;
+            offset = localStorage["cnt"] * 30;
+            console.log(offset);
+            for(var i = 0; i < 19; i++){
+                group.children[i].position.y += offset;
+            }
+            for(var i = 0; i < 19; i++){
+                if(group.children[i].position._y < -15){
+                        group.children[i].position.y += 570;
+                }
+                if(group.children[i].position._y > 570){
+                    group.children[i].position.y -= 570;
+                }
+                if(group.children[i].position._y > 190){
+                    if(group.children[i].position._y < 215){
+                                      //  console.log(group.children[i].content);
+
+                                        localStorage["wheel5"] = group.children[i].content;
+                                        var wheel5Val = group.children[i].content;
+            }
+        }
+    }
+            return false;
+        }
+        window.set5 = set5;
+
+
         var scope = this;
         inc5 = function(e){
             scope.activate();
@@ -2106,6 +2251,36 @@ var letterCnt = 0;
            // }
            // console.log(textA.position._x);
         }
+
+        var scope = this;
+        set6 = function(e){
+            var offset = 0;
+            offset = localStorage["cnt"] * 30;
+            console.log(offset);
+            for(var i = 0; i < 17; i++){
+                group.children[i].position.y += offset;
+            }
+            for(var i = 0; i < 17; i++){
+                if(group.children[i].position._y < -15){
+                        group.children[i].position.y += 510;
+                }
+                if(group.children[i].position._y > 510){
+                    group.children[i].position.y -= 510;
+                }
+                if(group.children[i].position._y > 190){
+                    if(group.children[i].position._y < 215){
+                                      //  console.log(group.children[i].content);
+
+                                        localStorage["wheel6"] = group.children[i].content;
+                                        var wheel6Val = group.children[i].content;
+                    }
+                }
+            }
+           
+            return false;
+        }
+        window.set6 = set6;
+
         var scope = this;
         inc6 = function(e){
             scope.activate();
@@ -2488,6 +2663,12 @@ var letterCnt = 0;
         shape.onMouseDown = function(event) {
             this.fillColor = 'grey';
            // console.log("reset button has been hit");
+           set(event);
+           set2(event);
+           set3(event);
+           set4(event);
+           set5(event);
+           set6(event);
         }
         shape.onMouseUp = function(event){
             this.fillColor = "darkgrey";
