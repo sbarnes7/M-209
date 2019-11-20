@@ -13,15 +13,6 @@
     <link rel="stylesheet" href="../css/style.css">
 
     <script src="m209.js"></script>
-
-    <!--<script type="text/paperscript" src="wheel1.js" canvas="canvas"></script>
-    <script type="text/paperscript" src="wheel2.js" canvas="canvas2"></script>
-    <script type="text/paperscript" src="wheel3.js" canvas="canvas3"></script>
-    <script type="text/paperscript" src="wheel4.js" canvas="canvas4"></script>
-    <script type="text/paperscript" src="wheel5.js" canvas="canvas5"></script>
-    <script type="text/paperscript" src="wheel6.js" canvas="canvas6"></script>
-    <script type="text/paperscript" src="indicatingDisk.js" canvas="canvas7"></script>-->
-
     <style>
   canvas[resize] {
 	    border-style: solid;
@@ -96,7 +87,7 @@ var letterCnt = 0;
         decrypt_string = ' ';
         
         outputbox.innerHTML = 'Current Tape';
-        prevbox.innerHTML = 'Previous Tape';
+        prevbox.innerHTML = 'Previous String: ' + localStorage["encrypt_string"];
 
 
     }
@@ -106,7 +97,6 @@ var letterCnt = 0;
 
         var outputbox = document.getElementById("output-box");
         var prevbox = document.getElementById("decrypt-box");
-
 
         //Encipher or decipher:
         var cipherVal = localStorage["cypher"];
@@ -138,7 +128,8 @@ var letterCnt = 0;
 
         if (cipherVal == 'c') {
             encrypt_string += encrypt(diskLetterVal, IMI_arr);
-             console.log(encrypt_string);
+             console.log(encrypt_string + " here");
+             localStorage["encrypt_string"] = encrypt_string;
            //  console.log("hhhhh");
 
             if (decrypt_string != ' ') {
