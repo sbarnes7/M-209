@@ -140,7 +140,7 @@ var letterCnt = 0;
             if (letterCnt % 5 == 0) {
                 encrypt_string += ' ';
             }
-            outputbox.innerHTML = encrypt_string;
+            outputbox.innerHTML = "Current String: " + encrypt_string;
             decrypt_string = ' ';
         } else if (cipherVal = 'd') {
             decrypt_string += decrypt(diskLetterVal, IMI_arr);
