@@ -10,7 +10,6 @@
 
     <meta charset="UTF-8">
     <title>M-209</title>
-    <link rel="stylesheet" href="../css/style.css">
 
     <script src="m209.js"></script>
     <style>
@@ -162,10 +161,40 @@ var letterCnt = 0;
         localStorage["cnt"] = letterCnt;
     }
     window.onload = init;
+    var scope = this;
 
-    function evalu(){
-        console.log("here");
+//sends the circle data to local storage
+
+evalu = function(e){
+  e.preventDefault();
+    var encryption = ' ';
+  // the id of the circle we're changing
+  var targetName = e.target.querySelector("[name=formId]").value.toLowerCase();
+  // holds the user's text entry
+  var text = e.target.getElementsByTagName("input")[0].value;
+console.log(text);
+  localStorage["targetName"] = text;
+  text.split('');
+  console.log(text);
+          var prev = document.getElementById("decryption");
+
+    for(var i in text){
+        diskLetterVal = text[i].toUpperCase();
+        var IMI_arr = [localStorage["wheel1"],localStorage["wheel2"],localStorage["wheel3"],localStorage["wheel4"],localStorage["wheel5"],localStorage["wheel6"]];
+        encryption += encrypt(diskLetterVal, IMI_arr);
+        console.log(encryption);
+        inc1(event);
+        inc2(event);
+        inc3(event);
+        inc4(event);
+        inc5(event);
+        inc6(event);
+        prev.innerHTML = "Output: " + encryption;
     }
+  return false;
+} //end evalu function
+
+window.evalu= evalu;
 </script>
     <!--wheel1 canvas-->
       <script type="text/paperscript" canvas="canvas">
@@ -2757,10 +2786,12 @@ localStorage["cypher"] = "c";
 <body>
             <div align = "center" id="output-box" style="background-color: #b1a688;">this is where the output will go</div>
  <div align = "center" id="decrypt-box" style="background-color: #b1a688;"></div>
- <form>
-      <input class="form-control" type="text" style="width: 20%;" placeholder="Cipher String">
-      <button type="submit" class="btn btn-primary mb-2" onSubmit="evalu();">Cipher</button>
- </form>
+ <form action="#" onsubmit="evalu(event);">
+    <input type="text" name="circleText" id="textInput" style="width: 20%;">
+    <input type="hidden" name="formId" value="1"><!-- holds the SUid corresponding to this circle -->
+    <input type="submit" value="Cipher">
+  </form>
+  <div id="decryption" style="color: white;"></div>
  <div id="decryption" style="width: 20%;"></div>
    <div class="row" style="width: 100%;">
         <div class="col-sm-10">
