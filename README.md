@@ -17,6 +17,11 @@
 - [ ] Once letter has clicked into place, click the big lever in the upper right to submit the letter
     - [ ] Output will appear at the top of the page one letter at a time
 - [ ] To reset the machine, click the circle button next to the big lever in the upper right hand corner
+## String Encipher
+- [ ] When enciuphering or deciphering a string, all six wheels need to be in the correct starting position
+- [ ] The cipher decipher button needs to be set to the correct setting
+- [ ] Enter your full string in the text box and click the button next to the text box
+    - [ ] Output will appear below the textbox of your ciphered message
 ## Current Bugs
 - [ ] When refreshing the page, the user must click each wheel into place before ciphering or deciphering a message
     - [ ] If wheel is already on correct letter, you still need to click the letter into place to register 
