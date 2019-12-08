@@ -1,4 +1,9 @@
 # M-209
+## Our Machine
+- [ ] The latest version of our project is version 6 and can be found at https://github.com/sbarnes7/M-209
+    - [ ] Navigate to the newest version by clicking on folder v0.0.6
+    - [ ] Open the index.html page to begin at the main oage of the website
+- [ ] For references on how to use the machine and history on the machine, refer to the index of the website where you can find useful tabs on the M-209
 ## How to use
  - [ ] Start at index.html page
  - [ ] Click on start enciphering and choose your preset or custom layout
